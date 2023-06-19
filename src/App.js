@@ -1,23 +1,30 @@
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./css/bootstrap.min.css";
 import "./css/fancybox.min.css";
 import "./css/odometer.min.css";
+import Home from "./components/Index/Home";
+import Footer from "./components/UI/Footer";
 
 import "./css/style.css";
-import Carousel from "./components/carousel";
-import NavBar from "./components/navbar";
-import WorldArt from "./components/WorldArt";
-import IndexUpcoming from "./components/IndexUpcoming";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       {/* <NavBar /> */}
-      {/* <Carousel /> */}
-      <WorldArt />
-      <IndexUpcoming />
-    </>
+      <Routes>
+        <Route element={<Home />} path="/" exact={true} />
+        {/* <Route element={<Servizi />} path="/servizi" />
+        <Route element={<Contact />} path="/contact" />
+        <Route element={<Room />} path="/rooms" />
+        <Route element={<SingleAttrazione />} path="/attrazione/:slug" />
+        <Route element={<SingleIndexRoom />} path="/indexroom/:slug" />
+        <Route element={<SingleRoom />} path="/rooms/:slug" />
+        <Route element={<Attrazione />} path="/attrazione" /> */}
+      </Routes>
+      {/* <IndexNews /> */}
+      <Footer />
+    </BrowserRouter>
   );
 }
 

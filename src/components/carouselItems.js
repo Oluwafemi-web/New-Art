@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import slide from "../images/slide01.jpg";
+import slide from "../../images/slide01.jpg";
 export default function CarouselItems() {
   return (
     <Swiper
