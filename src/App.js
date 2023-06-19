@@ -5,13 +5,15 @@ import "./css/fancybox.min.css";
 import "./css/odometer.min.css";
 import Home from "./components/Index/Home";
 import Footer from "./components/UI/Footer";
-
+import NavBar from "./components/UI/navbar";
 import "./css/style.css";
+import MobileNav from "./components/UI/MobileNav";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
+      <MobileNav />
+      <NavBar />
       <Routes>
         <Route element={<Home />} path="/" exact={true} />
         {/* <Route element={<Servizi />} path="/servizi" />
