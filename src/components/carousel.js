@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Controller } from "swiper";
 import mobile1 from "../images/slide-mobile01.jpg";
 import img1 from "../images/slide01.jpg";
 
@@ -7,27 +8,31 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/swiper.min.css";
 import "swiper/css";
-import "swiper/css/navigation";
+// import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+// import "swiper/css/scrollbar";
 import "../css/style.css";
 
 export default function Carousel() {
+  const [controlledSwiper, setControlledSwiper] = useState(null);
+  let direction = "veritcal";
   return (
     <header className="slider">
       <Swiper
         // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Controller]}
         spaceBetween={50}
         slidesPerView={1}
         navigation
+        direction={direction}
         loop={true}
+        controller={{ control: controlledSwiper }}
         scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
         className="slider-images swiper-container"
       >
-        <SwiperSlide>
+        <SwiperSlide style={{ background: `url(img1)` }}>
           <img src={img1} />
         </SwiperSlide>
         <SwiperSlide>
@@ -40,14 +45,21 @@ export default function Carousel() {
       #
       <Swiper
         // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Controller]}
         spaceBetween={50}
         slidesPerView={1}
         loop={true}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={setControlledSwiper}
         onSlideChange={() => console.log("slide change")}
         className="slider-texts swiper-container"
       >
+        <svg width={580} height={400} className="svg-morph">
+          <path
+            id="svg_morph"
+            d="m261,30.4375c0,0 114,6 151,75c37,69 37,174 6,206.5625c-31,32.5625 -138,11.4375 -196,-19.5625c-58,-31 -86,-62 -90,-134.4375c12,-136.5625 92,-126.5625 129,-127.5625z"
+          />
+        </svg>
+
         <SwiperSlide>
           <div className="container-fluid">
             <h1>

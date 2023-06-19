@@ -63,6 +63,8 @@ theme.
 
 */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap");
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
 * {
   outline: none !important;
 }
@@ -1099,7 +1101,9 @@ button[type="submit"] i {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding-top: 32px;
+  /* padding-top: 32px; */
+  position: relative;
+  bottom: 10%;
 }
 .slider .slider-texts .svg-morph {
   position: absolute;
@@ -1141,23 +1145,25 @@ button[type="submit"] i {
   border-left: 3px solid #080808;
   margin-left: 10px;
 }
-.slider .swiper-fraction {
+.slider .swiper-fraction,
+.swiper-scrollbar-vertical .swiper-scrollbar {
   width: 200px;
   color: #fff;
 }
-.slider .swiper-fraction span {
+/* .swiper-scrollbar-drag {
   width: 22px;
   display: inline-block;
   color: #080808;
   font-weight: 700;
-}
+} */
 .slider .swiper-fraction span:before {
   content: "0";
 }
 .slider .swiper-fraction .swiper-pagination-current {
   margin-right: 122px;
 }
-.slider .swiper-pagination-progressbar {
+.swiper-scrollbar-vertical {
+  position: absolute;
   top: auto;
   bottom: 56px;
   left: 50px;
@@ -1165,9 +1171,10 @@ button[type="submit"] i {
   height: 2px;
   background: rgba(0, 0, 0, 0.1);
 }
-.slider .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+/* .slider .swiper-pagination-progressbar .swiper-pagination-progressbar-fill,
+.swiper-scrollbar-drag {
   background: #080808;
-}
+} */
 .slider .slider-nav {
   display: flex;
   height: 70px;
@@ -1175,7 +1182,8 @@ button[type="submit"] i {
   position: relative;
   z-index: 3;
 }
-.slider .slider-nav .button-prev {
+.slider .slider-nav .button-prev,
+.swiper-button-prev {
   width: 64px;
   height: 64px;
   display: flex;
@@ -1189,7 +1197,7 @@ button[type="submit"] i {
   position: relative;
   z-index: 3;
   cursor: pointer;
-  transform: translateY(-22px);
+  transform: translateY(-140px);
   border-radius: 50%;
   -webkit-transition: 0.25s ease-in-out;
   -moz-transition: 0.25s ease-in-out;
@@ -1197,11 +1205,13 @@ button[type="submit"] i {
   -o-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
-.slider .slider-nav .button-prev:hover {
+.slider .slider-nav .button-prev:hover,
+.swiper-button-prev:hover {
   background: #080808;
   color: #94ffc4;
 }
-.slider .slider-nav .button-next {
+.slider .slider-nav .button-next,
+.swiper-button-next {
   width: 64px;
   height: 64px;
   display: flex;
@@ -1213,7 +1223,7 @@ button[type="submit"] i {
   position: relative;
   z-index: 3;
   cursor: pointer;
-  transform: translateY(-22px);
+  transform: translateY(-140px);
   border-radius: 50%;
   -webkit-transition: 0.25s ease-in-out;
   -moz-transition: 0.25s ease-in-out;
@@ -1221,11 +1231,21 @@ button[type="submit"] i {
   -o-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
-.slider .slider-nav .button-next:hover {
+.slider .slider-nav .button-next:hover,
+.swiper-button-next:hover {
   background: #080808;
   color: #94ffc4;
 }
-
+.swiper-button-next:after {
+  content: "\f077"; /* Unicode value of the chevron-up icon */
+  font-family: "Font Awesome 5 Free"; /* Font family of the icon */
+  font-weight: 900; /* Font weight of the icon */
+}
+.swiper-button-prev:after {
+  content: "\f078"; /* Unicode value of the chevron-up icon */
+  font-family: "Font Awesome 5 Free"; /* Font family of the icon */
+  font-weight: 900; /* Font weight of the icon */
+}
 /* PLAY NOW */
 .play-now {
   position: relative;
