@@ -17,6 +17,8 @@ import News from "./News";
 import Member from "./Member";
 import NewsLetter from "./NewsLetter";
 import Footer from "../UI/Footer";
+import Carousel from "../carousel";
+import NavBar from "../UI/navbar";
 
 export default function Home() {
   const scrollRef = useRef(null);
@@ -33,8 +35,10 @@ export default function Home() {
     };
   }, []);
   return (
-    <div className="smooth-scroll" ref={scrollRef}>
+    <div className="smooth-scroll page-loaded" ref={scrollRef}>
       <div className="section-wrapper" data-scroll-section>
+        <NavBar />
+        <Carousel />
         {/* <NavBar /> */}
         {/* <Carousel /> */}
         <WorldArt />

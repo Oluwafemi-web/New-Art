@@ -8,12 +8,12 @@ import Footer from "./components/UI/Footer";
 import NavBar from "./components/UI/navbar";
 import "./css/style.css";
 import MobileNav from "./components/UI/MobileNav";
+import Carousel from "./components/carousel";
 
 function App() {
   return (
     <BrowserRouter>
-      <MobileNav />
-      <NavBar />
+      {/* <Carousel /> */}
       <Routes>
         <Route element={<Home />} path="/" exact={true} />
         {/* <Route element={<Servizi />} path="/servizi" />

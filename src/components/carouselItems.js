@@ -27,3 +27,46 @@ export default function CarouselItems() {
     </Swiper>
   );
 }
+
+<div className="swiper-container slider-images">
+  <div className="swiper-wrapper">
+    <SwiperSlide>
+      <div className="swiper-slide" data-background="images/slide01.jpg">
+        <div
+          className="mobile-slide"
+          data-background="images/slide-mobile01.jpg"
+        ></div>
+      </div>
+    </SwiperSlide>
+    <SwiperSlide>
+      <div className="swiper-slide" data-background="images/slide02.jpg">
+        <div
+          className="mobile-slide"
+          data-background="images/slide-mobile02.jpg"
+        ></div>
+      </div>
+    </SwiperSlide>
+    <SwiperSlide>
+      <div className="swiper-slide" data-background="images/slide03.jpg">
+        <div
+          className="mobile-slide"
+          data-background="images/slide-mobile03.jpg"
+        ></div>
+      </div>
+    </SwiperSlide>
+  </div>
+  <div className="container-fluid slider-nav">
+    <div className="swiper-pagination" />
+    {/* end swiper-pagination */}
+    <div className="swiper-fraction" />
+    {/* end swiper-fraction */}
+    <div className="button-prev">
+      <i className="far fa-chevron-down" />
+    </div>
+    {/* end swiper-button-prev */}
+    <div className="button-next">
+      <i className="far fa-chevron-up" />
+    </div>
+    {/* end swiper-button-next */}
+  </div>
+</div>;
