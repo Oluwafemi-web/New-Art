@@ -1,9 +1,10 @@
+import { useState } from "react";
 import logo from "../../images/logo-light.png";
 import image from "../../images/image07.jpg";
 
-export default function MobileNav() {
+export default function MobileNav(props) {
   return (
-    <aside className="side-widget">
+    <aside className={`side-widget ${props.active}`}>
       <svg viewBox="0 0 600 1080" preserveAspectRatio="none" version="1.1">
         <path d="M540,1080H0V0h540c0,179.85,0,359.7,0,539.54C540,719.7,540,899.85,540,1080z" />
       </svg>

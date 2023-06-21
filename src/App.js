@@ -1,5 +1,5 @@
 import LocomotiveScroll from "locomotive-scroll";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./css/bootstrap.min.css";
@@ -25,6 +25,16 @@ import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
 
 function App() {
+  const [navOpen, setNavOpen] = useState(false);
+
+  const clickeventHandler = () => {
+    setNavOpen(!navOpen);
+  };
+
+  var active = "active";
+  if (navOpen !== true) {
+    active = "";
+  }
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -43,8 +53,8 @@ function App() {
     <BrowserRouter>
       <div className="smooth-scroll page-loaded" ref={scrollRef}>
         <div className="section-wrapper" data-scroll-section>
-          <MobileNav />
-          <NavBar />
+          {navOpen && <MobileNav active={active} />}
+          <NavBar clickeventHandler={clickeventHandler} active={active} />
           <Routes>
             <Route element={<Home />} path="/" exact={true} />
             <Route path="/visit" element={<Visit />} />

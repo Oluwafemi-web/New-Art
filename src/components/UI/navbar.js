@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../../css/style.css";
 import logo from "../../images/logo.png";
 import { FaSearch } from "react-icons/fa";
-export default function NavBar() {
+export default function NavBar(props) {
   return (
     <nav className="navbar">
       <div className="logo">
@@ -46,8 +46,13 @@ export default function NavBar() {
         <FaSearch />
       </div>
       {/* end search-button */}
-      <div className="hamburger-menu">
-        <svg className="hamburger" width={30} height={30} viewBox="0 0 30 30">
+      <div className="hamburger-menu" onClick={props.clickeventHandler}>
+        <svg
+          className={`hamburger ${props.active}`}
+          width={30}
+          height={30}
+          viewBox="0 0 30 30"
+        >
           <path className="line line-top" d="M0,9h30" />
           <path className="line line-center" d="M0,15h30" />
           <path className="line line-bottom" d="M0,21h30" />

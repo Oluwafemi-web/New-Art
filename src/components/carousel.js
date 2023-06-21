@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Controller } from "swiper";
 import mobile1 from "../images/slide-mobile01.jpg";
+import mobile2 from "../images/slide-mobile02.jpg";
+import mobile3 from "../images/slide-mobile03.jpg";
+
 import img1 from "../images/slide01.jpg";
+import img2 from "../images/slide02.jpg";
+import img3 from "../images/slide03.jpg";
 
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
@@ -30,17 +35,26 @@ export default function Carousel() {
         scrollbar={{ draggable: true }}
         className="slider-images swiper-container"
       >
-        <SwiperSlide style={{ background: `url(img1)` }}>
-          <img src={img1} />
+        <SwiperSlide style={{ background: `url(${img1})` }}>
+          <div
+            className="mobile-slide"
+            style={{ background: `url(${mobile1})` }}
+          />
         </SwiperSlide>
-        <SwiperSlide>
-          <img src={img1} />
+        <SwiperSlide style={{ background: `url(${img2})` }}>
+          <div
+            className="mobile-slide"
+            style={{ background: `url(${mobile2})` }}
+          />
         </SwiperSlide>
-        <SwiperSlide>
-          <img src={img1} />
+        <SwiperSlide style={{ background: `url(${img3})` }}>
+          <div
+            className="mobile-slide"
+            style={{ background: `url(${mobile3})` }}
+          />
         </SwiperSlide>
       </Swiper>
-      #
+
       <Swiper
         // install Swiper modules
         modules={[Navigation, Controller]}
