@@ -1,58 +1,62 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller } from "swiper";
-import mobile1 from "../images/slide-mobile01.jpg";
-import mobile2 from "../images/slide-mobile02.jpg";
-import mobile3 from "../images/slide-mobile03.jpg";
 
-import img1 from "../images/slide01.jpg";
-import img2 from "../images/slide02.jpg";
-import img3 from "../images/slide03.jpg";
-
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import sanityClient from "../client";
+import { Navigation, Pagination, A11y } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/swiper.min.css";
+
 import "swiper/css";
-// import "swiper/css/navigation";
+
 import "swiper/css/pagination";
-// import "swiper/css/scrollbar";
+
 import "../css/style.css";
+import CarouselItems from "./carouselItems";
 
 export default function Carousel() {
   const [controlledSwiper, setControlledSwiper] = useState(null);
+  const [carousel, setCarousel] = useState(null);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "carousel"] {
+      maintext,
+      subtext,
+         image{
+          asset->{
+            _id,
+            url
+          }
+         },
+     
+
+    }`
+      )
+      .then((data) => setCarousel(data))
+      .catch(console.error);
+  }, []);
   let direction = "veritcal";
   return (
     <header className="slider">
       <Swiper
         // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y, Controller]}
+        modules={[Navigation, Pagination, A11y, Controller]}
         spaceBetween={50}
         slidesPerView={1}
         navigation
         direction={direction}
         loop={true}
+        pagination={{
+          clickable: true,
+        }}
         controller={{ control: controlledSwiper }}
-        scrollbar={{ draggable: true }}
         className="slider-images swiper-container"
       >
-        <SwiperSlide style={{ background: `url(${img1})` }}>
-          <div
-            className="mobile-slide"
-            style={{ background: `url(${mobile1})` }}
-          />
-        </SwiperSlide>
-        <SwiperSlide style={{ background: `url(${img2})` }}>
-          <div
-            className="mobile-slide"
-            style={{ background: `url(${mobile2})` }}
-          />
-        </SwiperSlide>
-        <SwiperSlide style={{ background: `url(${img3})` }}>
-          <div
-            className="mobile-slide"
-            style={{ background: `url(${mobile3})` }}
-          />
-        </SwiperSlide>
+        {carousel &&
+          carousel.map((item, index) => (
+            <CarouselItems key={index} img={Image.asset.url} />
+          ))}
       </Swiper>
 
       <Swiper

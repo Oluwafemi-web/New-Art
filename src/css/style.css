@@ -1162,8 +1162,7 @@ button[type="submit"] i {
 .slider .swiper-fraction .swiper-pagination-current {
   margin-right: 122px;
 }
-.swiper-scrollbar-vertical {
-  position: absolute;
+.slider .swiper-pagination-progressbar {
   top: auto;
   bottom: 56px;
   left: 50px;
@@ -1171,10 +1170,9 @@ button[type="submit"] i {
   height: 2px;
   background: rgba(0, 0, 0, 0.1);
 }
-/* .slider .swiper-pagination-progressbar .swiper-pagination-progressbar-fill,
-.swiper-scrollbar-drag {
+.slider .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background: #080808;
-} */
+}
 .slider .slider-nav {
   display: flex;
   height: 70px;
