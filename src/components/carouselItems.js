@@ -5,7 +5,7 @@ export default function CarouselItems(props) {
     <SwiperSlide style={{ background: `url(${props.img})` }}>
       <div
         className="mobile-slide"
-        style={{ background: `url(${props.img})` }}
+        style={{ background: `url(${props.img2})` }}
       />
     </SwiperSlide>
   );

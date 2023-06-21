@@ -29,6 +29,12 @@ export default function Carousel() {
             url
           }
          },
+         mobileimage{
+          asset->{
+            _id,
+            url
+          }
+         },
      
 
     }`
@@ -55,7 +61,11 @@ export default function Carousel() {
       >
         {carousel &&
           carousel.map((item, index) => (
-            <CarouselItems key={index} img={image.asset.url} />
+            <CarouselItems
+              key={index}
+              img={image.asset.url}
+              img2={mobileimage.asset.url}
+            />
           ))}
       </Swiper>
 

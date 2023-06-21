@@ -14,6 +14,14 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'mobileimage',
+      title: 'Mobile Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'maintext',
       title: 'Main Text',
       type: 'text',
