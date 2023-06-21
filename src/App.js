@@ -13,7 +13,7 @@ import "./css/style.css";
 import Footer from "./components/UI/Footer";
 import NavBar from "./components/UI/navbar";
 import NewsLetter from "./components/Index/NewsLetter";
-// import MobileNav from "./components/UI/MobileNav";
+import MobileNav from "./components/UI/MobileNav";
 // import Carousel from "./components/carousel";
 
 // Import Page Elements
@@ -42,21 +42,21 @@ function App() {
   return (
     <BrowserRouter>
       <div className="smooth-scroll page-loaded" ref={scrollRef}>
-      <div className="section-wrapper" data-scroll-section>
-        <NavBar />
-        <Routes>
-          <Route element={<Home />} path="/" exact={true} />
-          <Route path="/visit" element={<Visit />} />
-          <Route path="/exhibition" element={<Exihibitions />} />
-          <Route path="/collection" element={<Collections />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <NewsLetter />
-        <Footer />
+        <div className="section-wrapper" data-scroll-section>
+          <MobileNav />
+          <NavBar />
+          <Routes>
+            <Route element={<Home />} path="/" exact={true} />
+            <Route path="/visit" element={<Visit />} />
+            <Route path="/exhibition" element={<Exihibitions />} />
+            <Route path="/collection" element={<Collections />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+          <NewsLetter />
+          <Footer />
+        </div>
       </div>
-      </div>
-      
     </BrowserRouter>
   );
 }

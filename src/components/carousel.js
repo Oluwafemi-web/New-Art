@@ -28,8 +28,6 @@ export default function Carousel() {
         loop={true}
         controller={{ control: controlledSwiper }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
         className="slider-images swiper-container"
       >
         <SwiperSlide style={{ background: `url(img1)` }}>
@@ -50,7 +48,6 @@ export default function Carousel() {
         slidesPerView={1}
         loop={true}
         onSwiper={setControlledSwiper}
-        onSlideChange={() => console.log("slide change")}
         className="slider-texts swiper-container"
       >
         <svg width={580} height={400} className="svg-morph">

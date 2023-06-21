@@ -35,22 +35,15 @@ export default function Home() {
     };
   }, []);
   return (
-    <div className="smooth-scroll page-loaded" ref={scrollRef}>
-      <div className="section-wrapper" data-scroll-section>
-        <NavBar />
-        <Carousel />
-        {/* <NavBar /> */}
-        {/* <Carousel /> */}
-        <WorldArt />
-        <IndexUpcoming />
-        <Inspiration />
-        <Steps />
-        <Member />
-        <News />
-        <NewsLetter />
-        <Footer />
-        {/* <History /> */}
-      </div>
-    </div>
+    <>
+      <Carousel />
+      <WorldArt />
+      <IndexUpcoming />
+      <Inspiration />
+      <Steps />
+      <Member />
+      <News />
+      {/* <History /> */}
+    </>
   );
 }

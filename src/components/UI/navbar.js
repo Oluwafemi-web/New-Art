@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom'
-import "../../css/navbar.css";
-
+import { Link } from "react-router-dom";
+import "../../css/style.css";
+import logo from "../../images/logo.png";
+import { FaSearch } from "react-icons/fa";
 export default function NavBar() {
   return (
     <nav className="navbar">
       <div className="logo">
         <Link to="/">
-          <img src="images/logo.png" alt="Image" />
+          <img src={logo} alt="Image" />
         </Link>
       </div>
       {/* end logo */}
@@ -42,7 +43,7 @@ export default function NavBar() {
       </div>
       {/* end site-menu */}
       <div className="search-button">
-        <i className="far fa-search" />
+        <FaSearch />
       </div>
       {/* end search-button */}
       <div className="hamburger-menu">
