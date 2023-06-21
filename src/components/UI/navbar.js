@@ -1,20 +1,22 @@
+import { Link } from 'react-router-dom'
 import "../../css/navbar.css";
+
 export default function NavBar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        <a href="index-2.html">
+        <Link to="/">
           <img src="images/logo.png" alt="Image" />
-        </a>
+        </Link>
       </div>
       {/* end logo */}
       <div className="custom-menu">
         <ul>
           <li>
-            <a href="#">Eng</a>
+            <Link to="#">Eng</Link>
           </li>
           <li>
-            <a href="#">Rus</a>
+            <Link to="#">Rus</Link>
           </li>
         </ul>
       </div>
@@ -22,19 +24,19 @@ export default function NavBar() {
       <div className="site-menu">
         <ul>
           <li>
-            <a href="visit.html">Visit</a>
+            <Link to="/visit">Visit</Link>
           </li>
           <li>
-            <a href="exhibitions.html">Exhibitions</a>
+            <Link to="/exhibition">Exhibitions</Link>
           </li>
           <li>
-            <a href="collections.html">Collections</a>
+            <Link to="/collection">Collections</Link>
           </li>
           <li>
-            <a href="about.html">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="contact.html">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
@@ -52,7 +54,7 @@ export default function NavBar() {
       </div>
       {/* end hamburger-menu */}
       <div className="navbar-button">
-        <a href="membership.html">GET A TICKET</a>
+        <Link to="/membership">GET A TICKET</Link>
       </div>
       {/* end navbar-button */}
     </nav>
