@@ -1135,6 +1135,7 @@ button[type="submit"] i {
   font-weight: 400;
   font-family: "Cinzel", serif;
   line-height: 1;
+  width: 52%;
   margin-bottom: 30px;
 }
 .slider .slider-texts .swiper-slide p {

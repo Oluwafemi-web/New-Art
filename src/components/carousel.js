@@ -1,128 +1,93 @@
 import React, { useEffect, useState } from "react";
-import { Controller } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+// import "swiper/css/navigation";
+import "swiper/css/pagination";
+import SwiperCore, { Navigation, Pagination, Controller } from "swiper";
 
 import sanityClient from "../client";
-import { Navigation, Pagination, A11y } from "swiper";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-
-import "swiper/css/pagination";
-
-import "../css/style.css";
-import CarouselItems from "./carouselItems";
+SwiperCore.use([Navigation, Pagination, Controller]);
 
 export default function Carousel() {
+  const [carouselData, setCarouselData] = useState([]);
   const [controlledSwiper, setControlledSwiper] = useState(null);
-  const [carousel, setCarousel] = useState(null);
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "carousel"] {
-      maintext,
-      subtext,
-         image{
-          asset->{
-            _id,
-            url
-          }
-         },
-         mobileimage{
-          asset->{
-            _id,
-            url
-          }
-         },
-     
-
-    }`
+        `*[_type == "carousel"]{
+           maintext,
+           subtext,
+           maintext2,
+           subtext2,
+           maintext3,
+           subtext3,
+           image{
+             asset->{
+               _id,
+               url
+             }
+           },
+           mobileimage{
+             asset->{
+               _id,
+               url
+             }
+           }
+        }`
       )
-      .then((data) => setCarousel(data))
+      .then((data) => setCarouselData(data))
       .catch(console.error);
   }, []);
-  let direction = "veritcal";
+
+  if (!carouselData || carouselData.length === 0) {
+    return <div>Loading...</div>;
+  }
   return (
     <header className="slider">
       <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, A11y, Controller]}
+        modules={[Navigation, Pagination, Controller]}
         spaceBetween={50}
-        slidesPerView={1}
         navigation
-        direction={direction}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
+        slidesPerView={1}
+        direction="vertical"
         controller={{ control: controlledSwiper }}
+        loop
+        pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
-        {carousel &&
-          carousel.map((item, index) => (
-            <CarouselItems
-              key={index}
-              img={item.image.asset.url}
-              img2={item.mobileimage.asset.url}
+        {carouselData.map((item, index) => (
+          <SwiperSlide
+            key={index}
+            style={{ background: `url(${item.image.asset.url})` }}
+          >
+            <div
+              className="mobile-slide"
+              style={{ background: `url(${item.mobileimage.asset.url})` }}
             />
-          ))}
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       <Swiper
-        // install Swiper modules
         modules={[Navigation, Controller]}
         spaceBetween={50}
         slidesPerView={1}
-        loop={true}
         onSwiper={setControlledSwiper}
+        loop
         className="slider-texts swiper-container"
       >
-        <svg width={580} height={400} className="svg-morph">
-          <path
-            id="svg_morph"
-            d="m261,30.4375c0,0 114,6 151,75c37,69 37,174 6,206.5625c-31,32.5625 -138,11.4375 -196,-19.5625c-58,-31 -86,-62 -90,-134.4375c12,-136.5625 92,-126.5625 129,-127.5625z"
-          />
-        </svg>
-
-        <SwiperSlide>
-          <div className="container-fluid">
-            <h1>
-              Museums and <br />
-              Galleries
-            </h1>
-            <p>
-              Explore hundreds of museums, galleries and historic <br />
-              places across the UK.
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="container-fluid">
-            <h1>
-              Discover Our <br />
-              History
-            </h1>
-            <p>
-              Your support is vital and helps the Museum to share <br />
-              the collection with the world.
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="container-fluid">
-            <h1>
-              The Art of <br />
-              North Africa
-            </h1>
-            <p>
-              Curator Peter Loovers explores the special relationship between
-              <br />
-              Arctic Peoples and 'man's best friend'.
-            </p>
-          </div>
-        </SwiperSlide>
+        {carouselData.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="container-fluid">
+              <h1>{item.maintext}</h1>
+              <p>{item.subtext}</p>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
+
       <div className="play-now">
         <a
           href="videos/video.mp4"
