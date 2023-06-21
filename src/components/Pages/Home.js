@@ -15,19 +15,19 @@ import Inspiration from "../Index/Inspiration";
 import Steps from "../Index/Steps";
 import News from "../Index/News";
 import Member from "../Index/Member";
+import History from "../Index/History";
 
 export default function Home() {
-
   return (
-
-      <>
-        <Carousel />
-        <WorldArt />
-        <IndexUpcoming />
-        <Inspiration />
-        <Steps />
-        <Member />
-        <News />
-      </>
+    <>
+      <Carousel />
+      <WorldArt />
+      <IndexUpcoming />
+      <Inspiration />
+      <Steps />
+      <History />
+      <Member />
+      <News />
+    </>
   );
 }

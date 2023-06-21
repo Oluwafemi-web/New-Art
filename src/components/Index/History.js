@@ -1,10 +1,25 @@
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+// import "swiper/css/navigation";
+import "swiper/css/pagination";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Controller,
+  Autoplay,
+} from "swiper";
 import slide from "../../images/art-slide01.jpg";
 import slide2 from "../../images/art-slide02.jpg";
 import slide3 from "../../images/art-slide03.jpg";
 import slide4 from "../../images/art-slide04.jpg";
 import slide5 from "../../images/art-slide05.jpg";
+// import sanityClient from "../client";
+
+SwiperCore.use([Navigation, Pagination, Controller, Autoplay]);
 
 export default function History() {
+  const [controlledSwiper, setControlledSwiper] = useState(null);
   return (
     <section className="content-section">
       <div className="container">
@@ -19,51 +34,58 @@ export default function History() {
                 </h2>
               </div>
               {/* end titles */}
-              <div className="swiper-container art-slider-content">
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <span>01</span>
-                    <h3>
-                      Venus <br />
-                      de Milo
-                    </h3>
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <span>02</span>
-                    <h3>
-                      Les Demoiselles <br />
-                      d'Avignon
-                    </h3>
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <span>03</span>
-                    <h3>
-                      Mona <br />
-                      Lisa
-                    </h3>
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <span>04</span>
-                    <h3>
-                      L'Arlesienne: <br />
-                      Madame Ginoux
-                    </h3>
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <span>05</span>
-                    <h3>
-                      Cuckoo <br />
-                      Clocks
-                    </h3>
-                  </div>
-                  {/* end swiper-slide */}
-                </div>
-                {/* end swiper-wrapper */}
-              </div>
+
+              <Swiper
+                modules={[Navigation, Pagination, Controller]}
+                spaceBetween={50}
+                slidesPerView={3}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                onSwiper={setControlledSwiper}
+                autoplayDirection="vertical"
+                direction="vertical"
+                loop
+                className="art-slider-content swiper-container"
+              >
+                <SwiperSlide className="swiper-slide-duplicate">
+                  <span>01</span>
+                  <h3>
+                    Venus <br />
+                    de Milo
+                  </h3>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-duplicate">
+                  <span>02</span>
+                  <h3>
+                    Venus <br />
+                    de Milo
+                  </h3>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-duplicate">
+                  <span>03</span>
+                  <h3>
+                    Venus <br />
+                    de Milo
+                  </h3>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-duplicate">
+                  <span>04</span>
+                  <h3>
+                    Venus <br />
+                    de Milo
+                  </h3>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-duplicate">
+                  <span>05</span>
+                  <h3>
+                    Venus <br />
+                    de Milo
+                  </h3>
+                </SwiperSlide>
+              </Swiper>
+              {/* end swiper-wrapper */}
               {/* end art-slider-content */}
             </div>
             {/* end art-slider */}
@@ -71,39 +93,45 @@ export default function History() {
           {/* end col-6 */}
           <div className="col-lg-6">
             <div className="art-slider" data-scroll="" data-scroll-speed={1}>
-              <div className="swiper-container art-slider-images">
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img src={slide} alt="Image" />
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <img src={slide2} alt="Image" />
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <img src={slide3} alt="Image" />
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <img src={slide4} alt="Image" />
-                  </div>
-                  {/* end swiper-slide */}
-                  <div className="swiper-slide">
-                    <img src={slide5} alt="Image" />
-                  </div>
-                  {/* end swiper-slide */}
-                </div>
-                {/* end swiper-wrapper */}
-              </div>
-              {/* end art-slider-images */}
+              <Swiper
+                modules={[Navigation, Pagination, Controller]}
+                spaceBetween={50}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                slidesPerView={1}
+                controller={{ control: controlledSwiper }}
+                loop
+                className="art-slider-image swiper-container"
+              >
+                <SwiperSlide>
+                  <img src={slide} alt="Image" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={slide2} alt="Image" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={slide3} alt="Image" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={slide4} alt="Image" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={slide5} alt="Image" />
+                </SwiperSlide>
+              </Swiper>
+
+              {/* end swiper-wrapper */}
             </div>
-            {/* end art-slider */}
+            {/* end art-slider-images */}
           </div>
-          {/* end col-6 */}
+          {/* end art-slider */}
         </div>
-        {/* end row */}
+        {/* end col-6 */}
       </div>
+      {/* end row */}
+
       {/* end container */}
     </section>
   );
