@@ -63,8 +63,8 @@ export default function Carousel() {
           carousel.map((item, index) => (
             <CarouselItems
               key={index}
-              img={image.asset.url}
-              img2={mobileimage.asset.url}
+              img={item.image.asset.url}
+              img2={item.mobileimage.asset.url}
             />
           ))}
       </Swiper>
