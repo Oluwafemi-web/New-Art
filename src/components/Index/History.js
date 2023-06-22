@@ -44,7 +44,7 @@ export default function History() {
                   disableOnInteraction: false,
                 }}
                 onSwiper={setControlledSwiper}
-                autoplayDirection="vertical"
+                autoplaydirection="vertical"
                 direction="vertical"
                 loop
                 className="art-slider-content swiper-container"
