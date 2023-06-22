@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../../images/logo-light.png";
 import image from "../../images/image07.jpg";
 
@@ -40,10 +42,10 @@ export default function MobileNav(props) {
         <div className="custom-menu">
           <ul>
             <li>
-              <a href="#">Eng</a>
+              <Link to="#">Eng</Link>
             </li>
             <li>
-              <a href="#">Rus</a>
+              <Link to="#">Rus</Link>
             </li>
           </ul>
         </div>
@@ -51,19 +53,19 @@ export default function MobileNav(props) {
         <div className="site-menu">
           <ul>
             <li>
-              <a href="visit.html">Visit</a>
+              <Link to="/visit">Visit</Link>
             </li>
             <li>
-              <a href="exhibitions.html">Exhibitions</a>
+              <Link to="/exhibition">Exhibitions</Link>
             </li>
             <li>
-              <a href="collections.html">Collections</a>
+              <Link to="/collection">Collections</Link>
             </li>
             <li>
-              <a href="about.html">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="contact.html">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </div>

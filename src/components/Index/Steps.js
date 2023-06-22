@@ -1,9 +1,36 @@
 import logo from "../../images/title-shape.png";
-
-import image4 from "../../images/image04.jpg";
-import image5 from "../../images/image05.jpg";
-import image6 from "../../images/image06.jpg";
+import { useState, useEffect } from "react";
+import sanityClient from "../../client";
 export default function Steps() {
+  const [stepsData, setStepsData] = useState(null);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "steps"]{
+           index,
+           title,
+           description,
+           icon{
+            asset->{
+              _id,
+              url
+            }
+           },
+           image{
+             asset->{
+               _id,
+               url
+             }
+           }
+        }`
+      )
+      .then((data) => setStepsData(data))
+      .catch(console.error);
+  }, []);
+  if (!stepsData || stepsData.length === 0) {
+    return <div>Loading...</div>;
+  }
+  console.log(stepsData);
   return (
     <section className="content-section no-bottom-spacing">
       <div className="container">
@@ -25,100 +52,35 @@ export default function Steps() {
       {/* end container */}
       <div className="container-fluid px-0">
         <div className="row g-0">
-          <div className="col-lg-4">
-            <div
-              className="image-icon-box"
-              data-scroll=""
-              data-scroll-speed={-1}
-            >
-              <figure className="icon">
-                <img src={image4} alt="Image" />
-              </figure>
-              <figure className="content-image">
-                <img src={image4} alt="Image" />
-              </figure>
-              <div className="content-box">
-                <b>01.</b>
-                <h4>Check What's Open</h4>
-                <div className="expand">
-                  <p>
-                    Your safety is our first priority. Entry to the National
-                    Maritime Museum is still free, but to help us ensure social
-                    distancing.
-                  </p>
-                  <a href="#" className="custom-link">
-                    Learn More
-                  </a>
+          {stepsData.map((item, index) => (
+            <div className="col-lg-4" key={index}>
+              <div
+                className="image-icon-box"
+                data-scroll=""
+                data-scroll-speed={-1}
+              >
+                <figure className="icon">
+                  <img src={item.icon.asset.url} alt="Image" />
+                </figure>
+                <figure className="content-image">
+                  <img src={item.image.asset.url} alt="Image" />
+                </figure>
+                <div className="content-box">
+                  <b>{item.index}</b>
+                  <h4>{item.title}</h4>
+                  <div className="expand">
+                    <p>{item.description}</p>
+                    <a href="#" className="custom-link">
+                      Learn More
+                    </a>
+                  </div>
+                  {/* end expand */}
                 </div>
-                {/* end expand */}
+                {/* end content-box */}
               </div>
-              {/* end content-box */}
+              {/* end image-icon-box */}
             </div>
-            {/* end image-icon-box */}
-          </div>
-          {/* end col-4 */}
-          <div className="col-lg-4">
-            <div
-              className="image-icon-box"
-              data-scroll=""
-              data-scroll-speed="0.5"
-            >
-              <figure className="icon">
-                <img src={image5} alt="Image" />
-              </figure>
-              <figure className="content-image">
-                <img src={image5} alt="Image" />
-              </figure>
-              <div className="content-box">
-                <b>02.</b>
-                <h4>Booking Online</h4>
-                <div className="expand">
-                  <p>
-                    Exhibition curator Venetia Porter presents this new
-                    exhibition of works by artists from Iran to Morocco drawn
-                    from the Museum collection.
-                  </p>
-                  <a href="#" className="custom-link">
-                    Learn More
-                  </a>
-                </div>
-                {/* end expand */}
-              </div>
-              {/* end content-box */}
-            </div>
-            {/* end image-icon-box */}
-          </div>
-          {/* end col-4 */}
-          <div className="col-lg-4">
-            <div
-              className="image-icon-box"
-              data-scroll=""
-              data-scroll-speed={1}
-            >
-              <figure className="icon">
-                <img src={image6} alt="Image" />
-              </figure>
-              <figure className="content-image">
-                <img src={image6} alt="Image" />
-              </figure>
-              <div className="content-box">
-                <b>03.</b>
-                <h4>Keep Your Distance</h4>
-                <div className="expand">
-                  <p>
-                    Take a look at our past exhibitions and enjoy the articles,
-                    videos and photo galleries still available to view online.
-                  </p>
-                  <a href="#" className="custom-link">
-                    Learn More
-                  </a>
-                </div>
-                {/* end expand */}
-              </div>
-              {/* end content-box */}
-            </div>
-            {/* end image-icon-box */}
-          </div>
+          ))}
           {/* end col-4 */}
         </div>
         {/* end row */}

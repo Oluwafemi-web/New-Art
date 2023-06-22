@@ -9,17 +9,33 @@ import SwiperCore, {
   Controller,
   Autoplay,
 } from "swiper";
-import slide from "../../images/art-slide01.jpg";
-import slide2 from "../../images/art-slide02.jpg";
-import slide3 from "../../images/art-slide03.jpg";
-import slide4 from "../../images/art-slide04.jpg";
-import slide5 from "../../images/art-slide05.jpg";
-// import sanityClient from "../client";
+import sanityClient from "../../client";
 
 SwiperCore.use([Navigation, Pagination, Controller, Autoplay]);
 
 export default function History() {
   const [controlledSwiper, setControlledSwiper] = useState(null);
+  const [historyData, setHistoryData] = useState(null);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "history"]{
+           index,
+           title,
+           image{
+             asset->{
+               _id,
+               url
+             }
+           }
+        }`
+      )
+      .then((data) => setHistoryData(data))
+      .catch(console.error);
+  }, []);
+  if (!historyData || historyData.length === 0) {
+    return <div>Loading...</div>;
+  }
   return (
     <section className="content-section">
       <div className="container">
@@ -49,41 +65,12 @@ export default function History() {
                 loop
                 className="art-slider-content swiper-container"
               >
-                <SwiperSlide className="swiper-slide-duplicate">
-                  <span>01</span>
-                  <h3>
-                    Venus <br />
-                    de Milo
-                  </h3>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide-duplicate">
-                  <span>02</span>
-                  <h3>
-                    Venus <br />
-                    de Milo
-                  </h3>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide-duplicate">
-                  <span>03</span>
-                  <h3>
-                    Venus <br />
-                    de Milo
-                  </h3>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide-duplicate">
-                  <span>04</span>
-                  <h3>
-                    Venus <br />
-                    de Milo
-                  </h3>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide-duplicate">
-                  <span>05</span>
-                  <h3>
-                    Venus <br />
-                    de Milo
-                  </h3>
-                </SwiperSlide>
+                {historyData.map((item, index) => (
+                  <SwiperSlide key={index} className="swiper-slide-duplicate">
+                    <span>{item.index}</span>
+                    <h3>{item.title}</h3>
+                  </SwiperSlide>
+                ))}
               </Swiper>
               {/* end swiper-wrapper */}
               {/* end art-slider-content */}
@@ -105,21 +92,11 @@ export default function History() {
                 loop
                 className="art-slider-image swiper-container"
               >
-                <SwiperSlide>
-                  <img src={slide} alt="Image" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={slide2} alt="Image" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={slide3} alt="Image" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={slide4} alt="Image" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={slide5} alt="Image" />
-                </SwiperSlide>
+                {historyData.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={item.image.asset.src} alt="Image" />
+                  </SwiperSlide>
+                ))}
               </Swiper>
 
               {/* end swiper-wrapper */}

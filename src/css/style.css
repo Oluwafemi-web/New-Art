@@ -2492,7 +2492,7 @@ button[type="submit"] i {
 .image-icon-box .content-image img {
   width: 100%;
   display: block;
-  opacity: 0;
+  /* opacity: 0; */
   transform: scale(1.2);
   transition-duration: 0.7s;
   -webkit-transition-duration: 0.7s;
