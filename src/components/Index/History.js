@@ -94,7 +94,7 @@ export default function History() {
               >
                 {historyData.map((item, index) => (
                   <SwiperSlide key={index}>
-                    <img src={item.image.asset.src} alt="Image" />
+                    <img src={item.image.asset.url} alt="Image" />
                   </SwiperSlide>
                 ))}
               </Swiper>
