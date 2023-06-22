@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -11,7 +12,9 @@ export default function MobileNav(props) {
         <path d="M540,1080H0V0h540c0,179.85,0,359.7,0,539.54C540,719.7,540,899.85,540,1080z" />
       </svg>
       <figure className="logo">
-        <img src={logo} alt="Image" />
+          <Link to="/">
+            <img src={logo} alt="Image" />
+          </Link>
       </figure>
       {/* end logo */}
       <div className="inner">
