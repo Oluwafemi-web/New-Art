@@ -1,10 +1,35 @@
+import { useState, useEffect } from "react";
 import logo from "../../images/title-shape.png";
-import event1 from "../../images/event01.jpg";
-import event2 from "../../images/event02.jpg";
-import event3 from "../../images/event03.jpg";
-import icon from "../../images/icon-info.png";
+import Event from "../UI/Event";
+import sanityClient from "../../client";
 
 export default function IndexUpcoming() {
+  const [upcomingData, setUpcomingData] = useState(null);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "upcoming"]{
+           title,
+           date,
+           promo,
+           icon{
+             asset->{
+               _id,
+               url
+             }
+           },
+           image{
+            asset->{
+              _id,
+              url
+            }
+          }
+        }`
+      )
+      .then((data) => setUpcomingData(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <section className="content-section">
       <div className="container">
@@ -30,110 +55,23 @@ export default function IndexUpcoming() {
         </div>
         {/* end row */}
         <div className="row justify-content-center">
-          <div className="col-lg-4 col-md-6">
-            <div
-              className="exhibition-box is-inview"
-              data-scroll=""
-              data-scroll-speed={-1}
-              style={{
-                transform:
-                  "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -31.7812, 0, 1)",
-              }}
-            >
-              <figure>
-                <a href="#">
-                  <img src={event1} alt="Image" className="img" />
-                </a>
-                <div className="info">
-                  <figure className="i">
-                    <img src={icon} alt="Image" />
-                  </figure>
-                  <span>50% off exhibitions</span>
-                </div>
-                {/* end info */}
-              </figure>
-              <div className="content-box">
-                <h4>
-                  <a href="#">Artemisia Gentileschi talk with Maria</a>
-                </h4>
-                <p>15 August – 31 October 2020</p>
-              </div>
-              {/* end content-box */}
-            </div>
-            {/* end exhibition-box */}
-          </div>
-          {/* end col-4 */}
-          <div className="col-lg-4 col-md-6">
-            <div
-              className="exhibition-box is-inview"
-              data-scroll=""
-              data-scroll-speed={1}
-              style={{
-                transform:
-                  "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 37.8813, 0, 1)",
-              }}
-            >
-              <figure>
-                <a href="#">
-                  <img src={event2} alt="Image" className="img" />
-                </a>
-                <div className="info">
-                  <figure className="i">
-                    <img src={icon} alt="Image" />
-                  </figure>
-                  <span>50% off exhibitions</span>
-                </div>
-                {/* end info */}
-              </figure>
-              <div className="content-box">
-                <h4>
-                  <a href="#">Arctic culture and climate Exhibition</a>
-                </h4>
-                <p>22 Oct 2020 - 21 Feb 2023</p>
-              </div>
-              {/* end content-box */}
-            </div>
-            {/* end exhibition-box */}
-          </div>
-          {/* end col-4 */}
-          <div className="col-lg-4 col-md-6">
-            <div
-              className="exhibition-box is-inview"
-              data-scroll=""
-              data-scroll-speed="-0.5"
-              style={{
-                transform:
-                  "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -16.7906, 0, 1)",
-              }}
-            >
-              <figure>
-                <a href="#">
-                  <img src={event3} alt="Image" className="img" />
-                </a>
-                <div className="info">
-                  <figure className="i">
-                    <img src={icon} alt="Image" />
-                  </figure>
-                  <span>50% off exhibitions</span>
-                </div>
-                {/* end info */}
-              </figure>
-              <div className="content-box">
-                <h4>
-                  <a href="#">Thomas Becket murder and the making of a saint</a>
-                </h4>
-                <p>22 Apr 2023 - 22 Aug 2023</p>
-              </div>
-              {/* end content-box */}
-            </div>
-            {/* end exhibition-box */}
-          </div>
-          {/* end col-4 */}
+          {upcomingData &&
+            upcomingData.map((item, index) => (
+              <Event
+                key={index}
+                icon={item.icon.asset.url}
+                img={item.image.asset.url}
+                promo={item.promo}
+                title={item.title}
+                date={item.date}
+              />
+            ))}
           <div className="col-12 text-center">
             <a href="#" className="custom-button">
               VIEW ALL UPCOMING EVENTS
             </a>
           </div>
+
           {/* end col-12 */}
         </div>
         {/* end row */}
