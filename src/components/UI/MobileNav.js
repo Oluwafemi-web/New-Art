@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { useState } from "react";
 
 import logo from "../../images/logo-light.png";
 import image from "../../images/image07.jpg";
@@ -13,14 +12,14 @@ export default function MobileNav(props) {
       </svg>
       <figure className="logo">
           <Link to="/">
-            <img src={logo} alt="Image" />
+            <img src={logo} alt="logo" />
           </Link>
       </figure>
       {/* end logo */}
       <div className="inner">
         <div className="widget">
           <figure>
-            <img src={image} alt="Image" />
+            <img src={image} alt="img" />
           </figure>
           <p>
             It speedily me addition <strong>weddings vicinity</strong> in
