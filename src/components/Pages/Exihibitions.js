@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import LocomotiveScroll from "locomotive-scroll";
+
+import sanityClient from "../../client";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
@@ -11,19 +15,48 @@ import Header from "../UI/Header";
 import Event from "../UI/Event";
 
 export default function Exhibitions() {
+  const [exhibitionData, setExhibitionData] = useState(null);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "exhibition"]{
+           title,
+           date,
+           promo,
+           icon{
+             asset->{
+               _id,
+               url
+             }
+           },
+           image{
+            asset->{
+              _id,
+              url
+            }
+          }
+        }`
+      )
+      .then((data) => setExhibitionData(data))
+      .catch(console.error);
+  }, []);
+  if (!exhibitionData) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Header content={data.heading.exhibition} />
       <section className="content-section" data-background="#fffbf7">
         <div className="container">
           <div className="row justify-content-center">
-            {data.event.map((eventItem) => (
+            {exhibitionData.map((eventItem, index) => (
               <Event
-                key={eventItem.img}
-                img={eventItem.img}
+                key={index}
+                img={eventItem.image.asset.url}
                 promo={eventItem.promo}
-                title={eventItem.h4}
-                date={eventItem.p}
+                title={eventItem.title}
+                date={eventItem.date}
+                icon={eventItem.icon.asset.url}
               />
             ))}
           </div>
