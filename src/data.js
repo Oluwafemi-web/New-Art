@@ -1,4 +1,4 @@
-import eventImg from "./event-img";
+import {eventImg, collectImg} from "./media";
 
 const data = {
     heading : {
@@ -78,7 +78,55 @@ const data = {
             h4 : 'Arctic culture and climate Exhibition',
             p : '22 Oct 2020 - 21 Feb 2023'
         },
+    ],
+    collection : [
+        {
+            img : `${collectImg.collection1}`,
+            h4 : 'Hammersmith: Kelmscott Press.',
+            p : 'The Works of Geoffrey Chaucer Now Newly Imprinted, by William Morris & Sir Edward Burne-Jones, 1896, Hammersmith: Kelmscott Press.'
+        },
+        {
+            img : `${collectImg.collection2}`,
+            h4 : 'Inner coffin of Hornedjitef',
+            p : 'The mummy of the priest Hornedjitef was encased in a gilded mask and cover, and two human-shaped wooden coffins'
+        },
+        {
+            img : `${collectImg.collection3}`,
+            h4 : 'Brass head of an Ooni',
+            p : 'This crowned head was discovered by accident in 1939 during digging close to the royal palace in Ife.'
+        },
+        {
+            img : `${collectImg.collection4}`,
+            h4 : 'The goddess Tara',
+            p : 'Between 1100 and 1400 Ife was one of the great city-states in West Africa'
+        },
+        {
+            img : `${collectImg.collection5}`,
+            h4 : 'Raphael cartoon',
+            p : 'Lofe and flourished as a commercial centre within regional and long-distance trade networks.'
+        },
+        {
+            img : `${collectImg.collection6}`,
+            h4 : 'The Anglo-Saxon',
+            p : 'The most impressive example of a medieval ship burial in Europe. But who was buried here? And what do their treasures reveal?'
+        },
+        {
+            img : `${collectImg.collection7}`,
+            h4 : 'In Ancient Mesopotamia',
+            p : 'The Works of Geoffrey Chaucer Now Newly Imprinted, by William Morris & Sir Edward Burne-Jones, 1896, Hammersmith: Kelmscott Press.'
+        },
+        {
+            img : `${collectImg.collection8}`,
+            h4 : 'Canopic jars',
+            p : 'The Works of Geoffrey Chaucer Now Newly Imprinted, by William Morris & Sir Edward Burne-Jones, 1896, Hammersmith: Kelmscott Press.'
+        },
+        {
+            img : `${collectImg.collection9}`,
+            h4 : 'Red-figured loutrophoros',
+            p : 'The Works of Geoffrey Chaucer Now Newly Imprinted, by William Morris & Sir Edward Burne-Jones, 1896, Hammersmith: Kelmscott Press.'
+        },
     ]
 }
 
 export default data;
+
