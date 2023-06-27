@@ -6,7 +6,7 @@ export default function Event(props) {
       <div
         className="exhibition-box is-inview"
         data-scroll=""
-        data-scroll-speed={-1}
+        data-scroll-speed={props.dataScroll}
       >
         <figure>
           <a href="#">

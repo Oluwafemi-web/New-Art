@@ -13,7 +13,23 @@ import Collection from "../UI/Collection";
 import Member from "../Index/Member";
 
 
+
+const YourComponent = ({ yourArray }) => {
+
+  return (
+    <div>
+      {yourArray.map((item, index) => {
+
+      })}
+    </div>
+  );
+};
+
+
 export default function Collections() {
+
+  let previousDataScroll = 1.5; // Initial value for the first component
+
     return (
         <>
             <Header content={data.heading.collection}/>
@@ -27,7 +43,7 @@ export default function Collections() {
                       </figure>
                       <h2>
                         Our collections are <br />
-                        most important
+                        most important 
                       </h2>
                     </div>
                     {/* end section-title */}
@@ -36,14 +52,30 @@ export default function Collections() {
                 </div>
                 {/* end row */}
                 <div className="row justify-content-center">
-                    {data.collection.map((collectionItem) => (
-                      <Collection
-                        key={collectionItem.img}
-                        img={collectionItem.img}
-                        h4={collectionItem.h4}
-                        p={collectionItem.p}
-                      />
-                    ))}
+                    {data.collection.map((collectionItem, index) => {
+
+                      // Calculate the current data-scroll value
+                      let currentDataScroll = previousDataScroll;
+                      if (previousDataScroll === 0.5) {
+                        currentDataScroll = 1.5;
+                      } else {
+                        currentDataScroll -= 0.5;
+                      }
+                    
+                      // Update the previousDataScroll for the next iteration
+                      previousDataScroll = currentDataScroll;
+                    
+                      return (
+                        <Collection
+                          key={index}
+                          img={collectionItem.img}
+                          h4={collectionItem.h4}
+                          p={collectionItem.p}
+                          dataScroll={currentDataScroll}
+                        />
+                      );
+                      
+                    })}
                 </div>
                 {/* end row */}
               </div>

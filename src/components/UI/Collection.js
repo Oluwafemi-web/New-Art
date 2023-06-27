@@ -6,7 +6,7 @@ export default function Collection(props) {
       <div
         className="collection-box"
         data-scroll=""
-        data-scroll-speed="1.5"
+        data-scroll-speed={props.dataScroll}
       >
         <figure>
           <img src={props.img} alt="Image" />

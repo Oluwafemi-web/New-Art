@@ -30,6 +30,8 @@ export default function IndexUpcoming() {
       .catch(console.error);
   }, []);
 
+  let previousDataScroll = 1; // Initial value for the first component
+
   return (
     <section className="content-section">
       <div className="container">
@@ -56,16 +58,33 @@ export default function IndexUpcoming() {
         {/* end row */}
         <div className="row justify-content-center">
           {upcomingData &&
-            upcomingData.map((item, index) => (
-              <Event
-                key={index}
-                icon={item.icon.asset.url}
-                img={item.image.asset.url}
-                promo={item.promo}
-                title={item.title}
-                date={item.date}
-              />
-            ))}
+            upcomingData.map((item, index) => {
+              // Calculate the current data-scroll value
+              let currentDataScroll = previousDataScroll;
+              if (previousDataScroll === 1) {
+                currentDataScroll = -0.5;
+              } else if (previousDataScroll === -0.5) {
+                currentDataScroll = -1;
+              } else {
+                currentDataScroll = 1; // Reset the pattern
+              }
+
+              // Update the previousDataScroll for the next iteration
+              previousDataScroll = currentDataScroll;
+
+              return (
+                <Event
+                  key={index}
+                  icon={item.icon.asset.url}
+                  img={item.image.asset.url}
+                  promo={item.promo}
+                  title={item.title}
+                  date={item.date}
+                  dataScroll={currentDataScroll}
+                />
+              );
+
+            })}
           <div className="col-12 text-center">
             <a href="#" className="custom-button">
               VIEW ALL UPCOMING EVENTS
