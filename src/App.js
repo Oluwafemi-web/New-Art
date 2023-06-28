@@ -23,6 +23,7 @@ import Exihibitions from "./components/Pages/Exihibitions";
 import Collections from "./components/Pages/Collections";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
+import Register from "./components/Pages/Register";
 
 function App() {
   const [navOpen, setNavOpen] = useState(false);
@@ -62,6 +63,7 @@ function App() {
             <Route path="/collection" element={<Collections />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/membership" element={<Register />} />
           </Routes>
           <NewsLetter />
           <Footer />

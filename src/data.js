@@ -21,6 +21,10 @@ const data = {
         contact : {
             h1 : "Contact Us",
             p : "For the latest updates about reopening, booking tickets and what's happening at the Museum, sign up to our newsletter"
+        },
+        member : {
+            h1 : "Membership",
+            p : "For the latest updates about reopening, booking tickets and what's happening at the Museum, sign up to our newsletter"
         }
     },
     event : [
