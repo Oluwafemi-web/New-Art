@@ -31,7 +31,7 @@ export default function Contact() {
       .then((data) => setContactHeader(data))
       .catch(console.error);
   }, []);
-  if (!visitHeader) {
+  if (!contactHeader) {
     return <div>Loading...</div>;
   }
   return (
