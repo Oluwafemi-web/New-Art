@@ -1605,7 +1605,7 @@ button[type="submit"] i {
 }
 .image-box img {
   width: 100%;
-  opacity: 0;
+  /* opacity: 0; */
   transform: scale(1.2);
   transition-duration: 0.7s;
   -webkit-transition-duration: 0.7s;
@@ -1790,7 +1790,7 @@ button[type="submit"] i {
 }
 .side-image img {
   width: 100%;
-  opacity: 0;
+  /* opacity: 0; */
   transform: scale(1.2);
   transition-duration: 0.7s;
   -webkit-transition-duration: 0.7s;

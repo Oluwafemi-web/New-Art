@@ -16,6 +16,7 @@ import Event from "../UI/Event";
 
 export default function Exhibitions() {
   const [exhibitionData, setExhibitionData] = useState(null);
+  const [exhibitionHeader, setExhibitionHeader] = useState(null);
   useEffect(() => {
     sanityClient
       .fetch(
@@ -40,7 +41,25 @@ export default function Exhibitions() {
       .then((data) => setExhibitionData(data))
       .catch(console.error);
   }, []);
-  if (!exhibitionData) {
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "exhibitionheader"]{
+           title,
+           description,
+           image{
+            asset->{
+              _id,
+              url
+            }
+          }
+        }`
+      )
+      .then((data) => setExhibitionHeader(data))
+      .catch(console.error);
+  }, []);
+  if (!exhibitionData || !exhibitionHeader) {
     return <div>Loading...</div>;
   }
 
@@ -48,12 +67,19 @@ export default function Exhibitions() {
 
   return (
     <>
-      <Header content={data.heading.exhibition} />
+      {exhibitionHeader &&
+        exhibitionHeader.map((item, index) => (
+          <Header
+            title={item.title}
+            description={item.description}
+            background={item.image.asset.url}
+            key={index}
+          />
+        ))}
       <section className="content-section" data-background="#fffbf7">
         <div className="container">
           <div className="row justify-content-center">
             {exhibitionData.map((eventItem, index) => {
-
               // Calculate the current data-scroll value
               let currentDataScroll = previousDataScroll;
               if (previousDataScroll === 1) {
@@ -78,7 +104,6 @@ export default function Exhibitions() {
                   dataScroll={currentDataScroll}
                 />
               );
-              
             })}
           </div>
           {/* end row */}
