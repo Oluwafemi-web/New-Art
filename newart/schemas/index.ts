@@ -11,6 +11,7 @@ import visitheader from './visitheader'
 import collectionheader from './collectionheader'
 import aboutheader from './aboutheader'
 import contactheader from './contactheader'
+import collection from './collection'
 
 export const schemaTypes = [
   carousel,
@@ -22,6 +23,7 @@ export const schemaTypes = [
   exhibition,
   visitheader,
   collectionheader,
+  collection,
   aboutheader,
   contactheader,
   blockContent,

@@ -1,4 +1,5 @@
 import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/src/locomotive-scroll.scss";
 import { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -42,6 +43,7 @@ function App() {
     const scroll = new LocomotiveScroll({
       el: scrollRef.current,
       smooth: true,
+      multiplier: 0.5,
       // Add more options as needed
     });
 

@@ -5,7 +5,6 @@ import "../../css/odometer.min.css";
 
 import "../../css/style.css";
 
-import data from "../../data";
 import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
 
@@ -21,6 +20,8 @@ const YourComponent = ({ yourArray }) => {
 export default function Collections() {
   let previousDataScroll = 1.5; // Initial value for the first component
   const [collectionHeader, setCollectionHeader] = useState(null);
+  const [collectionData, setCollectionData] = useState(null);
+
   useEffect(() => {
     sanityClient
       .fetch(
@@ -38,7 +39,24 @@ export default function Collections() {
       .then((data) => setCollectionHeader(data))
       .catch(console.error);
   }, []);
-  if (!collectionHeader) {
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "collection"]{
+           title,
+           description,
+           image{
+            asset->{
+              _id,
+              url
+            }
+          }
+        }`
+      )
+      .then((data) => setCollectionData(data))
+      .catch(console.error);
+  }, []);
+  if (!collectionHeader || !collectionData) {
     return <div>Loading...</div>;
   }
 
@@ -72,7 +90,7 @@ export default function Collections() {
           </div>
           {/* end row */}
           <div className="row justify-content-center">
-            {data.collection.map((collectionItem, index) => {
+            {collectionData.map((collectionItem, index) => {
               // Calculate the current data-scroll value
               let currentDataScroll = previousDataScroll;
               if (previousDataScroll === 0.5) {
@@ -87,9 +105,9 @@ export default function Collections() {
               return (
                 <Collection
                   key={index}
-                  img={collectionItem.img}
-                  h4={collectionItem.h4}
-                  p={collectionItem.p}
+                  img={collectionItem.image.asset.url}
+                  tile={collectionItem.title}
+                  description={collectionItem.description}
                   dataScroll={currentDataScroll}
                 />
               );

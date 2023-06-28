@@ -5,20 +5,16 @@ export default function Collection(props) {
     <div className="col-lg-4 col-md-6">
       <div
         className="collection-box"
-        data-scroll=""
+        data-scroll
         data-scroll-speed={props.dataScroll}
       >
         <figure>
           <img src={props.img} alt="Image" />
         </figure>
         <h4>
-          <a href="collection-detail.html">
-            {props.h4}
-          </a>
+          <a href="collection-detail.html">{props.title}</a>
         </h4>
-        <p>
-          {props.p}
-        </p>
+        <p>{props.description}</p>
       </div>
       {/* end collection-box */}
       {/* {console.log(props, props.img, props.p, props.h4)} */}

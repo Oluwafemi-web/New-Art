@@ -2081,7 +2081,7 @@ button[type="submit"] i {
 }
 .collection-box figure img {
   width: 100%;
-  opacity: 0;
+  /* opacity: 0; */
   transform: scale(1.2);
   transition-duration: 0.7s;
   -webkit-transition-duration: 0.7s;
