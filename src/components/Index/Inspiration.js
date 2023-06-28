@@ -1,13 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../../images/title-shape.png";
 import image1 from "../../images/image01.jpg";
 import image2 from "../../images/image02.jpg";
 import image3 from "../../images/image03.jpg";
 import { gsap } from "gsap";
+import InspirationItems from "./InspirationItems";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import sanityClient from "../../client";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Inspiration() {
+  const [inspirationData, setInspirationData] = useState(null);
   const scrollRef = useRef(null);
   useEffect(() => {
     gsap.to(".horizontal-scroll", {
@@ -22,6 +25,20 @@ export default function Inspiration() {
       },
     });
   }, []);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "inspirationitems"]{
+           title,
+           description
+        }`
+      )
+      .then((data) => setInspirationData(data))
+      .catch(console.error);
+  }, []);
+  if (!inspirationData) {
+    return;
+  }
 
   return (
     <section
@@ -43,48 +60,15 @@ export default function Inspiration() {
             {/* end section-title */}
           </div>
           {/* end col-12 */}
-          <div className="col-lg-4 col-md-6">
-            <div className="text-content" data-scroll="" data-scroll-speed={-1}>
-              <h6>The challenge</h6>
-              <p>
-                In the 1980s, “the UK’s national museums faced political
-                pressure from the <strong>Conservative</strong> government to
-                charge for admission, to make them less dependent on government
-                funding".
-              </p>
-            </div>
-            {/* end text-content */}
-          </div>
-          {/* end col-4 */}
-          <div className="col-lg-4 col-md-6">
-            <div
-              className="text-content"
-              data-scroll=""
-              data-scroll-speed="0.5"
-            >
-              <h6>The initiative</h6>
-              <p>
-                In 1997, the new Labour government made a commitment to
-                reinstate free entry for <strong>national</strong> museums in
-                order to have a more diverse range of visitors. “Following a
-                campaign led by the museums themselves,
-              </p>
-            </div>
-            {/* end text-content */}
-          </div>
-          {/* end col-4 */}
-          <div className="col-lg-4 col-md-6">
-            <div className="text-content" data-scroll="" data-scroll-speed={1}>
-              <h6>The impact</h6>
-              <p>
-                The national museums which dropped charges all saw
-                <strong>substantial</strong> increases to their visitor numbers,
-                an average of 70 percent. In the first year after free admission
-                was introduced visitor figures.
-              </p>
-            </div>
-            {/* end text-content */}
-          </div>
+          {inspirationData &&
+            inspirationData.map((item, index) => (
+              <InspirationItems
+                key={index}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
+
           {/* end col-4 */}
         </div>
         {/* end row */}

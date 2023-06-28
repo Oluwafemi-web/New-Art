@@ -25,6 +25,7 @@ import Collections from "./components/Pages/Collections";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
 import Register from "./components/Pages/Register";
+import sanityClient from "./client";
 
 function App() {
   const [navOpen, setNavOpen] = useState(false);
@@ -37,8 +38,6 @@ function App() {
   if (navOpen !== true) {
     active = "";
   }
-  const scrollRef = useRef(null);
-
   useEffect(() => {
     const scroll = new LocomotiveScroll({
       el: scrollRef.current,
@@ -51,6 +50,7 @@ function App() {
       scroll.destroy();
     };
   }, []);
+  const scrollRef = useRef(null);
 
   return (
     <BrowserRouter>

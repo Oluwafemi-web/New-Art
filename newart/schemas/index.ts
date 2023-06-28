@@ -12,13 +12,18 @@ import collectionheader from './collectionheader'
 import aboutheader from './aboutheader'
 import contactheader from './contactheader'
 import collection from './collection'
+import indexnews from './indexnews'
+import inspiration from './inspiration'
+import footer from './footer'
 
 export const schemaTypes = [
   carousel,
   worldart,
   upcoming,
+  inspiration,
   steps,
   history,
+  indexnews,
   exhibitionheader,
   exhibition,
   visitheader,
@@ -26,5 +31,6 @@ export const schemaTypes = [
   collection,
   aboutheader,
   contactheader,
+  footer,
   blockContent,
 ]

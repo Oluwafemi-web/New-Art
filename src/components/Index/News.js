@@ -1,8 +1,31 @@
+import { useState, useEffect } from "react";
 import logo from "../../images/title-shape.png";
-import news1 from "../../images/recent-news01.jpg";
-import news2 from "../../images/recent-news02.jpg";
+import sanityClient from "../../client";
+import NewsItems from "./NewsItems";
 
-export default function News() {
+export default function News(props) {
+  const [newsData, setNewsData] = useState(null);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "indexnewsitems"]{
+           title,
+           date,
+           description,
+           image{
+            asset->{
+              _id,
+              url
+            }
+          }
+        }`
+      )
+      .then((data) => setNewsData(data))
+      .catch(console.error);
+  }, []);
+  if (!newsData) {
+    return;
+  }
   return (
     <section className="content-section">
       <div className="container">
@@ -24,48 +47,16 @@ export default function News() {
       {/* end container */}
       <div className="container">
         <div className="row">
-          <div className="col-12">
-            <div className="recent-news">
-              <div className="content-box">
-                <small>Dec 26, 2020</small>
-                <h3>The Ultimate Guide To Knots Practice Kit</h3>
-                <p>
-                  Learn to tie over 250 knots with step-by-step instructions.
-                  Supplied with 4...
-                </p>
-                <a href="#" className="custom-link">
-                  Continue reading
-                </a>
-              </div>
-              {/* end content-box */}
-              <figure data-scroll="" data-scroll-speed={-1}>
-                <img src={news1} alt="Image" />
-              </figure>
-            </div>
-            {/* end recent-news */}
-          </div>
-          {/* end col-8 */}
-          <div className="col-12">
-            <div className="recent-news">
-              <div className="content-box">
-                <small>Dec 26, 2020</small>
-                <h3>The Ultimate Guide To Knots Practice Kit</h3>
-                <p>
-                  Learn to tie over 250 knots with step-by-step instructions.
-                  Supplied with 4...
-                </p>
-                <a href="#" className="custom-link">
-                  Continue reading
-                </a>
-              </div>
-              {/* end content-box */}
-              <figure data-scroll="" data-scroll-speed={1}>
-                <img src={news2} alt="Image" />
-              </figure>
-            </div>
-            {/* end recent-news */}
-          </div>
-          {/* end col-9 */}
+          {newsData &&
+            newsData.map((item, index) => (
+              <NewsItems
+                key={index}
+                heading={item.title}
+                date={item.date}
+                description={item.description}
+                img={item.image.asset.url}
+              />
+            ))}
           <div className="col-12 text-center">
             <a href="news.html" className="circle-button">
               SEE ALL

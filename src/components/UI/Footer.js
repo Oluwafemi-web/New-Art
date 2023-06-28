@@ -1,4 +1,30 @@
 export default function Footer() {
+  // const [footerData, setFooterData] = useState(null);
+
+  // useEffect(() => {
+  //   sanityClient
+  //     .fetch(
+  //       `*[_type == "footer"]{
+  //          about,
+  //          link1,
+  //          link2,
+  //          link3,
+  //          link4,
+  //          connect,
+  //          facebook,
+  //          twitter,
+  //          youtube,
+  //          visit,
+  //          address,
+  //          number,
+  //       }`
+  //     )
+  //     .then((data) => setFooterData(data))
+  //     .catch(console.error);
+  // }, []);
+  // if (!footerData) {
+  //   return <div>...Loading</div>;
+  // }
   return (
     <footer className="footer">
       <div className="container">
@@ -60,7 +86,7 @@ export default function Footer() {
             © 2023 Wandau | Art &amp; History Museum
           </span>
           <span className="creation">
-            Site created by <a href="#">themezinho</a>
+            Website by <a href="#">iGerald</a>
           </span>
         </div>
         {/* end container */}
