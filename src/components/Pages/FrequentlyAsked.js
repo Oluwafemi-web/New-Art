@@ -1,13 +1,18 @@
-export default function FrequentlyAsked() {
+import { useState } from "react";
+export default function FrequentlyAsked(props) {
+  const [isClicked, setIsclicked] = useState(false);
+  const showHandler = () => {
+    setIsclicked(!isClicked);
+  };
   return (
     <>
       <dt>
-        <a href="#">What are your opening hours?</a>
+        <a href="#" onClick={showHandler}>
+          {props.question}
+        </a>
       </dt>
-      <dd>
-        We have a small gift shop where you can buy a range of Bank of England
-        related items. We don't have a cafe but there are places to buy drinks
-        or sandwiches nearby. Eating and drinking are not allowed in the museum.{" "}
+      <dd style={{ display: `${isClicked ? "block" : "none"}` }}>
+        {props.answer}
       </dd>
     </>
   );

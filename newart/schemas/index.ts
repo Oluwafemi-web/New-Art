@@ -14,6 +14,8 @@ import contactheader from './contactheader'
 import collection from './collection'
 import indexnews from './indexnews'
 import inspiration from './inspiration'
+import visit from './visit'
+import frequentlyasked from './frequentlyasked'
 import footer from './footer'
 
 export const schemaTypes = [
@@ -27,6 +29,8 @@ export const schemaTypes = [
   exhibitionheader,
   exhibition,
   visitheader,
+  visit,
+  frequentlyasked,
   collectionheader,
   collection,
   aboutheader,
