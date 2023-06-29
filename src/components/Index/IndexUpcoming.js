@@ -83,7 +83,6 @@ export default function IndexUpcoming() {
                   dataScroll={currentDataScroll}
                 />
               );
-
             })}
           <div className="col-12 text-center">
             <a href="#" className="custom-button">

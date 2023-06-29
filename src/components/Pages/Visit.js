@@ -15,9 +15,10 @@ import icon01 from "../../images/icon01.png";
 import imag04 from "../../images/side-imag04.jpg";
 import image08 from "../../images/image08.jpg";
 import visit from "../../images/logo-visit.png";
-// import bg02 from "../../images/section-bg02.jpg";
+import bg02 from "../../images/section-bg01.jpg";
 import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
+import FrequentlyAsked from "./FrequentlyAsked";
 
 export default function Visit() {
   const [visitHeader, setVisitHeader] = useState(null);
@@ -98,11 +99,7 @@ export default function Visit() {
             </div>
             {/* end col-6 */}
             <div className="col-lg-6">
-              <figure
-                className="side-image"
-                data-scroll=""
-                data-scroll-speed={1}
-              >
+              <figure className="side-image" data-scroll data-scroll-speed={1}>
                 {" "}
                 <img src={imag04} alt="Image" />{" "}
               </figure>
@@ -161,11 +158,7 @@ export default function Visit() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <figure
-                className="image-box"
-                data-scroll=""
-                data-scroll-speed={1}
-              >
+              <figure className="image-box" data-scroll data-scroll-speed={1}>
                 {" "}
                 <img src={image08} alt="Image" />{" "}
               </figure>
@@ -219,8 +212,8 @@ export default function Visit() {
       {/* end content-section */}
       <section
         className="content-section"
-        data-background="images/section-bg02.jpg"
-        data-scroll=""
+        style={{ background: `url(${bg02})` }}
+        data-scroll
         data-scroll-speed={1}
       >
         <div className="container">
@@ -254,78 +247,7 @@ export default function Visit() {
             {/* end col-12 */}
             <div className="col-lg-8">
               <dl className="accordion">
-                <dt>
-                  <a href="#">What are your opening hours?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
-                <dt>
-                  <a href="#">How long does it take to look around?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
-                <dt>
-                  <a href="#">Are there printed or audio guides?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
-                <dt>
-                  <a href="#">Do you give talks?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
-                <dt>
-                  <a href="#">Is there a shop or cafe?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
-                <dt>
-                  <a href="#">Do you have anywhere to store luggage?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
-                <dt>
-                  <a href="#">How accessible is the museum?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
-                <dt>
-                  <a href="#">Is the museum suitable for families?</a>
-                </dt>
-                <dd>
-                  We have a small gift shop where you can buy a range of Bank of
-                  England related items. We don't have a cafe but there are
-                  places to buy drinks or sandwiches nearby. Eating and drinking
-                  are not allowed in the museum.{" "}
-                </dd>
+                <FrequentlyAsked />
               </dl>
               {/* end accordion */}
             </div>

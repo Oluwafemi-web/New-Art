@@ -39,6 +39,7 @@ export default function Inspiration() {
   if (!inspirationData) {
     return;
   }
+  let previousDataScroll = -1; // Initial value for the first component
 
   return (
     <section
@@ -61,13 +62,27 @@ export default function Inspiration() {
           </div>
           {/* end col-12 */}
           {inspirationData &&
-            inspirationData.map((item, index) => (
-              <InspirationItems
-                key={index}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
+            inspirationData.map((item, index) => {
+              let currentDataScroll = previousDataScroll;
+              if (previousDataScroll === -1) {
+                currentDataScroll = 0.5;
+              } else if (previousDataScroll === 0.5) {
+                currentDataScroll = 1;
+              } else {
+                currentDataScroll = -1; // Reset the pattern
+              }
+
+              // Update the previousDataScroll for the next iteration
+              previousDataScroll = currentDataScroll;
+              return (
+                <InspirationItems
+                  key={index}
+                  title={item.title}
+                  description={item.description}
+                  dataScroll={currentDataScroll}
+                />
+              );
+            })}
 
           {/* end col-4 */}
         </div>

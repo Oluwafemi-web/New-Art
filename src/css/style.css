@@ -1599,13 +1599,13 @@ button[type="submit"] i {
   position: relative;
   overflow: hidden;
 }
-.image-box.is-inview img {
+.image-box.is-reveal img {
   opacity: 1;
   transform: scale(1);
 }
 .image-box img {
   width: 100%;
-  /* opacity: 0; */
+  opacity: 0;
   transform: scale(1.2);
   transition-duration: 0.7s;
   -webkit-transition-duration: 0.7s;
@@ -1784,13 +1784,13 @@ button[type="submit"] i {
   width: 50vw;
   float: left;
 }
-.side-image.is-inview img {
+.side-image.is-reveal img {
   opacity: 1;
   transform: scale(1);
 }
 .side-image img {
   width: 100%;
-  /* opacity: 0; */
+  opacity: 0;
   transform: scale(1.2);
   transition-duration: 0.7s;
   -webkit-transition-duration: 0.7s;
@@ -1969,7 +1969,7 @@ button[type="submit"] i {
   flex-wrap: wrap;
   position: relative;
 }
-.image-content-box.is-inview figure img {
+.image-content-box.is-reveal figure img {
   opacity: 1;
   transform: scale(1);
 }
@@ -2068,7 +2068,7 @@ button[type="submit"] i {
   display: block;
   margin: 15px 0;
 }
-.collection-box.is-inview img {
+.collection-box.is-reveal img {
   opacity: 1;
   transform: scale(1);
 }
@@ -2141,7 +2141,7 @@ button[type="submit"] i {
   display: flex;
   flex-wrap: wrap;
 }
-.exhibition-box.is-inview .img {
+.exhibition-box.is-reveal .img {
   opacity: 1;
   transform: scale(1);
 }
@@ -2334,7 +2334,7 @@ button[type="submit"] i {
   position: relative;
   overflow: hidden;
 }
-.art-slider.is-inview .art-slider-images {
+.art-slider.is-reveal .art-slider-images {
   opacity: 1;
   transform: scale(1);
 }
@@ -2449,7 +2449,7 @@ button[type="submit"] i {
   padding-bottom: 185px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
-.image-icon-box.is-inview .content-image img {
+.image-icon-box.is-reveal .content-image img {
   opacity: 1;
   transform: scale(1);
 }
@@ -2702,7 +2702,7 @@ button[type="submit"] i {
   margin: 0;
   overflow: hidden;
 }
-.recent-news figure.is-inview img {
+.recent-news figure.is-reveal img {
   opacity: 1;
   transform: scale(1);
 }
@@ -2912,7 +2912,7 @@ button[type="submit"] i {
   margin-bottom: 20px;
   overflow: hidden;
 }
-.blog-post figure.is-inview img {
+.blog-post figure.is-reveal img {
   opacity: 1;
   transform: scale(1);
 }

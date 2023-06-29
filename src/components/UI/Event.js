@@ -4,7 +4,7 @@ export default function Event(props) {
   return (
     <div className="col-lg-4 col-md-6">
       <div
-        className="exhibition-box is-inview"
+        className="exhibition-box"
         data-scroll
         data-scroll-speed={props.dataScroll}
       >

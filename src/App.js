@@ -1,5 +1,3 @@
-import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/src/locomotive-scroll.scss";
 import { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -26,10 +24,30 @@ import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
 import Register from "./components/Pages/Register";
 import sanityClient from "./client";
+import useLocoScroll from "./components/Hooks/useLocoScroll";
 
 function App() {
   const [navOpen, setNavOpen] = useState(false);
+  const [preloader, setPreloader] = useState(true);
+  const [timer, setTimer] = useState(3);
 
+  useLocoScroll(!preloader);
+  const id = useRef(null);
+
+  const clear = () => {
+    window.clearInterval(id.current);
+    setPreloader(false);
+  };
+  useEffect(() => {
+    id.current = window.setInterval(() => {
+      setTimer((timer) => timer - 1);
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    if (timer === 0) {
+      clear();
+    }
+  }, [timer]);
   const clickeventHandler = () => {
     setNavOpen(!navOpen);
   };
@@ -38,23 +56,23 @@ function App() {
   if (navOpen !== true) {
     active = "";
   }
-  useEffect(() => {
-    const scroll = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-      multiplier: 0.5,
-      // Add more options as needed
-    });
+  // useEffect(() => {
+  //   const scroll = new LocomotiveScroll({
+  //     el: scrollRef.current,
+  //     smooth: true,
+  //     multiplier: 0.5,
+  //     // Add more options as needed
+  //   });
 
-    return () => {
-      scroll.destroy();
-    };
-  }, []);
-  const scrollRef = useRef(null);
+  //   return () => {
+  //     scroll.destroy();
+  //   };
+  // }, []);
+  // // const scrollRef = useRef(null);
 
   return (
     <BrowserRouter>
-      <div className="smooth-scroll page-loaded" ref={scrollRef}>
+      <div className="smooth-scroll page-loaded">
         <div className="section-wrapper" data-scroll-section>
           {navOpen && <MobileNav active={active} />}
           <NavBar clickeventHandler={clickeventHandler} active={active} />
