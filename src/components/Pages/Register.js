@@ -4,7 +4,7 @@ import "../../css/odometer.min.css";
 
 import "../../css/style.css";
 
-import data from "../../data"
+import data from "../../data" 
 
 // import UI components
 import Header from "../UI/Header";
