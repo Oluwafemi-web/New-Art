@@ -1,4 +1,5 @@
 import "../../css/style.css";
+import { PortableText } from "@portabletext/react";
 
 export default function Collection(props) {
   return (
@@ -14,7 +15,7 @@ export default function Collection(props) {
         <h4>
           <a href="collection-detail.html">{props.title}</a>
         </h4>
-        <p>{props.description}</p>
+        <PortableText value={props.description} />
       </div>
       {/* end collection-box */}
       {/* {console.log(props, props.img, props.p, props.h4)} */}

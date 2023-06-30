@@ -1,4 +1,5 @@
 import "../../css/style.css";
+import { PortableText } from "@portabletext/react";
 
 export default function Event(props) {
   return (
@@ -24,7 +25,7 @@ export default function Event(props) {
           <h4>
             <a href="#">{props.title}</a>
           </h4>
-          <p>{props.date}</p>
+          <PortableText value={props.date} />
         </div>
         {/* end content-box */}
       </div>

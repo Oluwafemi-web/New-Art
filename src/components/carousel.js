@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { PortableText } from "@portabletext/react";
 import "swiper/css";
 // import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -82,7 +83,7 @@ export default function Carousel() {
           <SwiperSlide key={index}>
             <div className="container-fluid">
               <h1>{item.maintext}</h1>
-              <p>{item.subtext}</p>
+              <PortableText value={item.subtext} />
             </div>
           </SwiperSlide>
         ))}

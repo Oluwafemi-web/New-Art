@@ -29,7 +29,8 @@ export default defineType({
     defineField({
       name: 'subtext',
       title: 'Sub Text',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}]
     }),
   ],
   preview: {
