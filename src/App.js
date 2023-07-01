@@ -85,7 +85,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/membership" element={<Register />} />
           </Routes>
-          <NewsLetter />
+          {/* <NewsLetter />  Gboy say Make I remove am */}
           <Footer />
         </div>
       </div>

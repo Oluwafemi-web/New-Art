@@ -55,6 +55,7 @@ export default function Carousel() {
         direction="vertical"
         controller={{ control: controlledSwiper }}
         loop
+        allowTouchMove={false}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
@@ -77,6 +78,7 @@ export default function Carousel() {
         slidesPerView={1}
         onSwiper={setControlledSwiper}
         loop
+        allowTouchMove={false}
         className="slider-texts swiper-container"
       >
         {carouselData.map((item, index) => (

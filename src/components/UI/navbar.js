@@ -59,9 +59,9 @@ export default function NavBar(props) {
         </svg>
       </div>
       {/* end hamburger-menu */}
-      <div className="navbar-button">
+      {/* <div className="navbar-button">
         <Link to="/membership">GET A TICKET</Link>
-      </div>
+      </div> */}
       {/* end navbar-button */}
     </nav>
   );
