@@ -40,10 +40,6 @@ function App() {
   // useLocoScroll(!preloader);
   // const id = useRef(null);
 
-  // const handleSanityLoaded = () => {
-  // if (sanityCtx.dataLoaded) setPreloader(false);
-  // };
-
   useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
   // if (sanityCtx.dataLoaded) setPreloader(false);
   useEffect(() => {
@@ -58,7 +54,9 @@ function App() {
   const clickeventHandler = () => {
     setNavOpen(!navOpen);
   };
-  // const linkEventHandler()
+  const linkEventHandler = () => {
+    setPreloader(true);
+  };
 
   var active = "active";
   if (navOpen !== true) {
@@ -73,7 +71,11 @@ function App() {
         <div className="smooth-scroll page-loaded">
           <div className="section-wrapper" data-scroll-section>
             {navOpen && <MobileNav active={active} />}
-            <NavBar clickeventHandler={clickeventHandler} active={active} />
+            <NavBar
+              clickeventHandler={clickeventHandler}
+              active={active}
+              setPreloader={linkEventHandler}
+            />
             <Routes>
               <Route path="/" element={<Home />} exact />
               <Route path="/visit" element={<Visit />} />
