@@ -11,11 +11,11 @@ export default function Event(props) {
       >
         <figure>
           <a href="#">
-            <img src={props.img} alt="Image" className="img" />
+            <img src={props.img} alt="" className="img" />
           </a>
           <div className="info">
             <figure className="i">
-              <img src={props.icon} alt="Image" />
+              <img src={props.icon} alt="" />
             </figure>
             <span>{props.promo}</span>
           </div>

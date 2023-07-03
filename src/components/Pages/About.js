@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import SanityContext from "../Context/sanity-context";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
 
 import "../../css/style.css";
-
-import data from "../../data";
 import sanityClient from "../../client";
 
 // import UI components
@@ -13,6 +12,11 @@ import Header from "../UI/Header";
 
 export default function About() {
   const [aboutHeader, setAboutHeader] = useState(null);
+  const sanityCtx = useContext(SanityContext);
+
+  const handleSanityLoaded = () => {
+    sanityCtx.changeState(true);
+  };
   useEffect(() => {
     sanityClient
       .fetch(
@@ -31,7 +35,9 @@ export default function About() {
       .catch(console.error);
   }, []);
   if (!aboutHeader) {
-    return <div>Loading...</div>;
+    return sanityCtx.changeState(false);
+  } else {
+    handleSanityLoaded();
   }
   return (
     <>

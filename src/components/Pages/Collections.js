@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import SanityContext from "../Context/sanity-context";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
@@ -17,7 +18,11 @@ export default function Collections() {
   let previousDataScroll = 1.5; // Initial value for the first component
   const [collectionHeader, setCollectionHeader] = useState(null);
   const [collectionData, setCollectionData] = useState(null);
+  const sanityCtx = useContext(SanityContext);
 
+  const handleSanityLoaded = () => {
+    sanityCtx.changeState(true);
+  };
   useEffect(() => {
     sanityClient
       .fetch(
@@ -53,7 +58,9 @@ export default function Collections() {
       .catch(console.error);
   }, []);
   if (!collectionHeader || !collectionData) {
-    return <div>Loading...</div>;
+    return sanityCtx.changeState(false);
+  } else {
+    handleSanityLoaded();
   }
 
   return (
@@ -73,7 +80,7 @@ export default function Collections() {
             <div className="col-12">
               <div className="section-title text-center">
                 <figure>
-                  <img src={icon} alt="Image" />
+                  <img src={icon} alt="" />
                 </figure>
                 <h2>
                   Our collections are <br />

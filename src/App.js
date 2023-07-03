@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useContext } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import "./css/bootstrap.min.css";
 import "./css/fancybox.min.css";
@@ -32,16 +32,17 @@ import SanityContext from "./components/Context/sanity-context";
 function App() {
   const [navOpen, setNavOpen] = useState(false);
   const [preloader, setPreloader] = useState(true);
-  // const [isSanityLoaded, setIsSanityLoaded] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setPreloader(true); // Show preloader when navigating to a new page
+  }, [location.pathname]);
+
   const sanityCtx = useContext(SanityContext);
   console.log(sanityCtx);
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // useLocoScroll(!preloader);
-  // const id = useRef(null);
 
   useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
-  // if (sanityCtx.dataLoaded) setPreloader(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setPreloader(false);
@@ -50,7 +51,8 @@ function App() {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [preloader]);
+
   const clickeventHandler = () => {
     setNavOpen(!navOpen);
   };
@@ -64,7 +66,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
       {preloader ? ( // Conditionally render the Preloader
         <Preloader />
       ) : (
@@ -89,8 +91,17 @@ function App() {
           </div>
         </div>
       )}
-    </BrowserRouter>
+    </>
   );
 }
 
-export default App;
+function AppWithRouter() {
+  return (
+    <BrowserRouter>
+      <SanityProvider>
+        <App />
+      </SanityProvider>
+    </BrowserRouter>
+  );
+}
+export default AppWithRouter;

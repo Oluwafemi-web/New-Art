@@ -13,6 +13,7 @@ export default function useLocoScroll(start) {
       //   dataScrollSpeed: 0.5,
       // Add more options as needed
     });
+    console.log("started");
 
     return () => {
       scroll.destroy();

@@ -32,7 +32,6 @@ export default function Steps() {
   if (!stepsData || stepsData.length === 0) {
     return <div>Loading...</div>;
   }
-  console.log(stepsData);
   return (
     <section className="content-section no-bottom-spacing">
       <div className="container">

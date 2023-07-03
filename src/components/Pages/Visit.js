@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { PortableText } from "@portabletext/react";
 
 import { Link } from "react-router-dom";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
+import SanityContext from "../Context/sanity-context";
 import "../../css/odometer.min.css";
 
 import "../../css/style.css";
@@ -16,10 +17,11 @@ import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
 import FrequentlyAsked from "./FrequentlyAsked";
 
-export default function Visit({ onSanityLoaded }) {
+export default function Visit() {
   const [visitHeader, setVisitHeader] = useState(null);
   const [visitData, setVisitData] = useState(null);
   const [frequentData, setFrequentData] = useState(null);
+  const sanityCtx = useContext(SanityContext);
 
   useEffect(() => {
     sanityClient
@@ -38,7 +40,7 @@ export default function Visit({ onSanityLoaded }) {
       .then((data) => setVisitHeader(data))
       .catch(console.error);
 
-      sanityClient
+    sanityClient
       .fetch(
         `*[_type == "frequentlyasked"]{
            question,
@@ -48,7 +50,7 @@ export default function Visit({ onSanityLoaded }) {
       .then((data) => setFrequentData(data))
       .catch(console.error);
 
-      sanityClient
+    sanityClient
       .fetch(
         `*[_type == "visit"]{
            title,
@@ -96,12 +98,14 @@ export default function Visit({ onSanityLoaded }) {
       )
       .then((data) => setVisitData(data[0]))
       .catch(console.error);
-
-      if (visitHeader && visitData && frequentData) {
-        onSanityLoaded(); // Run onSanityLoaded if all three states have data
-      }    
-
   }, []);
+  const handleSanityLoaded = () => {
+    sanityCtx.changeState(true);
+  };
+  if (visitHeader && visitData && frequentData) {
+    handleSanityLoaded();
+    // Run onSanityLoaded if all three states have data
+  }
   // useEffect(() => {
   //   sanityClient
   //     .fetch(

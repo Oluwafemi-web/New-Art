@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import LocomotiveScroll from "locomotive-scroll";
+import { useState, useEffect, useContext } from "react";
+import SanityContext from "../Context/sanity-context";
 
 import sanityClient from "../../client";
 import "../../css/bootstrap.min.css";
@@ -8,8 +8,6 @@ import "../../css/odometer.min.css";
 
 import "../../css/style.css";
 
-import data from "../../data";
-
 // import UI components
 import Header from "../UI/Header";
 import Event from "../UI/Event";
@@ -17,6 +15,12 @@ import Event from "../UI/Event";
 export default function Exhibitions() {
   const [exhibitionData, setExhibitionData] = useState(null);
   const [exhibitionHeader, setExhibitionHeader] = useState(null);
+  const sanityCtx = useContext(SanityContext);
+
+  const handleSanityLoaded = () => {
+    sanityCtx.changeState(true);
+  };
+
   useEffect(() => {
     sanityClient
       .fetch(
@@ -60,7 +64,9 @@ export default function Exhibitions() {
       .catch(console.error);
   }, []);
   if (!exhibitionData || !exhibitionHeader) {
-    return <div>Loading...</div>;
+    return sanityCtx.changeState(false);
+  } else {
+    handleSanityLoaded();
   }
 
   let previousDataScroll = 1; // Initial value for the first component

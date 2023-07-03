@@ -15,7 +15,6 @@ export default function Carousel() {
   const [carouselData, setCarouselData] = useState([]);
   const [controlledSwiper, setControlledSwiper] = useState(null);
   const sanityCtx = useContext(SanityContext);
-  console.log(sanityCtx);
 
   useEffect(() => {
     sanityClient

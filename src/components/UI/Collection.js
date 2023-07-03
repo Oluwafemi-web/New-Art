@@ -17,8 +17,6 @@ export default function Collection(props) {
         </h4>
         <PortableText value={props.description} />
       </div>
-      {/* end collection-box */}
-      {/* {console.log(props, props.img, props.p, props.h4)} */}
     </div>
   );
 }
