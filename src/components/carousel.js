@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { PortableText } from "@portabletext/react";
 import "swiper/css";
 // import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -54,6 +55,7 @@ export default function Carousel() {
         direction="vertical"
         controller={{ control: controlledSwiper }}
         loop
+        allowTouchMove={false}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
@@ -76,13 +78,14 @@ export default function Carousel() {
         slidesPerView={1}
         onSwiper={setControlledSwiper}
         loop
+        allowTouchMove={false}
         className="slider-texts swiper-container"
       >
         {carouselData.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="container-fluid">
               <h1>{item.maintext}</h1>
-              <p>{item.subtext}</p>
+              <PortableText value={item.subtext} />
             </div>
           </SwiperSlide>
         ))}

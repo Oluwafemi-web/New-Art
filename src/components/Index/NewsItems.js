@@ -1,3 +1,5 @@
+import { PortableText } from "@portabletext/react";
+
 export default function NewsItems(props) {
   return (
     <div className="col-12">
@@ -5,7 +7,8 @@ export default function NewsItems(props) {
         <div className="content-box">
           <small>{props.date}</small>
           <h3>{props.heading}</h3>
-          <p>{props.description}</p>
+          <PortableText value={props.description} />
+
           <a href="#" className="custom-link">
             Continue reading
           </a>

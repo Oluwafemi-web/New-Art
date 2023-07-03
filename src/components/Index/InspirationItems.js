@@ -1,3 +1,5 @@
+import { PortableText } from "@portabletext/react";
+
 export default function InspirationItems(props) {
   return (
     <div className="col-lg-4 col-md-6">
@@ -7,7 +9,7 @@ export default function InspirationItems(props) {
         data-scroll-speed={props.dataScroll}
       >
         <h6>{props.title}</h6>
-        <p>{props.description}</p>
+        <PortableText value={props.description} />
       </div>
       {/* end text-content */}
     </div>

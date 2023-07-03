@@ -13,7 +13,8 @@ export default defineType({
     defineField({
       name: 'description',
       title: 'Welcome description',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'icon',
@@ -31,7 +32,8 @@ export default defineType({
     defineField({
       name: 'date',
       title: 'Date and time',
-      type: 'string',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'image',
@@ -44,7 +46,8 @@ export default defineType({
     defineField({
       name: 'address',
       title: 'Address',
-      type: 'string',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'list1',
@@ -82,7 +85,8 @@ export default defineType({
     defineField({
       name: 'safetext',
       title: 'Staying Safe info',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'safeimg',

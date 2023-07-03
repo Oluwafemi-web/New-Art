@@ -1,3 +1,5 @@
+import { PortableText } from "@portabletext/react";
+
 export default function WorldArtItem(props) {
   return (
     <li>
@@ -6,7 +8,7 @@ export default function WorldArtItem(props) {
       </figure>
       <div className="content">
         <h5>{props.heading}</h5>
-        <p>{props.description}</p>
+        <PortableText value={props.description} />
       </div>
       {/* end content */}
     </li>

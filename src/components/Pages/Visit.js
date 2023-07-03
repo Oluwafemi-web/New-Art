@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { PortableText } from "@portabletext/react";
+
 import { Link } from "react-router-dom";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
@@ -10,11 +12,6 @@ import "../../css/style.css";
 import Header from "../UI/Header";
 
 //import images
-import icon01 from "../../images/icon01.png";
-import imag04 from "../../images/side-imag04.jpg";
-import image08 from "../../images/image08.jpg";
-import visit from "../../images/logo-visit.png";
-import bg02 from "../../images/section-bg01.jpg";
 import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
 import FrequentlyAsked from "./FrequentlyAsked";
@@ -189,7 +186,7 @@ export default function Visit({ onSanityLoaded }) {
                 <div className="col-lg-6">
                   <div className="side-content left">
                     <h2>{visitData.title}</h2>
-                    <p>{visitData.description}</p>
+                    <PortableText value={visitData.description} />
                   </div>
                   {/* end side-content */}
                   <div className="clearfix spacing-50" />
@@ -205,7 +202,7 @@ export default function Visit({ onSanityLoaded }) {
                         </figure>
                         <div className="content">
                           <h5>{visitData.opening}</h5>
-                          <p>{visitData.date}</p>
+                          <PortableText value={visitData.date} />
                         </div>
                         {/* end content */}
                       </li>
@@ -235,7 +232,7 @@ export default function Visit({ onSanityLoaded }) {
               <div className="row">
                 <div className="col-lg-5">
                   <div className="contact-box">
-                    <p>{visitData.address}</p>
+                    <PortableText value={visitData.address} />
                   </div>
                   {/* end contact-box */}
                   <Link to="/contact" className="custom-button">
@@ -299,7 +296,7 @@ export default function Visit({ onSanityLoaded }) {
                 {/* end col-2 */}
                 <div className="col-lg-6 col-md-10">
                   <div className="text-box">
-                    <p>{visitData.safetest}</p>
+                    <PortableText value={visitData.safetext} />
                   </div>
                   {/* end text-box */}
                 </div>

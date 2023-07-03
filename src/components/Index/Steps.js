@@ -1,5 +1,7 @@
 import logo from "../../images/title-shape.png";
 import { useState, useEffect } from "react";
+import { PortableText } from "@portabletext/react";
+
 import sanityClient from "../../client";
 export default function Steps() {
   const [stepsData, setStepsData] = useState(null);
@@ -69,7 +71,8 @@ export default function Steps() {
                   <b>{item.index}</b>
                   <h4>{item.title}</h4>
                   <div className="expand">
-                    <p>{item.description}</p>
+                    <PortableText value={item.description} />
+
                     <a href="#" className="custom-link">
                       Learn More
                     </a>
