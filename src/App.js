@@ -13,6 +13,8 @@ import Footer from "./components/UI/Footer";
 import NavBar from "./components/UI/navbar";
 import NewsLetter from "./components/Index/NewsLetter";
 import MobileNav from "./components/UI/MobileNav";
+import Preloader from "./components/UI/Preloader";
+
 // import Carousel from "./components/carousel";
 
 // Import Page Elements
@@ -28,26 +30,19 @@ import useLocoScroll from "./components/Hooks/useLocoScroll";
 
 function App() {
   const [navOpen, setNavOpen] = useState(false);
-  const [preloader, setPreloader] = useState(true);
-  const [timer, setTimer] = useState(3);
+  // const [preloader, setPreloader] = useState(true);
+  const [isSanityLoaded, setIsSanityLoaded] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useLocoScroll(!preloader);
-  const id = useRef(null);
+  // useLocoScroll(!preloader);
+  // const id = useRef(null);
 
-  const clear = () => {
-    window.clearInterval(id.current);
-    setPreloader(false);
+  const handleSanityLoaded = () => {
+    setIsSanityLoaded(true);
   };
-  useEffect(() => {
-    id.current = window.setInterval(() => {
-      setTimer((timer) => timer - 1);
-    }, 1000);
-  }, []);
-  useEffect(() => {
-    if (timer === 0) {
-      clear();
-    }
-  }, [timer]);
+
+  useLocoScroll(isSanityLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
+
   const clickeventHandler = () => {
     setNavOpen(!navOpen);
   };
@@ -56,39 +51,54 @@ function App() {
   if (navOpen !== true) {
     active = "";
   }
-  // useEffect(() => {
-  //   const scroll = new LocomotiveScroll({
-  //     el: scrollRef.current,
-  //     smooth: true,
-  //     multiplier: 0.5,
-  //     // Add more options as needed
-  //   });
-
-  //   return () => {
-  //     scroll.destroy();
-  //   };
-  // }, []);
-  // // const scrollRef = useRef(null);
 
   return (
+
     <BrowserRouter>
-      <div className="smooth-scroll page-loaded">
-        <div className="section-wrapper" data-scroll-section>
+      {console.log(!isSanityLoaded)}
+
+      {!isSanityLoaded ? ( // Conditionally render the Preloader
+        <Preloader />
+      ) : (
+        <div className="smooth-scroll page-loaded">
+          <div className="section-wrapper" data-scroll-section>
           {navOpen && <MobileNav active={active} />}
           <NavBar clickeventHandler={clickeventHandler} active={active} />
-          <Routes>
-            <Route element={<Home />} path="/" exact={true} />
-            <Route path="/visit" element={<Visit />} />
-            <Route path="/exhibition" element={<Exihibitions />} />
-            <Route path="/collection" element={<Collections />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/membership" element={<Register />} />
-          </Routes>
-          <NewsLetter />
-          <Footer />
+            <Routes>
+              <Route
+                path="/"
+                element={<Home onSanityLoaded={handleSanityLoaded} />}
+                exact
+              />
+              <Route
+                path="/visit"
+                element={<Visit onSanityLoaded={handleSanityLoaded} />}
+              />
+              <Route
+                path="/exhibition"
+                element={<Exihibitions onSanityLoaded={handleSanityLoaded} />}
+              />
+              <Route
+                path="/collection"
+                element={<Collections onSanityLoaded={handleSanityLoaded} />}
+              />
+              <Route
+                path="/about"
+                element={<About onSanityLoaded={handleSanityLoaded} />}
+              />
+              <Route
+                path="/contact"
+                element={<Contact onSanityLoaded={handleSanityLoaded} />}
+              />
+              <Route
+                path="/membership"
+                element={<Register onSanityLoaded={handleSanityLoaded} />}
+              />
+            </Routes>
+            <Footer />
+          </div>
         </div>
-      </div>
+      )}
     </BrowserRouter>
   );
 }

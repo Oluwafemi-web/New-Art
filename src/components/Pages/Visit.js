@@ -19,7 +19,7 @@ import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
 import FrequentlyAsked from "./FrequentlyAsked";
 
-export default function Visit() {
+export default function Visit({ onSanityLoaded }) {
   const [visitHeader, setVisitHeader] = useState(null);
   const [visitData, setVisitData] = useState(null);
   const [frequentData, setFrequentData] = useState(null);
@@ -40,9 +40,8 @@ export default function Visit() {
       )
       .then((data) => setVisitHeader(data))
       .catch(console.error);
-  }, []);
-  useEffect(() => {
-    sanityClient
+
+      sanityClient
       .fetch(
         `*[_type == "frequentlyasked"]{
            question,
@@ -51,9 +50,8 @@ export default function Visit() {
       )
       .then((data) => setFrequentData(data))
       .catch(console.error);
-  }, []);
-  useEffect(() => {
-    sanityClient
+
+      sanityClient
       .fetch(
         `*[_type == "visit"]{
            title,
@@ -101,10 +99,73 @@ export default function Visit() {
       )
       .then((data) => setVisitData(data[0]))
       .catch(console.error);
+
+      if (visitHeader && visitData && frequentData) {
+        onSanityLoaded(); // Run onSanityLoaded if all three states have data
+      }    
+
   }, []);
-  if (!visitHeader) {
-    return <div>Loading...</div>;
-  }
+  // useEffect(() => {
+  //   sanityClient
+  //     .fetch(
+  //       `*[_type == "frequentlyasked"]{
+  //          question,
+  //          answer
+  //       }`
+  //     )
+  //     .then((data) => setFrequentData(data))
+  //     .catch(console.error);
+  // }, []);
+  // useEffect(() => {
+  //   sanityClient
+  //     .fetch(
+  //       `*[_type == "visit"]{
+  //          title,
+  //          description,
+  //          icon{
+  //           asset->{
+  //             _id,
+  //             url
+  //           }
+  //         },
+  //         opening,
+  //         date,
+  //         image{
+  //           asset->{
+  //             _id,
+  //             url
+  //           }
+  //         },
+  //         address,
+  //         list1,
+  //         list2,
+  //         list3,
+  //         list4,
+  //         image2{
+  //           asset->{
+  //             _id,
+  //             url
+  //           }
+  //         },
+  //         safe,
+  //         safetext,
+  //         safeimg{
+  //           asset->{
+  //             _id,
+  //             url
+  //           }
+  //         },
+  //         image3{
+  //           asset->{
+  //             _id,
+  //             url
+  //           }
+  //         }
+  //       }`
+  //     )
+  //     .then((data) => setVisitData(data[0]))
+  //     .catch(console.error);
+  // }, []);
   return (
     <>
       {visitHeader &&

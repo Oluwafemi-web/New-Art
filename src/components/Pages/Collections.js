@@ -13,13 +13,6 @@ import Header from "../UI/Header";
 import Collection from "../UI/Collection";
 import Member from "../Index/Member";
 
-<<<<<<< Updated upstream
-const YourComponent = ({ yourArray }) => {
-  return <div>{yourArray.map((item, index) => {})}</div>;
-};
-
-=======
->>>>>>> Stashed changes
 export default function Collections() {
   let previousDataScroll = 1.5; // Initial value for the first component
   const [collectionHeader, setCollectionHeader] = useState(null);
