@@ -58,7 +58,7 @@ function App() {
   const clickeventHandler = () => {
     setNavOpen(!navOpen);
   };
-  const linkEventHandler()
+  // const linkEventHandler()
 
   var active = "active";
   if (navOpen !== true) {
