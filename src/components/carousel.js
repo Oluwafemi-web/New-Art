@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PortableText } from "@portabletext/react";
+import SanityContext from "./Context/sanity-context";
 import "swiper/css";
 // import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -13,6 +14,8 @@ SwiperCore.use([Navigation, Pagination, Controller]);
 export default function Carousel() {
   const [carouselData, setCarouselData] = useState([]);
   const [controlledSwiper, setControlledSwiper] = useState(null);
+  const sanityCtx = useContext(SanityContext);
+  console.log(sanityCtx);
 
   useEffect(() => {
     sanityClient
@@ -41,9 +44,13 @@ export default function Carousel() {
       .then((data) => setCarouselData(data))
       .catch(console.error);
   }, []);
-
+  const handleSanityLoaded = () => {
+    sanityCtx.changeState(true);
+  };
   if (!carouselData || carouselData.length === 0) {
-    return <div>Loading...</div>;
+    return sanityCtx.changeState(false);
+  } else {
+    handleSanityLoaded();
   }
   return (
     <header className="slider">

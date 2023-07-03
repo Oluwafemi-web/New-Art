@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import "locomotive-scroll/src/locomotive-scroll.scss";
 export default function useLocoScroll(start) {
   useEffect(() => {
-    // if (!start) return;
+    if (!start) return;
     const scrollEl = document.querySelector(".page-loaded");
     const scroll = new LocomotiveScroll({
       el: scrollEl,
