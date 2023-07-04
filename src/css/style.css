@@ -4003,3 +4003,46 @@ button[type="submit"] i {
     );
   }
 }
+.about-item,
+.about-inner,
+.about-inner-img {
+  height: 100%;
+}
+.about-inner {
+  position: relative;
+}
+.about-inner-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.about-inner-content a,
+.about-inner-content h5 {
+  color: #fff;
+  text-align: center;
+}
+.about-inner:hover .about-inner-content {
+  opacity: 1;
+}
+.mission {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pd-90 {
+  padding: 90px;
+}
+.pd-top-90 {
+  padding-top: 90px;
+  padding-left: 0;
+  padding-right: 0;
+}
