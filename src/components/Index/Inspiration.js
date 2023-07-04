@@ -3,28 +3,11 @@ import logo from "../../images/title-shape.png";
 import image1 from "../../images/image01.jpg";
 import image2 from "../../images/image02.jpg";
 import image3 from "../../images/image03.jpg";
-import { gsap } from "gsap";
 import InspirationItems from "./InspirationItems";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import sanityClient from "../../client";
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Inspiration() {
   const [inspirationData, setInspirationData] = useState(null);
-  const scrollRef = useRef(null);
-  useEffect(() => {
-    gsap.to(".horizontal-scroll", {
-      x: "-=500", // Continuous horizontal scrolling
-      scrollTrigger: {
-        trigger: ".horizontal-scroll",
-        start: "top center",
-        end: "bottom center",
-        scrub: true,
-        repeat: -1, // Repeat the animation indefinitely
-        onRepeat: (self) => self.invalidate(), // Invalidate the animation on each repeat
-      },
-    });
-  }, []);
   useEffect(() => {
     sanityClient
       .fetch(

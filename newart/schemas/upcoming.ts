@@ -13,7 +13,8 @@ export default defineType({
     defineField({
       name: 'date',
       title: 'Date',
-      type: 'string',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'promo',
