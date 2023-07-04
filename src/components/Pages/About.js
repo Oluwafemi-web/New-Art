@@ -6,7 +6,10 @@ import "../../css/odometer.min.css";
 
 import "../../css/style.css";
 import "../../css/style2.css";
+import "../../css/cs_layout1.css";
+import "../../css/cs_layout2.css";
 import "../../css/cs_skin-8.css";
+
 
 import "../../css/general.css";
 import "../../css/frontend.css";
@@ -60,12 +63,12 @@ export default function About() {
           />
         ))}
           <>
-            <div className="aheto-preloader with_image">
+            {/* <div className="aheto-preloader with_image">
               <img
                 src="https://mooseoom.foxthemes.me/wp-content/uploads/2019/10/logo-2.png"
                 alt="Mooseoom"
               />
-            </div>
+            </div> */}
             <div className="container">
               <div
                 data-elementor-type="wp-page"
@@ -151,49 +154,50 @@ export default function About() {
                                       <section className="aheto-timeline--mooseoom-modern">
                                         <div className="aheto-timeline__timeline">
                                           <div className="aheto-timeline__events-wrapper">
-                                            <div className="aheto-timeline__events">
+                                            <div className="aheto-timeline__events" style={{width: "1760px"}}>
                                               <ol>
                                                 <li>
                                                   <a
                                                     href="#0"
-                                                    className="selected"
+                                                    className="selected older-event"
                                                     data-date={1991}
+                                                    style={{left: `${110}px`}}
                                                   >
                                                     <h5>1991</h5>
                                                   </a>
                                                 </li>
                                                 <li>
-                                                  <a href="#0" data-date={1994}>
+                                                  <a href="#0" data-date={1994} class="older-event" style={{left: `${275}px`}}>
                                                     <h5>1994</h5>
                                                   </a>
                                                 </li>
                                                 <li>
-                                                  <a href="#0" data-date={1995}>
+                                                  <a href="#0" data-date={1995} class="older-event" style={{left: `${330}px`}}>
                                                     <h5>1995</h5>
                                                   </a>
                                                 </li>
                                                 <li>
-                                                  <a href="#0" data-date={1999}>
+                                                  <a href="#0" data-date={1999} class="older-event" style={{left: `${550}px`}}>
                                                     <h5>1999</h5>
                                                   </a>
                                                 </li>
                                                 <li>
-                                                  <a href="#0" data-date={2003}>
+                                                  <a href="#0" data-date={2003} class="older-event" style={{left: `${770}px`}}>
                                                     <h5>2003</h5>
                                                   </a>
                                                 </li>
                                                 <li>
-                                                  <a href="#0" data-date={2008}>
+                                                  <a href="#0" data-date={2008} class="older-event" style={{left: `${1045}px`}}>
                                                     <h5>2008</h5>
                                                   </a>
                                                 </li>
                                                 <li>
-                                                  <a href="#0" data-date={2014}>
+                                                  <a href="#0" data-date={2014} class="older-event" style={{left: `${1375}px`}}>
                                                     <h5>2014</h5>
                                                   </a>
                                                 </li>
                                                 <li>
-                                                  <a href="#0" data-date={2019}>
+                                                  <a href="#0" data-date={2019} class="older-event" style={{left: `${1650}px`}}>
                                                     <h5>2019</h5>
                                                   </a>
                                                 </li>
@@ -541,7 +545,7 @@ export default function About() {
                                         className="aheto-cpt__list js-isotope"
                                         data-cpt-id="aheto_cpt_316"
                                       >
-                                        <div className="aheto-cpt-article aheto-cpt-article--size"></div>
+                                        <div className="aheto-cpt-article aheto-cpt-article--size" style={{position: "absolute", left: "0%", top: "0px"}}></div>
                                         <article className="aheto-cpt-article aheto-cpt-article--masonry  aheto-cpt-article--cs_skin-8 filter-mission-and-history">
                                           <div className="aheto-cpt-article__inner">
                                             <div
