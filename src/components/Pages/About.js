@@ -81,7 +81,38 @@ export default function About() {
       });
     });
   }
+  var div = document.getElementById("year");
+  var scrollLeftButton = document.getElementById("scrollLeftButton");
+  var scrollRightButton = document.getElementById("scrollRightButton");
 
+  function scrollLeft() {
+    div.scrollTo({
+      left: div.scrollLeft - 200,
+      behavior: "smooth",
+    });
+    updateButtonState();
+  }
+
+  function scrollRight() {
+    div.scrollTo({
+      left: div.scrollLeft + 200,
+      behavior: "smooth",
+    });
+    updateButtonState();
+  }
+  function updateButtonState() {
+    if (div.scrollLeft === 0) {
+      scrollLeftButton.classList.add("inactive");
+    } else {
+      scrollLeftButton.classList.remove("inactive");
+    }
+
+    if (div.scrollLeft + div.clientWidth >= div.scrollWidth) {
+      scrollRightButton.classList.add("inactive");
+    } else {
+      scrollRightButton.classList.remove("inactive");
+    }
+  }
   setTimeout(filterGalleryOnLoad, 3000);
   // filterGalleryOnLoad();
   useEffect(() => {
@@ -172,7 +203,7 @@ export default function About() {
           <div className="container">
             <h2 className="text-align-center">Our Museum History</h2>
             <div className="aheto-timeline__timeline">
-              <div className="aheto-timeline__events-wrapper">
+              <div id="year" className="aheto-timeline__events-wrapper">
                 <div className="aheto-timeline__events" style={{ width: 1760 }}>
                   <ol>
                     <li>
@@ -228,7 +259,26 @@ export default function About() {
                   />
                 </div>{" "}
                 {/* .events */}
-              </div>{" "}
+              </div>
+              <ul className="aheto-timeline__navigation">
+                <li>
+                  <a
+                    href="#0"
+                    id="scrollLeftButton"
+                    className="prev ion-ios-arrow-left"
+                    onClick={scrollLeft}
+                  />
+                </li>
+                <li>
+                  <a
+                    href="#0"
+                    id="scrollRightButton"
+                    className="next ion-ios-arrow-right"
+                    onClick={scrollRight}
+                  />
+                </li>
+              </ul>
+
               {/* .events-wrapper */}
               {/* .cd-timeline-navigation */}
             </div>

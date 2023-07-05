@@ -4178,3 +4178,39 @@ button[type="submit"] i {
 .aheto-timeline__content {
   text-align: center;
 }
+.aheto-timeline__navigation {
+  padding-left: 0;
+  list-style: none;
+}
+.aheto-timeline__navigation a {
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 49%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #000;
+  font-size: 16px;
+  text-decoration: none;
+}
+.aheto-timeline__navigation a.prev {
+  width: 20px;
+  left: -12px;
+  text-align: center;
+}
+.aheto-timeline__navigation a.prev::before {
+  content: "\3c";
+}
+.aheto-timeline__navigation a.next {
+  right: -12px;
+  width: 20px;
+  text-align: center;
+}
+.aheto-timeline__navigation a.next::before {
+  content: "\3e";
+}
+.aheto-timeline__navigation a.inactive {
+  cursor: not-allowed;
+}
