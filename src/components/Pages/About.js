@@ -23,6 +23,8 @@ import Header from "../UI/Header";
 export default function About() {
   const [aboutHeader, setAboutHeader] = useState(null);
   const [aboutData, setAboutData] = useState(null);
+  const [aboutImages, setAboutImages] = useState(null);
+
   const sanityCtx = useContext(SanityContext);
 
   const handleSanityLoaded = () => {
@@ -75,6 +77,22 @@ export default function About() {
           }`
       )
       .then((data) => setAboutData(data[0]))
+      .catch(console.error);
+
+    sanityClient
+      .fetch(
+        `*[_type == "aboutimages"]{
+             title,
+             description,
+             image{
+              asset->{
+                _id,
+                url
+              }
+            }
+          }`
+      )
+      .then((data) => setAboutImages(data))
       .catch(console.error);
   }, []);
   if (!aboutHeader) {
@@ -422,126 +440,32 @@ export default function About() {
             </div>
           </div>
           <div className="col-12 row g-0">
-            <div className="col-lg-3 col-md-6 col-sm-6">
-              <article className="about-item">
-                <div className="about-inner">
-                  <div
-                    className="about-inner-img"
-                    style={{
-                      backgroundImage:
-                        "url(https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-2.jpg)",
-                    }}
-                  >
-                    <img src="https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-2.jpg" />
-
-                    <a
-                      className="aheto-cpt-article__img-link"
-                      href="https://mooseoom.foxthemes.me/portfolio/abstract-art-with-shapes/"
-                      title="Abstract Art with Shapes"
-                    />
-                  </div>
-                  <div className="about-inner-content">
-                    <a
-                      href="https://mooseoom.foxthemes.me/portfolio-category/mission-and-history/"
-                      rel="tag"
-                    >
-                      Mission and History
-                      <h5>Abstract Art with Shapes</h5>
-                    </a>
-                  </div>
+            {aboutImages &&
+              aboutImages.map((item, index) => (
+                <div className="col-lg-3 col-md-6 col-sm-6" key={index}>
+                  <article className="about-item">
+                    <div className="about-inner">
+                      <div
+                        className="about-inner-img"
+                        style={{
+                          backgroundImage: `url(${item.image.asset.url})`,
+                        }}
+                      >
+                        <img src={item.image.asset.url} />
+                      </div>
+                      <div className="about-inner-content">
+                        <a
+                          href="https://mooseoom.foxthemes.me/portfolio-category/mission-and-history/"
+                          rel="tag"
+                        >
+                          {item.title}
+                          <PortableText value={item.description} />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
                 </div>
-              </article>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6">
-              <article className="about-item">
-                <div className="about-inner">
-                  <div
-                    className="about-inner-img"
-                    style={{
-                      backgroundImage:
-                        "url(https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-3.jpg)",
-                    }}
-                  >
-                    <img src="https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-3.jpg" />
-
-                    <a
-                      className="aheto-cpt-article__img-link"
-                      href="https://mooseoom.foxthemes.me/portfolio/abstract-art-with-shapes/"
-                      title="Abstract Art with Shapes"
-                    />
-                  </div>
-                  <div className="about-inner-content">
-                    <a
-                      href="https://mooseoom.foxthemes.me/portfolio-category/mission-and-history/"
-                      rel="tag"
-                    >
-                      Mission and History
-                      <h5>Breath of City Jungle</h5>
-                    </a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6">
-              <article className="about-item">
-                <div className="about-inner">
-                  <div
-                    className="about-inner-img"
-                    style={{
-                      backgroundImage:
-                        "url(https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-1.jpg)",
-                    }}
-                  >
-                    <img src="https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-1.jpg" />
-
-                    <a
-                      className="aheto-cpt-article__img-link"
-                      href="https://mooseoom.foxthemes.me/portfolio/abstract-art-with-shapes/"
-                      title="Abstract Art with Shapes"
-                    />
-                  </div>
-                  <div className="about-inner-content">
-                    <a
-                      href="https://mooseoom.foxthemes.me/portfolio-category/mission-and-history/"
-                      rel="tag"
-                    >
-                      Mission and History
-                      <h5>Gallery Construction</h5>
-                    </a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6">
-              <article className="about-item">
-                <div className="about-inner">
-                  <div
-                    className="about-inner-img"
-                    style={{
-                      backgroundImage:
-                        "url(https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-4.jpg)",
-                    }}
-                  >
-                    <img src="https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/ms-post-4.jpg" />
-
-                    <a
-                      className="aheto-cpt-article__img-link"
-                      href="https://mooseoom.foxthemes.me/portfolio/abstract-art-with-shapes/"
-                      title="Abstract Art with Shapes"
-                    />
-                  </div>
-                  <div className="about-inner-content">
-                    <a
-                      href="https://mooseoom.foxthemes.me/portfolio-category/mission-and-history/"
-                      rel="tag"
-                    >
-                      Mission and History
-                      <h5>Gallery Construction</h5>
-                    </a>
-                  </div>
-                </div>
-              </article>
-            </div>
+              ))}
           </div>
           {aboutData && (
             <>

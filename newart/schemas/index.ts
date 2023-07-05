@@ -11,6 +11,7 @@ import visitheader from './visitheader'
 import collectionheader from './collectionheader'
 import aboutheader from './aboutheader'
 import about from './about'
+import aboutimages from './aboutimages'
 import contactheader from './contactheader'
 import collection from './collection'
 import indexnews from './indexnews'
@@ -36,6 +37,7 @@ export const schemaTypes = [
   collection,
   aboutheader,
   about,
+  aboutimages,
   contactheader,
   footer,
   blockContent,
