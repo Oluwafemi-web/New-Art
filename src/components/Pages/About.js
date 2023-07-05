@@ -30,6 +30,60 @@ export default function About() {
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
   };
+
+  async function filterGalleryOnLoad() {
+    // Wait for DOM to load completely
+    await new Promise((resolve) => {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", resolve);
+      } else {
+        resolve();
+      }
+    });
+
+    // Get all the filter buttons
+    const galleryFilter = document.querySelector(".aheto-timeline__events");
+    const filterButtons = galleryFilter.querySelectorAll("a");
+
+    // Get all the gallery items
+    const galleryItems = document.querySelectorAll(
+      ".aheto-timeline__events-content li"
+    );
+
+    // Add click event listener to each filter button
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        // Remove "selected" class from all buttons
+        filterButtons.forEach(function (btn) {
+          btn.classList.remove("selected");
+        });
+
+        // Add "selected" class to clicked button
+        this.classList.add("selected");
+
+        // Get the filter value from the button
+        const filterValue = this.getAttribute("data-date");
+
+        // Loop through all gallery items
+        galleryItems.forEach((item) => {
+          // Check if the item has the same attribute value as the filter value or if the filter value is "*"
+          if (
+            item.getAttribute("data-date") === filterValue ||
+            filterValue === "*"
+          ) {
+            // Show the item
+            item.classList.add("selected");
+          } else {
+            // Hide the item
+            item.classList.remove("selected");
+          }
+        });
+      });
+    });
+  }
+
+  setTimeout(filterGalleryOnLoad, 3000);
+  // filterGalleryOnLoad();
   useEffect(() => {
     sanityClient
       .fetch(
@@ -95,11 +149,13 @@ export default function About() {
       .then((data) => setAboutImages(data))
       .catch(console.error);
   }, []);
-  if (!aboutHeader) {
-    return sanityCtx.changeState(false);
-  } else {
-    handleSanityLoaded();
-  }
+  useEffect(() => {
+    if (!aboutHeader) {
+      return sanityCtx.changeState(false);
+    } else {
+      handleSanityLoaded();
+    }
+  });
   return (
     <>
       {aboutHeader &&
