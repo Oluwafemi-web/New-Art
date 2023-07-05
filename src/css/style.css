@@ -74,6 +74,7 @@ body {
   padding: 0;
   font-family: "DM Sans", sans-serif;
   font-size: 17px;
+  overflow-y: scroll;
 }
 
 /* LOCOMOTIVE */
@@ -1131,11 +1132,11 @@ button[type="submit"] i {
   align-items: center;
 }
 .slider .slider-texts .swiper-slide h1 {
-  font-size: 126px;
+  font-size: 100px;
   font-weight: 400;
   font-family: "Cinzel", serif;
   line-height: 1;
-  width: 52%;
+  /* width: 52%; */
   margin-bottom: 30px;
 }
 .slider .slider-texts .swiper-slide p {
@@ -1597,7 +1598,7 @@ button[type="submit"] i {
   display: block;
   margin: 0;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .image-box.is-reveal img {
   opacity: 1;
