@@ -62,7 +62,7 @@ export default function Inspiration() {
                   key={index}
                   title={item.title}
                   description={item.description}
-                  dataScroll={currentDataScroll}
+                  // dataScroll={currentDataScroll}
                 />
               );
             })}

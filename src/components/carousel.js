@@ -46,11 +46,14 @@ export default function Carousel() {
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
   };
-  if (!carouselData || carouselData.length === 0) {
-    return sanityCtx.changeState(false);
-  } else {
-    handleSanityLoaded();
-  }
+  useEffect(() => {
+    if (!carouselData || carouselData.length === 0) {
+      return sanityCtx.changeState(false);
+    } else {
+      handleSanityLoaded();
+    }
+  }, [carouselData]);
+
   return (
     <header className="slider">
       <Swiper

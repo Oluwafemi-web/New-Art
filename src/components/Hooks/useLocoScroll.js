@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function useLocoScroll(start) {
   useEffect(() => {
     if (!start) return;
-    const scrollEl = document.querySelector(".page-loaded");
+    const scrollEl = document.querySelector(".smooth-scroll.page-loaded");
     const scroll = new LocomotiveScroll({
       el: scrollEl,
       smooth: true,

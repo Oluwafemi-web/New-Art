@@ -70,8 +70,8 @@ function App() {
       {preloader ? ( // Conditionally render the Preloader
         <Preloader />
       ) : (
-        <div className="smooth-scroll page-loaded">
-          <div className="section-wrapper" data-scroll-section>
+        <div className=" smooth-scroll page-loaded">
+          <div className="section-wrapper" data-scroll>
             {navOpen && <MobileNav active={active} />}
             <NavBar
               clickeventHandler={clickeventHandler}
