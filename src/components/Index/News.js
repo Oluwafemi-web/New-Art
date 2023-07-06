@@ -27,7 +27,7 @@ export default function News(props) {
     return;
   }
   return (
-    <section className="content-section" data-scroll>
+    <section className="content-section">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12">

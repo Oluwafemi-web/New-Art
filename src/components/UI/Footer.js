@@ -26,7 +26,7 @@ export default function Footer() {
   //   return <div>...Loading</div>;
   // }
   return (
-    <footer className="footer" data-scroll>
+    <footer className="footer">
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-md-6">

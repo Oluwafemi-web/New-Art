@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useContext } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import "./css/bootstrap.min.css";
-// import "./css/fancybox.min.css";
+import "./css/fancybox.min.css";
 import "./css/odometer.min.css";
 
 import "./css/style.css";
@@ -39,6 +39,7 @@ function App() {
   }, [location.pathname]);
 
   const sanityCtx = useContext(SanityContext);
+  console.log(sanityCtx);
 
   useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
 
@@ -47,7 +48,7 @@ function App() {
       setPreloader(false);
       sanityCtx.changeState(true);
       console.log("changed");
-    }, 1000);
+    }, 3000);
 
     return () => {
       clearTimeout(timer);
@@ -71,7 +72,26 @@ function App() {
       {preloader ? ( // Conditionally render the Preloader
         <Preloader />
       ) : (
-        <Preloader />
+        <div className=" smooth-scroll page-loaded">
+          <div className="section-wrapper" data-scroll>
+            {navOpen && <MobileNav active={active} />}
+            <NavBar
+              clickeventHandler={clickeventHandler}
+              active={active}
+              setPreloader={linkEventHandler}
+            />
+            <Routes>
+              <Route path="/" element={<Home />} exact />
+              <Route path="/visit" element={<Visit />} />
+              <Route path="/exhibition" element={<Exihibitions />} />
+              <Route path="/collection" element={<Collections />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/membership" element={<Register />} />
+            </Routes>
+            <Footer />
+          </div>
+        </div>
       )}
     </>
   );

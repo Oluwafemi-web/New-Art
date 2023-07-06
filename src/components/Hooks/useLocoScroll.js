@@ -1,27 +1,21 @@
 import LocomotiveScroll from "locomotive-scroll";
-
 import { useEffect } from "react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { gsap } from "gsap";
 
-// import "locomotive-scroll/src/locomotive-scroll.scss";
+import "locomotive-scroll/src/locomotive-scroll.scss";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function useLocoScroll(start) {
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Code to execute after the specified time
       if (!start) return;
-      // const scrollEl = document.querySelector(".smooth-scroll.page-loaded");
-      const scrollEl = document.querySelector("#root");
-
+      const scrollEl = document.querySelector(".smooth-scroll.page-loaded");
       const scroll = new LocomotiveScroll({
         el: scrollEl,
         smooth: true,
-        repeat: true,
-        multiplier: 1,
-        scrollbarContainer: false,
+        multiplier: 0.5,
         class: "is-reveal",
         //   dataScrollSpeed: 0.5,
         // Add more options as needed
@@ -43,10 +37,10 @@ export default function useLocoScroll(start) {
       return () => {
         scroll.destroy();
       };
-    }, 2000); // Time in milliseconds (e.g., 3000ms = 3 seconds)
+    }, 2000);
 
     return () => {
-      clearTimeout(timer); // Clear the timeout if the component unmounts before the specified time
+      clearTimeout(timer);
     };
   }, [start]);
 }

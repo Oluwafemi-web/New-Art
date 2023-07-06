@@ -102,10 +102,12 @@ export default function Visit() {
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
   };
-  if (visitHeader && visitData && frequentData) {
-    handleSanityLoaded();
-    // Run onSanityLoaded if all three states have data
-  }
+  useEffect(() => {
+    if (visitHeader && visitData && frequentData) {
+      handleSanityLoaded();
+      // Run onSanityLoaded if all three states have data
+    }
+  }, [visitData]);
 
   return (
     <>
@@ -124,7 +126,6 @@ export default function Visit() {
             className="content-section"
             data-background="#fffbf7"
             style={{ background: `rgb(255, 251, 247) ` }}
-            data-scroll
           >
             <div className="container">
               <div className="row align-items-center">
@@ -172,7 +173,7 @@ export default function Visit() {
             </div>
             {/* end container */}
           </section>
-          <section className="content-section" data-scroll>
+          <section className="content-section">
             <div className="container">
               <div className="row">
                 <div className="col-lg-5">

@@ -28,7 +28,6 @@ export default function Inspiration() {
     <section
       className="content-section no-bottom-spacing bottom-white"
       data-background="#fffbf7"
-      data-scroll
     >
       <div className="container">
         <div className="row justify-content-center">
