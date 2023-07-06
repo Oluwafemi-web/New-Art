@@ -106,67 +106,7 @@ export default function Visit() {
     handleSanityLoaded();
     // Run onSanityLoaded if all three states have data
   }
-  // useEffect(() => {
-  //   sanityClient
-  //     .fetch(
-  //       `*[_type == "frequentlyasked"]{
-  //          question,
-  //          answer
-  //       }`
-  //     )
-  //     .then((data) => setFrequentData(data))
-  //     .catch(console.error);
-  // }, []);
-  // useEffect(() => {
-  //   sanityClient
-  //     .fetch(
-  //       `*[_type == "visit"]{
-  //          title,
-  //          description,
-  //          icon{
-  //           asset->{
-  //             _id,
-  //             url
-  //           }
-  //         },
-  //         opening,
-  //         date,
-  //         image{
-  //           asset->{
-  //             _id,
-  //             url
-  //           }
-  //         },
-  //         address,
-  //         list1,
-  //         list2,
-  //         list3,
-  //         list4,
-  //         image2{
-  //           asset->{
-  //             _id,
-  //             url
-  //           }
-  //         },
-  //         safe,
-  //         safetext,
-  //         safeimg{
-  //           asset->{
-  //             _id,
-  //             url
-  //           }
-  //         },
-  //         image3{
-  //           asset->{
-  //             _id,
-  //             url
-  //           }
-  //         }
-  //       }`
-  //     )
-  //     .then((data) => setVisitData(data[0]))
-  //     .catch(console.error);
-  // }, []);
+
   return (
     <>
       {visitHeader &&
@@ -184,6 +124,7 @@ export default function Visit() {
             className="content-section"
             data-background="#fffbf7"
             style={{ background: `rgb(255, 251, 247) ` }}
+            data-scroll
           >
             <div className="container">
               <div className="row align-items-center">
@@ -231,7 +172,7 @@ export default function Visit() {
             </div>
             {/* end container */}
           </section>
-          <section className="content-section">
+          <section className="content-section" data-scroll>
             <div className="container">
               <div className="row">
                 <div className="col-lg-5">

@@ -57,11 +57,14 @@ export default function Collections() {
       .then((data) => setCollectionData(data))
       .catch(console.error);
   }, []);
-  if (!collectionHeader || !collectionData) {
-    return sanityCtx.changeState(false);
-  } else {
-    handleSanityLoaded();
-  }
+
+  useEffect(() => {
+    if (!collectionHeader || !collectionData) {
+      return sanityCtx.changeState(false);
+    } else {
+      handleSanityLoaded();
+    }
+  }, [collectionData]);
 
   return (
     <>
@@ -93,28 +96,29 @@ export default function Collections() {
           </div>
           {/* end row */}
           <div className="row justify-content-center">
-            {collectionData.map((collectionItem, index) => {
-              // Calculate the current data-scroll value
-              let currentDataScroll = previousDataScroll;
-              if (previousDataScroll === 0.5) {
-                currentDataScroll = 1.5;
-              } else {
-                currentDataScroll -= 0.5;
-              }
+            {collectionData &&
+              collectionData.map((collectionItem, index) => {
+                // Calculate the current data-scroll value
+                let currentDataScroll = previousDataScroll;
+                if (previousDataScroll === 0.5) {
+                  currentDataScroll = 1.5;
+                } else {
+                  currentDataScroll -= 0.5;
+                }
 
-              // Update the previousDataScroll for the next iteration
-              previousDataScroll = currentDataScroll;
+                // Update the previousDataScroll for the next iteration
+                previousDataScroll = currentDataScroll;
 
-              return (
-                <Collection
-                  key={index}
-                  img={collectionItem.image.asset.url}
-                  tile={collectionItem.title}
-                  description={collectionItem.description}
-                  dataScroll={currentDataScroll}
-                />
-              );
-            })}
+                return (
+                  <Collection
+                    key={index}
+                    img={collectionItem.image.asset.url}
+                    tile={collectionItem.title}
+                    description={collectionItem.description}
+                    dataScroll={currentDataScroll}
+                  />
+                );
+              })}
           </div>
           {/* end row */}
         </div>

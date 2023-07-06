@@ -33,7 +33,7 @@ export default function Steps() {
     return <div>Loading...</div>;
   }
   return (
-    <section className="content-section no-bottom-spacing">
+    <section className="content-section no-bottom-spacing" data-scroll>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12">

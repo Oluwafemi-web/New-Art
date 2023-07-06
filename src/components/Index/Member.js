@@ -2,7 +2,7 @@ import slide from "../../videos/video.mp4";
 
 export default function Member() {
   return (
-    <section className="content-section">
+    <section className="content-section" data-scroll>
       <div className="video-bg">
         <video src={slide} loop="" autoPlay="" playsInline="" muted="" />
       </div>

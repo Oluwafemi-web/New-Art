@@ -37,7 +37,7 @@ export default function History() {
     return <div>Loading...</div>;
   }
   return (
-    <section className="content-section">
+    <section className="content-section" data-scroll>
       <div className="container">
         <div className="row g-0 align-items-center">
           <div className="col-lg-6">
@@ -54,7 +54,7 @@ export default function History() {
               <Swiper
                 modules={[Navigation, Pagination, Controller]}
                 spaceBetween={50}
-                slidesPerView={3}
+                slidesPerView={2}
                 autoplay={{
                   delay: 3000,
                   disableOnInteraction: false,
@@ -62,7 +62,7 @@ export default function History() {
                 onSwiper={setControlledSwiper}
                 autoplaydirection="vertical"
                 direction="vertical"
-                loop
+                loop={true}
                 className="art-slider-content swiper-container"
               >
                 {historyData.map((item, index) => (
@@ -93,7 +93,7 @@ export default function History() {
                 className="art-slider-image swiper-container"
               >
                 {historyData.map((item, index) => (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide key={index} className="swiper-slide-duplicate">
                     <img src={item.image.asset.url} alt="Image" />
                   </SwiperSlide>
                 ))}

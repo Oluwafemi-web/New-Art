@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useContext } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import "./css/bootstrap.min.css";
-import "./css/fancybox.min.css";
+// import "./css/fancybox.min.css";
 import "./css/odometer.min.css";
 
 import "./css/style.css";
@@ -39,13 +39,14 @@ function App() {
   }, [location.pathname]);
 
   const sanityCtx = useContext(SanityContext);
-  console.log(sanityCtx);
 
   useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setPreloader(false);
+      sanityCtx.changeState(true);
+      console.log("changed");
     }, 3000);
 
     return () => {
@@ -70,7 +71,7 @@ function App() {
       {preloader ? ( // Conditionally render the Preloader
         <Preloader />
       ) : (
-        <div className=" smooth-scroll page-loaded">
+        <div className="smooth-scroll page-loaded">
           <div className="section-wrapper" data-scroll>
             {navOpen && <MobileNav active={active} />}
             <NavBar
