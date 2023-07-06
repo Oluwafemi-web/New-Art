@@ -120,157 +120,135 @@ export default function Visit() {
             key={index}
           />
         ))}
-      {visitData && (
-        <>
-          <section
-            className="content-section"
-            data-background="#fffbf7"
-            style={{ background: `rgb(255, 251, 247) ` }}
-          >
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-lg-6">
-                  <div className="side-content left">
-                    <h2>{visitData.title}</h2>
-                    <PortableText value={visitData.description} />
-                  </div>
-                  {/* end side-content */}
-                  <div className="clearfix spacing-50" />
-                  <div className="side-icon-list">
-                    <ul>
-                      <li>
-                        <figure>
-                          {" "}
-                          <img
-                            src={visitData.icon.asset.url}
-                            alt="Image"
-                          />{" "}
-                        </figure>
-                        <div className="content">
-                          <h5>{visitData.opening}</h5>
-                          <PortableText value={visitData.date} />
-                        </div>
-                        {/* end content */}
-                      </li>
-                    </ul>
-                  </div>
-                  {/* end side-icon-list */}
+      <section
+        className="content-section"
+        data-background="#fffbf7"
+        style={{ background: `rgb(255, 251, 247) ` }}
+      >
+        <div className="container">
+          {visitData && (
+            <div className="row align-items-center">
+              <div className="col-lg-6">
+                <div className="side-content left">
+                  <h2>{visitData.title}</h2>
+                  <PortableText value={visitData.description} />
                 </div>
-                {/* end col-6 */}
-                <div className="col-lg-6">
-                  <figure
-                    className="side-image is-reveal"
-                    data-scroll
-                    data-scroll-speed={1}
-                  >
-                    {" "}
-                    <img src={visitData.image.asset.url} alt="Image" />{" "}
-                  </figure>
+                {/* end side-content */}
+                <div className="clearfix spacing-50" />
+                <div className="side-icon-list">
+                  <ul>
+                    <li>
+                      <figure>
+                        {" "}
+                        <img src={visitData.icon.asset.url} alt="Image" />{" "}
+                      </figure>
+                      <div className="content">
+                        <h5>{visitData.opening}</h5>
+                        <PortableText value={visitData.date} />
+                      </div>
+                      {/* end content */}
+                    </li>
+                  </ul>
                 </div>
-                {/* end col-6 */}
+                {/* end side-icon-list */}
               </div>
-              {/* end row */}
-            </div>
-            {/* end container */}
-          </section>
-          <section className="content-section">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-5">
-                  <div className="contact-box">
-                    <PortableText value={visitData.address} />
-                  </div>
-                  {/* end contact-box */}
-                  <Link to="/contact" className="custom-button">
-                    CONTACT US
-                  </Link>
-                  <div className="clearfix spacing-50" />
-                </div>
-                {/* end col-5 */}
-                <div className="col-lg-7">
-                  <div className="side-list">
-                    <ul>
-                      <li>{visitData.list1}</li>
-                      <li>{visitData.list2}</li>
-                      <li>{visitData.list3}</li>
-                      <li>{visitData.list4}</li>
-                    </ul>
-                  </div>
-                  {/* end side-list */}
-                </div>
-                {/* end col-7 */}
-              </div>
-              {/* end row */}
-            </div>
-            {/* end container */}
-          </section>
-          {/* end content-section */}
-          <section className="content-section no-spacing">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <figure
-                    className="image-box"
-                    data-scroll
-                    data-scroll-speed={1}
-                  >
-                    {" "}
-                    <img src={visitData.image2.asset.url} alt="Image" />{" "}
-                  </figure>
-                </div>
-                {/* end col-12 */}
-              </div>
-              {/* end row */}
-            </div>
-            {/* end container */}
-          </section>
-          {/* end content-section */}
-          <section className="content-section">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="text-box">
-                    <h2>{visitData.safe}</h2>
-                  </div>
-                  {/* end text-box */}
-                </div>
-                {/* end col-12 */}
-                <div className="col-md-2">
+              {/* end col-6 */}
+              <div className="col-lg-6">
+                <figure
+                  className="side-image is-reveal"
+                  data-scroll
+                  data-scroll-speed={1}
+                >
                   {" "}
-                  <img src={visitData.safeimg.asset.url} alt="Image" />{" "}
-                </div>
-                {/* end col-2 */}
-                <div className="col-lg-6 col-md-10">
-                  <div className="text-box">
-                    <PortableText value={visitData.safetext} />
-                  </div>
-                  {/* end text-box */}
-                </div>
-                {/* end col-6 */}
+                  <img src={visitData.image.asset.url} alt="Image" />{" "}
+                </figure>
               </div>
-              {/* end row */}
+              {/* end col-6 */}
             </div>
-            {/* end container */}
-          </section>
-          {/* end content-section */}
-          <section
-            className="content-section"
-            style={{ background: `url(${visitData.image3.asset.url})` }}
-            data-scroll
-            data-scroll-speed={1}
-          >
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="clearfix spacing-400" />
+          )}
+        </div>
+      </section>
+      <section className="content-section">
+        {visitData && (
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-5">
+                <div className="contact-box">
+                  <PortableText value={visitData.address} />
                 </div>
-                {/* end col-12 */}
+                <Link to="/contact" className="custom-button">
+                  CONTACT US
+                </Link>
+                <div className="clearfix spacing-50" />
               </div>
-              {/* end row */}
+              <div className="col-lg-7">
+                <div className="side-list">
+                  <ul>
+                    <li>{visitData.list1}</li>
+                    <li>{visitData.list2}</li>
+                    <li>{visitData.list3}</li>
+                    <li>{visitData.list4}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            {/* end container */}
-          </section>
-        </>
+          </div>
+        )}
+      </section>
+      <section className="content-section no-spacing">
+        {visitData && (
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <figure className="image-box" data-scroll data-scroll-speed={1}>
+                  <img src={visitData.image2.asset.url} alt="Image" />{" "}
+                </figure>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+      <section className="content-section">
+        {visitData && (
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <div className="text-box">
+                  <h2>{visitData.safe}</h2>
+                </div>
+              </div>
+              <div className="col-md-2">
+                {" "}
+                <img src={visitData.safeimg.asset.url} alt="Image" />{" "}
+              </div>
+              {/* end col-2 */}
+              <div className="col-lg-6 col-md-10">
+                <div className="text-box">
+                  <PortableText value={visitData.safetext} />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+      {visitData && (
+        <section
+          className="content-section"
+          style={{ background: `url(${visitData.image3.asset.url})` }}
+          data-scroll
+          data-scroll-speed={1}
+        >
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <div className="clearfix spacing-400" />
+              </div>
+              {/* end col-12 */}
+            </div>
+            {/* end row */}
+          </div>
+          {/* end container */}
+        </section>
       )}
 
       {/* end content-section */}

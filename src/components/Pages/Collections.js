@@ -124,7 +124,6 @@ export default function Collections() {
         {/* end container */}
       </section>
       {/* end content-section */}
-      <Member />
     </>
   );
 }

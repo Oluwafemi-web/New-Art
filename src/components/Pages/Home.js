@@ -26,7 +26,6 @@ export default function Home() {
       <Inspiration />
       <Steps />
       <History />
-      <Member />
       <News />
     </>
   );
