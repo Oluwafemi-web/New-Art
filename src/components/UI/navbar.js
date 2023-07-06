@@ -25,29 +25,19 @@ export default function NavBar(props) {
       <div className="site-menu">
         <ul>
           <li>
-            <Link to="/visit" onClick={props.setPreLoader}>
-              Visit
-            </Link>
+            <Link to="/visit">Visit</Link>
           </li>
           <li>
-            <Link to="/exhibition" onClick={props.setPreLoader}>
-              Exhibitions
-            </Link>
+            <Link to="/exhibition">Exhibitions</Link>
           </li>
           <li>
-            <Link to="/collection" onClick={props.setPreLoader}>
-              Collections
-            </Link>
+            <Link to="/collection">Collections</Link>
           </li>
           <li>
-            <Link to="/about" onClick={props.setPreLoader}>
-              About
-            </Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/contact" onClick={props.setPreLoader}>
-              Contact
-            </Link>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
