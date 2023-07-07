@@ -124,7 +124,7 @@ export default function Visit() {
         className="content-section"
         data-background="#fffbf7"
         style={{ background: `rgb(255, 251, 247) ` }}
-        data-section
+        data-scroll-section
       >
         <div className="container">
           {visitData && (
