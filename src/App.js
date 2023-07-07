@@ -39,14 +39,12 @@ function App() {
   }, [location.pathname]);
 
   const sanityCtx = useContext(SanityContext);
-  console.log(sanityCtx);
 
   useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setPreloader(false);
-      sanityCtx.changeState(true);
       console.log("changed");
     }, 3000);
 

@@ -107,7 +107,7 @@ export default function Visit() {
       handleSanityLoaded();
       // Run onSanityLoaded if all three states have data
     }
-  }, [visitData]);
+  }, [visitData, frequentData, visitHeader, handleSanityLoaded]);
 
   return (
     <>
