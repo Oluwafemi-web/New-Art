@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import "./css/bootstrap.min.css";
@@ -24,12 +24,11 @@ import Collections from "./components/Pages/Collections";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
 import Register from "./components/Pages/Register";
-import sanityClient from "./client";
 import useLocoScroll from "./components/Hooks/useLocoScroll";
 import SanityProvider from "./components/Context/SanityProvider";
 import SanityContext from "./components/Context/sanity-context";
 
-function App() {
+function Body() {
   const [navOpen, setNavOpen] = useState(false);
   const [preloader, setPreloader] = useState(true);
   const location = useLocation();
@@ -39,7 +38,7 @@ function App() {
   }, [location.pathname]);
 
   const sanityCtx = useContext(SanityContext);
-
+  console.log(sanityCtx);
   useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
 
   useEffect(() => {
@@ -95,13 +94,13 @@ function App() {
   );
 }
 
-function AppWithRouter() {
+function App() {
   return (
     <BrowserRouter>
       <SanityProvider>
-        <App />
+        <Body />
       </SanityProvider>
     </BrowserRouter>
   );
 }
-export default AppWithRouter;
+export default App;
