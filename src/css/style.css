@@ -918,6 +918,9 @@ button[type="submit"] i {
 }
 .navbar .site-menu {
   display: inline-block;
+  position: fixed;
+  right: 0;
+  top: 45px;
 }
 .navbar .site-menu ul {
   width: 100%;
@@ -926,10 +929,12 @@ button[type="submit"] i {
   padding: 0;
 }
 .navbar .site-menu ul li {
-  display: inline-block;
+  display: inline-flex;
   margin: 0 15px;
   padding: 0;
   list-style: none;
+  flex-direction: column;
+  align-items: center;
 }
 .navbar .site-menu ul li a {
   display: inline-block;
@@ -4240,4 +4245,15 @@ button[type="submit"] i {
 }
 .aheto-timeline__navigation a.inactive {
   cursor: not-allowed;
+}
+.navbar .site-menu ul .collection-sub {
+  display: none;
+  flex-direction: column;
+}
+.navbar .site-menu ul li.collection-parent:hover .collection-sub,
+.collection-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
 }

@@ -29,8 +29,21 @@ export default function NavBar(props) {
           <li>
             <Link to="/exhibition">Exhibitions</Link>
           </li>
-          <li>
-            <Link to="/collection">Collections</Link>
+          <li className="collection-parent">
+            <Link to="#" className="collection-drop">
+              Collections
+            </Link>
+            <ul className="collection-sub">
+              <li>
+                <Link to="/collection2023">2023 - 2019</Link>
+              </li>
+              <li>
+                <Link to="/collection2018">2018 - 2014</Link>
+              </li>
+              <li>
+                <Link to="/collection2013">2013 - 2009</Link>
+              </li>
+            </ul>
           </li>
           <li>
             <Link to="/about">About</Link>

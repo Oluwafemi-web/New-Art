@@ -27,6 +27,9 @@ import Register from "./components/Pages/Register";
 import useLocoScroll from "./components/Hooks/useLocoScroll";
 import SanityProvider from "./components/Context/SanityProvider";
 import SanityContext from "./components/Context/sanity-context";
+import Collections2023 from "./components/Pages/Collection2023";
+import Collections2018 from "./components/Pages/Colletion2018";
+import Collections2013 from "./components/Pages/Collection2013";
 
 function Body() {
   const [navOpen, setNavOpen] = useState(false);
@@ -38,8 +41,8 @@ function Body() {
   }, [location.pathname]);
 
   const sanityCtx = useContext(SanityContext);
-  console.log(sanityCtx);
-  useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
+
+  // useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -82,6 +85,9 @@ function Body() {
               <Route path="/visit" element={<Visit />} />
               <Route path="/exhibition" element={<Exihibitions />} />
               <Route path="/collection" element={<Collections />} />
+              <Route path="/collection2023" element={<Collections2023 />} />
+              <Route path="/collection2018" element={<Collections2018 />} />
+              <Route path="/collection2013" element={<Collections2013 />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/membership" element={<Register />} />
