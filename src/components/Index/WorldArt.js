@@ -48,7 +48,7 @@ export default function WorldArt() {
           {/* end col-12 */}
           <div className="col-lg-7">
             <figure
-              className="image-box is-inview"
+              className="image-box is-reveal"
               data-scroll=""
               data-scroll-speed={-1}
             >

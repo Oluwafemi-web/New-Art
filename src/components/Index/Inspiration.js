@@ -85,7 +85,7 @@ export default function Inspiration() {
               <div className="row">
                 <div className="col-md-3">
                   <figure
-                    className="image-box"
+                    className="image-box is-reveal"
                     data-scroll=""
                     data-scroll-speed={0}
                   >
@@ -95,7 +95,7 @@ export default function Inspiration() {
                 {/* end col-3 */}
                 <div className="col-md-4 offset-md-1">
                   <figure
-                    className="image-box"
+                    className="image-box is-reveal"
                     data-scroll=""
                     data-scroll-speed={0}
                   >
@@ -105,7 +105,7 @@ export default function Inspiration() {
                 {/* end col-3 */}
                 <div className="col-md-2 offset-md-1">
                   <figure
-                    className="image-box"
+                    className="image-box is-reveal"
                     data-scroll=""
                     data-scroll-speed={0}
                   >

@@ -74,7 +74,12 @@ body {
   padding: 0;
   font-family: "DM Sans", sans-serif;
   font-size: 17px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 /* LOCOMOTIVE */

@@ -14,7 +14,7 @@ export default function NewsItems(props) {
           </a>
         </div>
         {/* end content-box */}
-        <figure data-scroll>
+        <figure data-scroll className="is-reveal">
           <img src={props.img} alt="Image" />
         </figure>
       </div>
