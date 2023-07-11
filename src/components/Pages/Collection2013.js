@@ -12,7 +12,6 @@ import sanityClient from "../../client";
 // import UI components
 import Header from "../UI/Header";
 import Collection from "../UI/Collection";
-import Member from "../Index/Member";
 
 export default function Collections2013() {
   let previousDataScroll = 1.5; // Initial value for the first component
@@ -43,7 +42,7 @@ export default function Collections2013() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collection"]{
+        `*[_type == "collection13"]{
            title,
            description,
            image{
