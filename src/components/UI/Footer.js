@@ -82,9 +82,7 @@ export default function Footer() {
       {/* end container */}
       <div className="footer-bottom">
         <div className="container">
-          <span className="copyright">
-            © 2023 Wandau | Art &amp; History Museum
-          </span>
+          <span className="copyright">© 2023 graziazuccolotto</span>
           <span className="creation">
             Website by <a href="#">iGerald</a>
           </span>
