@@ -201,7 +201,11 @@ export default function Visit() {
           <div className="container">
             <div className="row">
               <div className="col-12">
-                <figure className="image-box" data-scroll data-scroll-speed={1}>
+                <figure
+                  className="image-box is-reveal"
+                  data-scroll
+                  data-scroll-speed={1}
+                >
                   <img src={visitData.image2.asset.url} alt="Image" />{" "}
                 </figure>
               </div>
