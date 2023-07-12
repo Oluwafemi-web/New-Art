@@ -64,6 +64,10 @@ export default function Carousel() {
         direction="vertical"
         controller={{ control: controlledSwiper }}
         loop
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         allowTouchMove={false}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
@@ -87,6 +91,10 @@ export default function Carousel() {
         slidesPerView={1}
         onSwiper={setControlledSwiper}
         loop
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         allowTouchMove={false}
         className="slider-texts swiper-container"
       >
