@@ -37,7 +37,7 @@ export const schemaTypes = [
   visit,
   frequentlyasked,
   collectionheader,
-  collection,
+  // collection,
   collection2023,
   collection2018,
   collection2013,
