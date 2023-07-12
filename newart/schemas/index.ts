@@ -1,5 +1,5 @@
 import blockContent from './blockContent'
-
+import navbar from './navbar'
 import carousel from './carousel'
 import history from './history'
 import steps from './steps'
@@ -13,7 +13,6 @@ import aboutheader from './aboutheader'
 import about from './about'
 import aboutimages from './aboutimages'
 import contactheader from './contactheader'
-import collection from './collection'
 import collection2023 from './collection2023'
 import collection2018 from './collection2018'
 import collection2013 from './collection2013'
@@ -24,6 +23,7 @@ import frequentlyasked from './frequentlyasked'
 import footer from './footer'
 
 export const schemaTypes = [
+  navbar,
   carousel,
   worldart,
   upcoming,
@@ -37,7 +37,6 @@ export const schemaTypes = [
   visit,
   frequentlyasked,
   collectionheader,
-  // collection,
   collection2023,
   collection2018,
   collection2013,
