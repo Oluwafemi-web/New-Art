@@ -119,11 +119,8 @@ export default function Collections() {
                 );
               })}
           </div>
-          {/* end row */}
         </div>
-        {/* end container */}
       </section>
-      {/* end content-section */}
     </>
   );
 }

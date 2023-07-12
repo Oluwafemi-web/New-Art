@@ -1,13 +1,14 @@
-import "../../css/style.css";
+import { useInView } from "react-intersection-observer";
 import { PortableText } from "@portabletext/react";
 
 export default function Event(props) {
+  const { ref: myRef, inView: isVisible } = useInView();
   return (
     <div className="col-lg-4 col-md-6">
       <div
-        className="exhibition-box is-reveal"
+        ref={myRef}
+        className={`exhibition-box ${isVisible ? "is-reveal" : ""}`}
         data-scroll
-        data-scroll-speed={props.dataScroll}
       >
         <figure>
           <a href="#">
@@ -19,7 +20,6 @@ export default function Event(props) {
             </figure>
             <span>{props.promo}</span>
           </div>
-          {/* end info */}
         </figure>
         <div className="content-box">
           <h4>
@@ -27,9 +27,7 @@ export default function Event(props) {
           </h4>
           <PortableText value={props.date} />
         </div>
-        {/* end content-box */}
       </div>
-      {/* end exhibition-box */}
     </div>
   );
 }

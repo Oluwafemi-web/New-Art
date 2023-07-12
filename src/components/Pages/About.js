@@ -6,14 +6,7 @@ import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
 
 import "../../css/style.css";
-// import "../../css/style2.css";
-// import "../../css/cs_layout1.css";
-// import "../../css/cs_layout2.css";
-// import "../../css/cs_skin-8.css";
 
-// import "../../css/general.css";
-// import "../../css/frontend.css";
-// import "../../css/post18.css";
 
 import sanityClient from "../../client";
 

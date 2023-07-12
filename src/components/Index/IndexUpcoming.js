@@ -30,8 +30,6 @@ export default function IndexUpcoming() {
       .catch(console.error);
   }, []);
 
-  let previousDataScroll = 1; // Initial value for the first component
-
   return (
     <section className="content-section">
       <div className="container">
@@ -44,33 +42,30 @@ export default function IndexUpcoming() {
               <h6>DON’T MISS THE OPPORTUNITY</h6>
               <h2>Upcoming Events</h2>
             </div>
-            {/* end section-title */}
           </div>
-          {/* end col-9 */}
           <div className="col-lg-3">
             <a href="#" className="circle-button">
               BOOK AN <br />
               EVENT
             </a>
           </div>
-          {/* end col-3 */}
         </div>
-        {/* end row */}
+
         <div className="row justify-content-center">
           {upcomingData &&
             upcomingData.map((item, index) => {
               // Calculate the current data-scroll value
-              let currentDataScroll = previousDataScroll;
-              if (previousDataScroll === 1) {
-                currentDataScroll = -0.5;
-              } else if (previousDataScroll === -0.5) {
-                currentDataScroll = -1;
-              } else {
-                currentDataScroll = 1; // Reset the pattern
-              }
+              // let currentDataScroll = previousDataScroll;
+              // if (previousDataScroll === 1) {
+              //   currentDataScroll = -0.5;
+              // } else if (previousDataScroll === -0.5) {
+              //   currentDataScroll = -1;
+              // } else {
+              //   currentDataScroll = 1; // Reset the pattern
+              // }
 
-              // Update the previousDataScroll for the next iteration
-              previousDataScroll = currentDataScroll;
+              // // Update the previousDataScroll for the next iteration
+              // previousDataScroll = currentDataScroll;
 
               return (
                 <Event
@@ -80,7 +75,6 @@ export default function IndexUpcoming() {
                   promo={item.promo}
                   title={item.title}
                   date={item.date}
-                  dataScroll={currentDataScroll}
                 />
               );
             })}
@@ -89,12 +83,8 @@ export default function IndexUpcoming() {
               VIEW ALL UPCOMING EVENTS
             </a>
           </div>
-
-          {/* end col-12 */}
         </div>
-        {/* end row */}
       </div>
-      {/* end container */}
     </section>
   );
 }

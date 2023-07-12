@@ -88,11 +88,8 @@ export default function Collections2013() {
                   most important
                 </h2>
               </div>
-              {/* end section-title */}
             </div>
-            {/* end col-12 */}
           </div>
-          {/* end row */}
           <div className="row justify-content-center">
             {collectionData &&
               collectionData.map((collectionItem, index) => {
@@ -113,16 +110,12 @@ export default function Collections2013() {
                     img={collectionItem.image.asset.url}
                     tile={collectionItem.title}
                     description={collectionItem.description}
-                    dataScroll={currentDataScroll}
                   />
                 );
               })}
           </div>
-          {/* end row */}
         </div>
-        {/* end container */}
       </section>
-      {/* end content-section */}
     </>
   );
 }

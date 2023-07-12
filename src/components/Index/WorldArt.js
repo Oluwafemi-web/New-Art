@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-
+import { useInView } from "react-intersection-observer";
 import logo from "../../images/title-shape.png";
-
 import image1 from "../../images/side-imag01.jpg";
 import WorldArtItem from "./WorldArtItem";
 import sanityClient from "../../client";
 
 export default function WorldArt() {
   const [WorldArtData, setWorldArtData] = useState(null);
+  const { ref: myRef, inView: isVisible } = useInView();
   useEffect(() => {
     sanityClient
       .fetch(
@@ -43,19 +43,17 @@ export default function WorldArt() {
                 museum of art
               </h2>
             </div>
-            {/* end section-title */}
           </div>
-          {/* end col-12 */}
           <div className="col-lg-7">
             <figure
-              className="image-box is-reveal"
+              ref={myRef}
+              className={`image-box ${isVisible ? "is-reveal" : ""}`}
               data-scroll=""
               data-scroll-speed={-1}
             >
               <img src={image1} alt="Image" />
             </figure>
           </div>
-          {/* end col-7 */}
           <div className="col-lg-5">
             <div className="side-icon-list right-side">
               <ul>
@@ -70,13 +68,9 @@ export default function WorldArt() {
                   ))}
               </ul>
             </div>
-            {/* end side-icon-list */}
           </div>
-          {/* end col-5 */}
         </div>
-        {/* end row */}
       </div>
-      {/* end container */}
     </section>
   );
 }
