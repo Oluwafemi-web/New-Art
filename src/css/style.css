@@ -2175,6 +2175,7 @@ button[type="submit"] i {
   position: relative;
   overflow: hidden;
 }
+
 .exhibition-box figure * {
   -webkit-transition: 0.25s ease-in-out;
   -moz-transition: 0.25s ease-in-out;
