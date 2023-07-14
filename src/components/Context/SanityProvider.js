@@ -1,4 +1,3 @@
-import data from "../../data";
 import SanityContext from "./sanity-context";
 import { useState } from "react";
 const SanityProvider = (props) => {

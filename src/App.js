@@ -24,7 +24,6 @@ import Collections from "./components/Pages/Collections";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
 import Register from "./components/Pages/Register";
-import useLocoScroll from "./components/Hooks/useLocoScroll";
 import SanityProvider from "./components/Context/SanityProvider";
 import SanityContext from "./components/Context/sanity-context";
 import Collections2023 from "./components/Pages/Collection2023";
@@ -41,8 +40,6 @@ function Body() {
   }, [location.pathname]);
 
   const sanityCtx = useContext(SanityContext);
-
-  // useLocoScroll(sanityCtx.dataLoaded); // Call the useLocoScroll hook with isSanityLoaded as the argument
 
   useEffect(() => {
     const timer = setTimeout(() => {
