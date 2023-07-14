@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "../../images/title-shape.png";
+import { PortableText } from "@portabletext/react";
 import image1 from "../../images/image01.jpg";
 import image2 from "../../images/image02.jpg";
 import image3 from "../../images/image03.jpg";
 import InspirationItems from "./InspirationItems";
 import sanityClient from "../../client";
 
-export default function Inspiration() {
+export default function Inspiration(props) {
   const [inspirationData, setInspirationData] = useState(null);
   useEffect(() => {
     sanityClient
@@ -34,16 +34,11 @@ export default function Inspiration() {
           <div className="col-12">
             <div className="section-title text-center">
               <figure>
-                <img src={logo} alt="Image" />
+                <img src={props.logo} alt="Image" />
               </figure>
-              <h2>
-                Art Inspiration of <br />
-                19th Century
-              </h2>
+              <PortableText value={props.heading} />
             </div>
-            {/* end section-title */}
           </div>
-          {/* end col-12 */}
           {inspirationData &&
             inspirationData.map((item, index) => {
               let currentDataScroll = previousDataScroll;
@@ -66,12 +61,8 @@ export default function Inspiration() {
                 />
               );
             })}
-
-          {/* end col-4 */}
         </div>
-        {/* end row */}
       </div>
-      {/* end container */}
       <div className="clearfix spacing-100" />
       <div className="horizontal-scroll">
         <div
@@ -92,7 +83,6 @@ export default function Inspiration() {
                     <img src={image1} alt="Image" />
                   </figure>
                 </div>
-                {/* end col-3 */}
                 <div className="col-md-4 offset-md-1">
                   <figure
                     className="image-box is-reveal"
@@ -102,7 +92,6 @@ export default function Inspiration() {
                     <img src={image2} alt="Image" />
                   </figure>
                 </div>
-                {/* end col-3 */}
                 <div className="col-md-2 offset-md-1">
                   <figure
                     className="image-box is-reveal"
@@ -112,11 +101,8 @@ export default function Inspiration() {
                     <img src={image3} alt="Image" />
                   </figure>
                 </div>
-                {/* end col-3 */}
               </div>
-              {/* end row */}
             </div>
-            {/* end container-fluid */}
           </div>
           {/* end scroll-wrapper */}
           <div className="scroll-wrapper">

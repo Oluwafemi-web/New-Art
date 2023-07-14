@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { PortableText } from "@portabletext/react";
 import logo from "../../images/title-shape.png";
 import image1 from "../../images/side-imag01.jpg";
 import WorldArtItem from "./WorldArtItem";
 import sanityClient from "../../client";
 
-export default function WorldArt() {
+export default function WorldArt(props) {
   const [WorldArtData, setWorldArtData] = useState(null);
   const { ref: myRef, inView: isVisible } = useInView();
   useEffect(() => {
@@ -36,12 +37,9 @@ export default function WorldArt() {
           <div className="col-12">
             <div className="section-title text-center">
               <figure>
-                <img src={logo} alt="Image" />
+                <img src={props.logo} alt="Image" />
               </figure>
-              <h2>
-                The world's leading <br />
-                museum of art
-              </h2>
+              <PortableText value={props.heading} />
             </div>
           </div>
           <div className="col-lg-7">

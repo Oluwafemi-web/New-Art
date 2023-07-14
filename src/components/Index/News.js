@@ -33,18 +33,14 @@ export default function News(props) {
           <div className="col-12">
             <div className="section-title text-center">
               <figure>
-                <img src={logo} alt="Image" />
+                <img src={props.logo} alt="Image" />
               </figure>
-              <h6>Get Latest Updates and News</h6>
-              <h2>Recent News</h2>
+              <h6>{props.subheading}</h6>
+              <h2>{props.heading}</h2>
             </div>
-            {/* end section-title */}
           </div>
-          {/* end col-12 */}
         </div>
-        {/* end row */}
       </div>
-      {/* end container */}
       <div className="container">
         <div className="row">
           {newsData &&
@@ -64,11 +60,8 @@ export default function News(props) {
               NEWS
             </a>
           </div>
-          {/* end col-12 */}
         </div>
-        {/* end row */}
       </div>
-      {/* end container */}
     </section>
   );
 }

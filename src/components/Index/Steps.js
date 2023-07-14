@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 
 import sanityClient from "../../client";
-export default function Steps() {
+export default function Steps(props) {
   const [stepsData, setStepsData] = useState(null);
   useEffect(() => {
     sanityClient
@@ -39,18 +39,14 @@ export default function Steps() {
           <div className="col-12">
             <div className="section-title text-center">
               <figure>
-                <img src={logo} alt="Image" />
+                <img src={props.logo} alt="Image" />
               </figure>
-              <h6>Visit the National Wandau Museum</h6>
-              <h2>3 steps to be safe</h2>
+              <h6>{props.subheading}</h6>
+              <h2>{props.heading}</h2>
             </div>
-            {/* end section-title */}
           </div>
-          {/* end col-12 */}
         </div>
-        {/* end row */}
       </div>
-      {/* end container */}
       <div className="container-fluid px-0">
         <div className="row g-0">
           {stepsData.map((item, index) => (
@@ -76,18 +72,12 @@ export default function Steps() {
                       Learn More
                     </a>
                   </div>
-                  {/* end expand */}
                 </div>
-                {/* end content-box */}
               </div>
-              {/* end image-icon-box */}
             </div>
           ))}
-          {/* end col-4 */}
         </div>
-        {/* end row */}
       </div>
-      {/* end container */}
     </section>
   );
 }

@@ -21,6 +21,7 @@ import inspiration from './inspiration'
 import visit from './visit'
 import frequentlyasked from './frequentlyasked'
 import footer from './footer'
+import indexheadings from './indexheadings'
 
 export const schemaTypes = [
   navbar,
@@ -30,6 +31,7 @@ export const schemaTypes = [
   inspiration,
   steps,
   history,
+  indexheadings,
   indexnews,
   exhibitionheader,
   exhibition,

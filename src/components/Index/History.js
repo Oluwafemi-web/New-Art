@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { PortableText } from "@portabletext/react";
 import "swiper/css";
-// import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SwiperCore, {
   Navigation,
@@ -13,7 +13,7 @@ import sanityClient from "../../client";
 
 SwiperCore.use([Navigation, Pagination, Controller, Autoplay]);
 
-export default function History() {
+export default function History(props) {
   const [controlledSwiper, setControlledSwiper] = useState(null);
   const [historyData, setHistoryData] = useState(null);
   useEffect(() => {
@@ -43,11 +43,8 @@ export default function History() {
           <div className="col-lg-6">
             <div className="art-slider">
               <div className="titles">
-                <h6>Art Collection</h6>
-                <h2>
-                  History of <br />
-                  Barnes
-                </h2>
+                <h6>{props.subheading}</h6>
+                <PortableText value={props.heading} />
               </div>
               {/* end titles */}
 
