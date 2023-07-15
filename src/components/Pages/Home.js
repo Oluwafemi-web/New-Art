@@ -52,10 +52,10 @@ export default function Home() {
           heading={headingData.uptitle}
           subheading={headingData.updescription}
         />
-        <Inspiration
+        {/* <Inspiration
           logo={headingData.logo.asset.url}
           heading={headingData.artinspiration}
-        />
+        /> */}
         <Steps
           logo={headingData.logo.asset.url}
           heading={headingData.stepstitle}
@@ -65,11 +65,11 @@ export default function Home() {
           heading={headingData.historytitle}
           subheading={headingData.historydescription}
         />
-        <News
+        {/* <News
           logo={headingData.logo.asset.url}
           heading={headingData.newstitle}
           subheading={headingData.newsdescription}
-        />
+        /> */}
       </>
     )
   );

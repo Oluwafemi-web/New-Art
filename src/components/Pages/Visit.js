@@ -139,10 +139,10 @@ export default function Visit() {
                 <div className="side-icon-list">
                   <ul>
                     <li>
-                      <figure>
+                      {/* <figure>
                         {" "}
                         <img src={visitData.icon.asset.url} alt="Image" />{" "}
-                      </figure>
+                      </figure> */}
                       <div className="content">
                         <h5>{visitData.opening}</h5>
                         <PortableText value={visitData.date} />

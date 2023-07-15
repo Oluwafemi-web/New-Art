@@ -923,8 +923,8 @@ button[type="submit"] i {
 }
 .navbar .site-menu {
   display: inline-block;
-  /* position: fixed; */
-  right: 10%;
+  position: fixed;
+  right: 5%;
   top: 45px;
 }
 .navbar .site-menu ul {
@@ -3155,7 +3155,7 @@ button[type="submit"] i {
   height: 2px;
   background: #080808;
   position: absolute;
-  left: 0;
+  left: 40%;
   bottom: 0;
 }
 .footer .social-media {

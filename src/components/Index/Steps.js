@@ -56,9 +56,6 @@ export default function Steps(props) {
                 data-scroll=""
                 data-scroll-speed={-1}
               >
-                <figure className="icon">
-                  <img src={item.icon.asset.url} alt="Image" />
-                </figure>
                 <figure className="content-image">
                   <img src={item.image.asset.url} alt="Image" />
                 </figure>

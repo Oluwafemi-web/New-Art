@@ -65,11 +65,11 @@ export default function IndexUpcoming(props) {
                 />
               );
             })}
-          <div className="col-12 text-center">
+          {/* <div className="col-12 text-center">
             <a href="#" className="custom-button">
               VIEW ALL UPCOMING EVENTS
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

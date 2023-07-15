@@ -27,9 +27,9 @@ export default function Footer() {
   // }
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="container" style={{ textAlign: "center" }}>
         <div className="row">
-          <div className="col-lg-4 col-md-6">
+          {/* <div className="col-lg-4 col-md-6">
             <h6 className="widget-title">About Museum</h6>
             <ul className="footer-menu">
               <li>
@@ -45,9 +45,9 @@ export default function Footer() {
                 <a href="#">International work</a>
               </li>
             </ul>
-          </div>
+          </div> */}
           {/* end col-4 */}
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-6 col-md-6">
             <h6 className="widget-title">Connect Us</h6>
             <ul className="social-media">
               <li>
@@ -68,7 +68,7 @@ export default function Footer() {
             </ul>
           </div>
           {/* end col-4 */}
-          <div className="col-lg-4">
+          <div className="col-lg-6 col-md-6">
             <h6 className="widget-title">Visit Us Now</h6>
             <address className="address">
               Cromwell Road New Town SW7 <strong>London - England</strong>
