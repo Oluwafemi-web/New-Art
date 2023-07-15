@@ -222,12 +222,8 @@ export default function Visit() {
                   <h2>{visitData.safe}</h2>
                 </div>
               </div>
-              <div className="col-md-2">
-                {" "}
-                <img src={visitData.safeimg.asset.url} alt="Image" />{" "}
-              </div>
               {/* end col-2 */}
-              <div className="col-lg-6 col-md-10">
+              <div className="col-lg-12 col-md-12">
                 <div className="text-box">
                   <PortableText value={visitData.safetext} />
                 </div>
