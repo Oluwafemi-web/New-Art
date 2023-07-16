@@ -52,10 +52,12 @@ export function AboutMission(props) {
         {/* </div> */}
       </div>
       <div className="container mission pd-90 flex-column-min">
-        <h2>{props.vision}</h2>
-        <PortableText value={props.description2} />
         <div className="col-sm-12">
           <img src={props.image2} className="fl-right wd-50" />
+          <div className="text">
+            <h2>{props.vision}</h2>
+            <PortableText value={props.description2} />
+          </div>
         </div>
       </div>
       <div className="container mission pd-90 flex-reverse">
