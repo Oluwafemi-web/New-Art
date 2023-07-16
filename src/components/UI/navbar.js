@@ -26,13 +26,13 @@ export default function NavBar(props) {
   }, []);
   return (
     navData && (
-      <nav className="navbar">
-        <div className="logo">
+      <nav className="navbar col-12">
+        <div className="logo col-3">
           <Link to="/">
             <img src={navData.logo.asset.url} alt="Image" />
           </Link>
         </div>
-        <div className="custom-menu">
+        <div className="custom-menu col-3">
           <ul>
             <li>
               <Link to="#">EN</Link>

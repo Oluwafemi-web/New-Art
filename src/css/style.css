@@ -870,6 +870,7 @@ button[type="submit"] i {
 .navbar .custom-menu {
   display: inline-block;
   margin: 0 auto;
+  font-weight: 600;
 }
 .navbar .custom-menu ul {
   width: 100%;
@@ -925,7 +926,7 @@ button[type="submit"] i {
   display: inline-block;
   position: fixed;
   right: 5%;
-  top: 45px;
+  top: 46px;
 }
 .navbar .site-menu ul {
   width: 100%;
@@ -943,6 +944,7 @@ button[type="submit"] i {
 }
 .navbar .site-menu ul li a {
   display: inline-block;
+  font-weight: 600;
   position: relative;
 }
 .navbar .site-menu ul li a:hover {
