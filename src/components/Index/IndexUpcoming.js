@@ -10,13 +10,6 @@ export default function IndexUpcoming(props) {
         `*[_type == "upcoming"]{
            title,
            date,
-           promo,
-           icon{
-             asset->{
-               _id,
-               url
-             }
-           },
            image{
             asset->{
               _id,
@@ -50,9 +43,7 @@ export default function IndexUpcoming(props) {
               return (
                 <Event
                   key={index}
-                  icon={item.icon.asset.url}
                   img={item.image.asset.url}
-                  promo={item.promo}
                   title={item.title}
                   date={item.date}
                 />

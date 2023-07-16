@@ -1,5 +1,7 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
+import sanityClient from "../../client";
 
 export function AboutHover(props) {
   return (
@@ -19,10 +21,7 @@ export function AboutHover(props) {
                     <img src={item.image.asset.url} />
                   </div>
                   <div className="about-inner-content">
-                    <a
-                      href="https://mooseoom.foxthemes.me/portfolio-category/mission-and-history/"
-                      rel="tag"
-                    >
+                    <a href="#" rel="tag">
                       {item.title}
                       <PortableText value={item.description} />
                     </a>
@@ -74,6 +73,25 @@ export function AboutMission(props) {
 }
 
 export function AboutSlider(props) {
+  const [aboutSlider, setAboutSlider] = useState(null);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "aboutslider"]{
+           title,
+           year,
+           description,
+           image{
+            asset->{
+              _id,
+              url
+            }
+          }
+        }`
+      )
+      .then((data) => setAboutSlider(data))
+      .catch(console.error);
+  }, []);
   return (
     <>
       <div className="container">
@@ -82,7 +100,21 @@ export function AboutSlider(props) {
           <div id="year" className="aheto-timeline__events-wrapper">
             <div className="aheto-timeline__events" style={{ width: 1760 }}>
               <ol>
-                <li>
+                {aboutSlider &&
+                  aboutSlider.map((item, index) => (
+                    <li>
+                      <a
+                        key={index}
+                        href="#0"
+                        className="selected"
+                        data-date={item.year}
+                        style={{ left: 110 + index * 150 }}
+                      >
+                        <h5>{item.year}</h5>
+                      </a>
+                    </li>
+                  ))}
+                {/* <li>
                   <a
                     href="#0"
                     className="selected"
@@ -126,7 +158,7 @@ export function AboutSlider(props) {
                   <a href="#0" data-date={2019} style={{ left: 1650 }}>
                     <h5>2019</h5>
                   </a>
-                </li>
+                </li> */}
               </ol>
               <span
                 className="aheto-timeline__filling-line"

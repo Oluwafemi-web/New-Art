@@ -17,19 +17,6 @@ export default defineType({
       of: [{type: 'block'}],
     }),
     defineField({
-      name: 'promo',
-      title: 'Promo',
-      type: 'string',
-    }),
-    defineField({
-      name: 'icon',
-      title: 'Info Icon',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',

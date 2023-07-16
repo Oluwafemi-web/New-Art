@@ -9,7 +9,7 @@ export default function Event(props) {
     threshold: thresholdValue ? thresholdValue : 0.2, // Adjust the threshold value as per your requirement
   });
 
-  const delay = props.index + (props.dataScroll * 3);
+  const delay = props.index + props.dataScroll * 3;
 
   return (
     <div className="col-lg-4 col-md-6">
@@ -17,18 +17,12 @@ export default function Event(props) {
         ref={myRef}
         className={`exhibition-box ${isVisible ? "is-reveal" : ""}`}
         data-scroll
-        style={{ animationDelay: `${delay ? delay: 0}s` }} // Add animation delay based on the index
+        style={{ animationDelay: `${delay ? delay : 0}s` }} // Add animation delay based on the index
       >
         <figure>
           <a href="#">
             <img src={props.img} alt="" className="img" />
           </a>
-          <div className="info">
-            <figure className="i">
-              <img src={props.icon} alt="" />
-            </figure>
-            <span>{props.promo}</span>
-          </div>
         </figure>
         <div className="content-box">
           <h4>

@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'exhibition',
-  title: 'Exhibition',
+  name: 'aboutslider',
+  title: 'About Slider',
   type: 'document',
   fields: [
     defineField({
@@ -11,12 +11,16 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'date',
-      title: 'Date',
+      name: 'year',
+      title: 'Year',
+      type: 'string',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
       type: 'array',
       of: [{type: 'block'}],
     }),
-
     defineField({
       name: 'image',
       title: 'Image',
