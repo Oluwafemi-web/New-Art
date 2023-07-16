@@ -102,13 +102,12 @@ export function AboutSlider(props) {
               <ol>
                 {aboutSlider &&
                   aboutSlider.map((item, index) => (
-                    <li>
+                    <li key={index}>
                       <a
-                        key={index}
                         href="#0"
-                        className="selected"
+                        className=""
                         data-date={item.year}
-                        style={{ left: 110 + index * 150 }}
+                        style={{ left: 110 + index * 200 }}
                       >
                         <h5>{item.year}</h5>
                       </a>
@@ -193,7 +192,38 @@ export function AboutSlider(props) {
 
         <div className="aheto-timeline__events-content">
           <ol>
-            <li className="selected" data-date={1991}>
+            {aboutSlider &&
+              aboutSlider.map((item, index) => (
+                <li data-date={item.year} key={index}>
+                  <div className="aheto-timeline__wrap">
+                    <div className="aheto-timeline__image-wrap">
+                      <img
+                        className="aheto-timeline-slider__add-image"
+                        alt="image"
+                        src={item.image.asset.url}
+                      />
+                    </div>
+                    <div className="aheto-timeline__content">
+                      <h5 className="aheto-timeline__title">{item.title}</h5>
+                      <PortableText
+                        className="aheto-timeline__desc"
+                        value={item.description}
+                      />
+                      {/* <div className="aheto-timeline-slider__links">
+                        <a
+                          href="https://mooseoom.foxthemes.me/about-us/"
+                          className="aheto-link aheto-btn--dark aheto-btn--no-underline"
+                          target="_self"
+                          aria-label="Learn more"
+                        >
+                          Learn more
+                        </a>{" "}
+                      </div> */}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            {/* <li className="selected" data-date={1991}>
               <div className="aheto-timeline__wrap">
                 <div className="aheto-timeline__image-wrap">
                   <img
@@ -440,7 +470,7 @@ export function AboutSlider(props) {
                   </div>
                 </div>
               </div>
-            </li>
+            </li> */}
           </ol>
         </div>
       </div>
