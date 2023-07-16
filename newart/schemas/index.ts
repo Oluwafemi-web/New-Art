@@ -21,12 +21,14 @@ import inspiration from './inspiration'
 import visit from './visit'
 import frequentlyasked from './frequentlyasked'
 import footer from './footer'
+import worldartimage from './worldartimage'
 import indexheadings from './indexheadings'
 
 export const schemaTypes = [
   navbar,
   carousel,
   worldart,
+  worldartimage,
   upcoming,
   inspiration,
   steps,

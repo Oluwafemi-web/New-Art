@@ -27,7 +27,7 @@ export default function NavBar(props) {
   return (
     navData && (
       <nav className="navbar col-12">
-        <div className="logo col-3">
+        <div className="logo col-6">
           <Link to="/">
             <img src={navData.logo.asset.url} alt="Image" />
           </Link>
@@ -73,6 +73,13 @@ export default function NavBar(props) {
               <Link to="/contact">{navData.link5}</Link>
             </li>
           </ul>
+        </div>
+        <div className="hamburger-menu" onClick={props.clickeventHandler}>
+          <svg className="hamburger" width={30} height={30} viewBox="0 0 30 30">
+            <path className="line line-top" d="M0,9h30" />
+            <path className="line line-center" d="M0,15h30" />
+            <path className="line line-bottom" d="M0,21h30" />
+          </svg>
         </div>
       </nav>
     )

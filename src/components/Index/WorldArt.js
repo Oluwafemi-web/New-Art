@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { PortableText } from "@portabletext/react";
-import logo from "../../images/title-shape.png";
-import image1 from "../../images/side-imag01.jpg";
 import WorldArtItem from "./WorldArtItem";
 import sanityClient from "../../client";
 
 export default function WorldArt(props) {
   const [WorldArtData, setWorldArtData] = useState(null);
+  const [WorldArtImage, setWorldArtImage] = useState(null);
   const { ref: myRef, inView: isVisible } = useInView();
   useEffect(() => {
     sanityClient
@@ -24,6 +23,20 @@ export default function WorldArt(props) {
         }`
       )
       .then((data) => setWorldArtData(data))
+      .catch(console.error);
+
+    sanityClient
+      .fetch(
+        `*[_type == "worldartimage"]{
+           image{
+             asset->{
+               _id,
+               url
+             }
+           }
+        }`
+      )
+      .then((data) => setWorldArtImage(data[0]))
       .catch(console.error);
   }, []);
   return (
@@ -49,7 +62,9 @@ export default function WorldArt(props) {
               data-scroll=""
               data-scroll-speed={-1}
             >
-              <img src={image1} alt="Image" />
+              {WorldArtImage && (
+                <img src={WorldArtImage.image.asset.url} alt="Image" />
+              )}
             </figure>
           </div>
           <div className="col-lg-5">
