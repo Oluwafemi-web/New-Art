@@ -924,15 +924,17 @@ button[type="submit"] i {
 }
 .navbar .site-menu {
   display: inline-block;
-  /* position: fixed; */
-  right: 5%;
-  top: 46px;
 }
 .navbar .site-menu ul {
   width: 100%;
   display: block;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+.navbar .site-menu ul ul {
+  position: absolute;
+  top: 100%;
 }
 .navbar .site-menu ul li {
   display: inline-flex;
