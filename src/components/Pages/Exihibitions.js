@@ -107,12 +107,12 @@ export default function Exhibitions() {
                     key={index}
                     index={index}
                     img={eventItem.image.asset.url}
-                    promo={eventItem.promo}
                     title={eventItem.title}
                     date={eventItem.date}
-                    icon={eventItem.icon.asset.url}
                     dataScroll={currentDataScroll}
-                  > </Event>
+                  >
+                    {" "}
+                  </Event>
                 );
               })}
           </div>

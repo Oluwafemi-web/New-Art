@@ -27,12 +27,12 @@ export default function NavBar(props) {
   return (
     navData && (
       <nav className="navbar col-12">
-        <div className="logo col-6">
+        <div className="logo col-5">
           <Link to="/">
             <img src={navData.logo.asset.url} alt="Image" />
           </Link>
         </div>
-        <div className="custom-menu col-3">
+        <div className="custom-menu col-2">
           <ul>
             <li>
               <Link to="#">EN</Link>
@@ -42,7 +42,7 @@ export default function NavBar(props) {
             </li>
           </ul>
         </div>
-        <div className="site-menu">
+        <div className="site-menu col-5">
           <ul>
             <li>
               <Link to="/visit">{navData.link1}</Link>

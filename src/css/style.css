@@ -924,7 +924,7 @@ button[type="submit"] i {
 }
 .navbar .site-menu {
   display: inline-block;
-  position: fixed;
+  /* position: fixed; */
   right: 5%;
   top: 46px;
 }
