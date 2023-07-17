@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PortableText } from "@portabletext/react";
+import LanguageContext from "../Context/language-context";
 import "swiper/css";
 import "swiper/css/pagination";
 import SwiperCore, {
@@ -16,10 +17,11 @@ SwiperCore.use([Navigation, Pagination, Controller, Autoplay]);
 export default function History(props) {
   const [controlledSwiper, setControlledSwiper] = useState(null);
   const [historyData, setHistoryData] = useState(null);
+  const ctx = useContext(LanguageContext);
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "history"]{
+        `*[_type == "history" && language == $language]{
            index,
            title,
            image{
@@ -27,12 +29,25 @@ export default function History(props) {
                _id,
                url
              }
+           },
+           _translations[] {
+            value->{
+              index,
+           title,
+           image{
+             asset->{
+               _id,
+               url
+             }
            }
-        }`
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setHistoryData(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   if (!historyData || historyData.length === 0) {
     return <div>Loading...</div>;
   }

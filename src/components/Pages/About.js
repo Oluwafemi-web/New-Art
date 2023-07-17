@@ -1,24 +1,24 @@
 import { useState, useEffect, useContext } from "react";
 import { PortableText } from "@portabletext/react";
 import SanityContext from "../Context/sanity-context";
+import LanguageContext from "../Context/language-context";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
 
 import "../../css/style.css";
 
-
 import sanityClient from "../../client";
 
 // import UI components
 import Header from "../UI/Header";
-import {AboutMission, AboutSlider, AboutHover} from "../UI/AboutDetails.js";
-
+import { AboutMission, AboutSlider, AboutHover } from "../UI/AboutDetails.js";
 
 export default function About() {
   const [aboutHeader, setAboutHeader] = useState(null);
   const [aboutData, setAboutData] = useState(null);
   const [aboutImages, setAboutImages] = useState(null);
+  const ctx = useContext(LanguageContext);
 
   const sanityCtx = useContext(SanityContext);
 
@@ -108,12 +108,12 @@ export default function About() {
       scrollRightButton.classList.remove("inactive");
     }
   }
-  setTimeout(filterGalleryOnLoad, 3000);
-  // filterGalleryOnLoad();
+  setTimeout(filterGalleryOnLoad, 5000);
+
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "aboutheader"]{
+        `*[_type == "aboutheader" && language == $language]{
              title,
              description,
              image{
@@ -121,15 +121,28 @@ export default function About() {
                 _id,
                 url
               }
+            },
+            _translations[] {
+              value->{
+                title,
+             description,
+             image{
+              asset->{
+                _id,
+                url
+              }
             }
-          }`
+              }
+           }
+          }`,
+        { language: ctx.languageData }
       )
       .then((data) => setAboutHeader(data))
       .catch(console.error);
 
     sanityClient
       .fetch(
-        `*[_type == "about"]{
+        `*[_type == "about" && language == $language]{
              mission,
              description,
              image{
@@ -153,15 +166,44 @@ export default function About() {
                 _id,
                 url
               }
+            },
+            _translations[] {
+              value->{
+                mission,
+             description,
+             image{
+              asset->{
+                _id,
+                url
+              }
+            },
+            vision,
+             description2,
+             image2{
+              asset->{
+                _id,
+                url
+              }
+            },
+            goals,
+             description3,
+             image3{
+              asset->{
+                _id,
+                url
+              }
             }
-          }`
+              }
+           }
+          }`,
+        { language: ctx.languageData }
       )
       .then((data) => setAboutData(data[0]))
       .catch(console.error);
 
     sanityClient
       .fetch(
-        `*[_type == "aboutimages"]{
+        `*[_type == "aboutimages" && language == $language]{
              title,
              description,
              image{
@@ -169,12 +211,25 @@ export default function About() {
                 _id,
                 url
               }
-            }
-          }`
+            },
+            _translations[] {
+              value->{
+                title,
+                description,
+                image{
+                 asset->{
+                   _id,
+                   url
+                 }
+               }
+              }
+           }
+          }`,
+        { language: ctx.languageData }
       )
       .then((data) => setAboutImages(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   useEffect(() => {
     if (!aboutHeader) {
       return sanityCtx.changeState(false);
@@ -195,25 +250,19 @@ export default function About() {
         ))}
       <>
         <div className="container-fluid pd-top-90">
-          <AboutSlider 
-            scrollLeft = {scrollLeft}
-            scrollRight = {scrollRight}
-          />
-          <AboutHover aboutImages = {aboutImages}/>
+          <AboutSlider scrollLeft={scrollLeft} scrollRight={scrollRight} />
+          <AboutHover aboutImages={aboutImages} />
           {aboutData && (
-            <AboutMission 
-              image ={aboutData.image.asset.url}
-              image2 ={aboutData.image2.asset.url}
-              image3 ={aboutData.image3.asset.url}
-
-              mission = {aboutData.mission}
-              vision = {aboutData.vision}
-              goals = {aboutData.goals}
-
-              description = {aboutData.description}
-              description2 = {aboutData.description2}
-              description3 = {aboutData.description3}
-
+            <AboutMission
+              image={aboutData.image.asset.url}
+              image2={aboutData.image2.asset.url}
+              image3={aboutData.image3.asset.url}
+              mission={aboutData.mission}
+              vision={aboutData.vision}
+              goals={aboutData.goals}
+              description={aboutData.description}
+              description2={aboutData.description2}
+              description3={aboutData.description3}
             />
           )}
         </div>

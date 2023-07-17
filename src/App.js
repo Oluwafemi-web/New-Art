@@ -14,8 +14,6 @@ import NavBar from "./components/UI/navbar";
 import MobileNav from "./components/UI/MobileNav";
 import Preloader from "./components/UI/Preloader";
 
-// import Carousel from "./components/carousel";
-
 // Import Page Elements
 import Home from "./components/Pages/Home";
 import Visit from "./components/Pages/Visit";
@@ -25,6 +23,8 @@ import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
 import Register from "./components/Pages/Register";
 import SanityProvider from "./components/Context/SanityProvider";
+import LanguageProvider from "./components/Context/languageProvider";
+import LanguageContext from "./components/Context/language-context";
 import SanityContext from "./components/Context/sanity-context";
 import Collections2023 from "./components/Pages/Collection2023";
 import Collections2018 from "./components/Pages/Colletion2018";
@@ -34,7 +34,14 @@ function Body() {
   const [navOpen, setNavOpen] = useState(false);
   const [preloader, setPreloader] = useState(true);
   const location = useLocation();
+  const languageCtx = useContext(LanguageContext);
 
+  function enClicked() {
+    languageCtx.changeLanguage("en");
+  }
+  function itClicked() {
+    languageCtx.changeLanguage("it");
+  }
   useEffect(() => {
     setPreloader(true); // Show preloader when navigating to a new page
   }, [location.pathname]);
@@ -74,6 +81,8 @@ function Body() {
             {navOpen && <MobileNav active={active} />}
             <NavBar
               clickeventHandler={clickeventHandler}
+              enClicked={enClicked}
+              itClicked={itClicked}
               active={active}
               setPreloader={linkEventHandler}
             />
@@ -100,9 +109,11 @@ function Body() {
 function App() {
   return (
     <BrowserRouter>
-      <SanityProvider>
-        <Body />
-      </SanityProvider>
+      <LanguageProvider>
+        <SanityProvider>
+          <Body />
+        </SanityProvider>
+      </LanguageProvider>
     </BrowserRouter>
   );
 }

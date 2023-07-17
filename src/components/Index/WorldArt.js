@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useInView } from "react-intersection-observer";
+import LanguageContext from "../Context/language-context";
 import { PortableText } from "@portabletext/react";
 import WorldArtItem from "./WorldArtItem";
 import sanityClient from "../../client";
@@ -8,10 +9,11 @@ export default function WorldArt(props) {
   const [WorldArtData, setWorldArtData] = useState(null);
   const [WorldArtImage, setWorldArtImage] = useState(null);
   const { ref: myRef, inView: isVisible } = useInView();
+  const ctx = useContext(LanguageContext);
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "worldart"]{
+        `*[_type == "worldart" && language == $language]{
            heading,
            description,
            icon{
@@ -19,8 +21,23 @@ export default function WorldArt(props) {
                _id,
                url
              }
-           }
-        }`
+           },
+           _translations[] {
+            value->{
+              heading,
+              description,
+              icon{
+                asset->{
+                  _id,
+                  url
+                }
+              }
+            }
+         }
+        }`,
+        {
+          language: ctx.languageData,
+        }
       )
       .then((data) => setWorldArtData(data))
       .catch(console.error);
@@ -33,12 +50,13 @@ export default function WorldArt(props) {
                _id,
                url
              }
-           }
+           },
+           
         }`
       )
       .then((data) => setWorldArtImage(data[0]))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   return (
     <section
       className="content-section"

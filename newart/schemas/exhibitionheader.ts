@@ -6,6 +6,12 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -14,7 +20,7 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'image',

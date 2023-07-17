@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import SanityContext from "../Context/sanity-context";
+import LanguageContext from "../Context/language-context";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
@@ -14,6 +15,7 @@ import Header from "../UI/Header";
 export default function Contact() {
   const [contactHeader, setContactHeader] = useState(null);
   const sanityCtx = useContext(SanityContext);
+  const ctx = useContext(LanguageContext);
 
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
@@ -21,7 +23,7 @@ export default function Contact() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "contactheader"]{
+        `*[_type == "contactheader" && language = $language]{
              title,
              description,
              image{
@@ -29,12 +31,25 @@ export default function Contact() {
                 _id,
                 url
               }
-            }
-          }`
+            },
+            _translations[] {
+              value->{
+                title,
+                description,
+                image{
+                 asset->{
+                   _id,
+                   url
+                 }
+               }
+              }
+           }
+          }`,
+        { language: ctx.languageData }
       )
       .then((data) => setContactHeader(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   if (!contactHeader) {
     return sanityCtx.changeState(false);
   } else {

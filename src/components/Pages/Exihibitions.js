@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import SanityContext from "../Context/sanity-context";
+import LanguageContext from "../Context/language-context";
 
 import sanityClient from "../../client";
 import "../../css/bootstrap.min.css";
@@ -16,6 +17,7 @@ export default function Exhibitions() {
   const [exhibitionData, setExhibitionData] = useState(null);
   const [exhibitionHeader, setExhibitionHeader] = useState(null);
   const sanityCtx = useContext(SanityContext);
+  const ctx = useContext(LanguageContext);
 
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
@@ -24,32 +26,36 @@ export default function Exhibitions() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "exhibition"]{
+        `*[_type == "exhibition" && language == $language]{
            title,
            date,
-           promo,
-           icon{
-             asset->{
-               _id,
-               url
-             }
-           },
+           image{
+            asset->{
+              _id,
+              url
+            }
+          },
+          _translations[] {
+            value->{
+              title,
+           date,
            image{
             asset->{
               _id,
               url
             }
           }
-        }`
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setExhibitionData(data))
       .catch(console.error);
-  }, []);
 
-  useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "exhibitionheader"]{
+        `*[_type == "exhibitionheader" && language == $language]{
            title,
            description,
            image{
@@ -57,12 +63,26 @@ export default function Exhibitions() {
               _id,
               url
             }
+          },
+          _translations[] {
+            value->{
+              title,
+           description,
+           image{
+            asset->{
+              _id,
+              url
+            }
           }
-        }`
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setExhibitionHeader(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
+
   useEffect(() => {
     if (!exhibitionData || !exhibitionHeader) {
       return sanityCtx.changeState(false);

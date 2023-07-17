@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import SanityContext from "../Context/sanity-context";
+import LanguageContext from "../Context/language-context";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
@@ -18,6 +19,7 @@ export default function Collections2018() {
   const [collectionHeader, setCollectionHeader] = useState(null);
   const [collectionData, setCollectionData] = useState(null);
   const sanityCtx = useContext(SanityContext);
+  const ctx = useContext(LanguageContext);
 
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
@@ -25,7 +27,7 @@ export default function Collections2018() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collectionheader"]{
+        `*[_type == "collectionheader" && language == $language]{
            title,
            description,
            image{
@@ -33,16 +35,28 @@ export default function Collections2018() {
               _id,
               url
             }
-          }
-        }`
+          },
+          _translations[] {
+            value->{
+              title,
+              description,
+              image{
+               asset->{
+                 _id,
+                 url
+               }
+             }
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setCollectionHeader(data))
       .catch(console.error);
-  }, []);
-  useEffect(() => {
+
     sanityClient
       .fetch(
-        `*[_type == "collection18"]{
+        `*[_type == "collection18" && language == $language]{
            title,
            description,
            image{
@@ -50,12 +64,26 @@ export default function Collections2018() {
               _id,
               url
             }
-          }
-        }`
+          },
+          _translations[] {
+            value->{
+              title,
+              description,
+              image{
+               asset->{
+                 _id,
+                 url
+               }
+             } 
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setCollectionData(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
+
   useEffect(() => {
     if (!collectionHeader || !collectionData) {
       return sanityCtx.changeState(false);

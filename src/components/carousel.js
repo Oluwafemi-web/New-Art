@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PortableText } from "@portabletext/react";
 import SanityContext from "./Context/sanity-context";
+import LanguageContext from "./Context/language-context";
 import "swiper/css";
 // import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -15,11 +16,12 @@ export default function Carousel() {
   const [carouselData, setCarouselData] = useState([]);
   const [controlledSwiper, setControlledSwiper] = useState(null);
   const sanityCtx = useContext(SanityContext);
+  const ctx = useContext(LanguageContext);
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "carousel"]{
+        `*[_type == "carousel" && language == $language]{
            maintext,
            subtext,
            maintext2,
@@ -37,12 +39,35 @@ export default function Carousel() {
                _id,
                url
              }
-           }
-        }`
+           },
+           _translations[] {
+            value->{
+              maintext,
+              subtext,
+              maintext2,
+              subtext2,
+              maintext3,
+              subtext3,
+              image{
+                asset->{
+                  _id,
+                  url
+                }
+              },
+              mobileimage{
+                asset->{
+                  _id,
+                  url
+                }
+              }
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setCarouselData(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
   };

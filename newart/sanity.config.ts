@@ -23,7 +23,31 @@ export default defineConfig({
         {id: 'en', title: 'English'},
       ],
 
-      schemaTypes: ['about', 'aboutheader'],
+      schemaTypes: [
+        'about',
+        'aboutheader',
+        'aboutslider',
+        'carousel',
+        'collection2013',
+        'collection18',
+        'collection23',
+        'collectionheader',
+        'contactheader',
+        'exhibition',
+        'exhibitionheader',
+        'footer',
+        'frequentlyasked',
+        'history',
+        'indexheading',
+        'indexnewsitems',
+        'inspirationitems',
+        'navbar',
+        'steps',
+        'upcoming',
+        'visit',
+        'visitheader',
+        'worldart',
+      ],
 
       languageField: 'language', // defaults to "language"
 

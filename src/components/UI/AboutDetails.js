@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { PortableText } from "@portabletext/react";
 import sanityClient from "../../client";
+import LanguageContext from "../Context/language-context";
 
 export function AboutHover(props) {
   return (
@@ -74,10 +75,11 @@ export function AboutMission(props) {
 
 export function AboutSlider(props) {
   const [aboutSlider, setAboutSlider] = useState(null);
+  const ctx = useContext(LanguageContext);
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "aboutslider"]{
+        `*[_type == "aboutslider" && language == $language]{
            title,
            year,
            description,
@@ -86,12 +88,26 @@ export function AboutSlider(props) {
               _id,
               url
             }
-          }
-        }`
+          },
+          _translations[] {
+            value->{
+              title,
+              year,
+              description,
+              image{
+               asset->{
+                 _id,
+                 url
+               }
+             }
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setAboutSlider(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   return (
     <>
       <div className="container">
@@ -192,6 +208,36 @@ export function AboutSlider(props) {
 
         <div className="aheto-timeline__events-content">
           <ol>
+            <li className="selected" data-date={1991}>
+              <div className="aheto-timeline__wrap">
+                <div className="aheto-timeline__image-wrap">
+                  <img
+                    className="aheto-timeline-slider__add-image"
+                    alt="image"
+                    src="https://mooseoom.foxthemes.me/wp-content/uploads/2019/11/exhibition-362163_1920-1-444x333.jpg"
+                  />{" "}
+                </div>
+                <div className="aheto-timeline__content">
+                  <h5 className="aheto-timeline__title">The Great Beginning</h5>
+                  <p className="aheto-timeline__desc">
+                    The MooM Art Collections is founded by a group of artists
+                    and patrons prompted by the government's inadequate museum
+                    funding. By its first meeting it has 308 members and $700 in
+                    funds.
+                  </p>
+                  <div className="aheto-timeline-slider__links">
+                    <a
+                      href="https://mooseoom.foxthemes.me/about-us/"
+                      className="aheto-link aheto-btn--dark aheto-btn--no-underline"
+                      target="_self"
+                      aria-label="Learn more"
+                    >
+                      Learn more
+                    </a>{" "}
+                  </div>
+                </div>
+              </div>
+            </li>
             {aboutSlider &&
               aboutSlider.map((item, index) => (
                 <li data-date={item.year} key={index}>

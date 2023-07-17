@@ -1,29 +1,51 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../../css/style.css";
 import sanityClient from "../../client";
+import LanguageContext from "../Context/language-context";
 export default function NavBar(props) {
   const [navData, setNavData] = useState();
+  const ctx = useContext(LanguageContext);
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "navbar"]{
+        `*[_type == "navbar" && language == $language]{
            link1,
            link2,
            link3,
            link4,
            link5,
+           language,
            logo{
             asset->{
               _id,
               url
             }
-          }
-        }`
+          },
+          _translations[] {
+            value->{
+              link1,
+              link2,
+              link3,
+              link4,
+              link5,
+              language,
+              logo{
+               asset->{
+                 _id,
+                 url
+               }
+             }
+            }
+         }
+        }`,
+        {
+          language: ctx.languageData,
+        }
       )
       .then((data) => setNavData(data[0]))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   return (
     navData && (
       <nav className="navbar col-12">
@@ -35,10 +57,14 @@ export default function NavBar(props) {
         <div className="custom-menu col-2">
           <ul>
             <li>
-              <Link to="#">EN</Link>
+              <Link to="#" onClick={props.enClicked}>
+                EN
+              </Link>
             </li>
             <li>
-              <Link to="#">IT</Link>
+              <Link to="#" onClick={props.itClicked}>
+                IT
+              </Link>
             </li>
           </ul>
         </div>

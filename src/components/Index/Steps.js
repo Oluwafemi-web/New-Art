@@ -1,14 +1,15 @@
-import logo from "../../images/title-shape.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { PortableText } from "@portabletext/react";
+import LanguageContext from "../Context/language-context";
 
 import sanityClient from "../../client";
 export default function Steps(props) {
   const [stepsData, setStepsData] = useState(null);
+  const ctx = useContext(LanguageContext);
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "steps"]{
+        `*[_type == "steps" && language == $language]{
            index,
            title,
            description,
@@ -23,12 +24,32 @@ export default function Steps(props) {
                _id,
                url
              }
+           },
+           _translations[] {
+            value->{
+              index,
+           title,
+           description,
+           icon{
+            asset->{
+              _id,
+              url
+            }
+           },
+           image{
+             asset->{
+               _id,
+               url
+             }
            }
-        }`
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setStepsData(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   if (!stepsData || stepsData.length === 0) {
     return <div>Loading...</div>;
   }

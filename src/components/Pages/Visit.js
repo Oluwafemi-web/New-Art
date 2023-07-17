@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import SanityContext from "../Context/sanity-context";
+import LanguageContext from "../Context/language-context";
 import "../../css/odometer.min.css";
 
 import "../../css/style.css";
@@ -21,11 +22,12 @@ export default function Visit() {
   const [visitData, setVisitData] = useState(null);
   const [frequentData, setFrequentData] = useState(null);
   const sanityCtx = useContext(SanityContext);
+  const ctx = useContext(LanguageContext);
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "visitheader"]{
+        `*[_type == "visitheader" && language == $language]{
            title,
            description,
            image{
@@ -33,24 +35,43 @@ export default function Visit() {
               _id,
               url
             }
+          },
+          _translations[] {
+            value->{
+              title,
+           description,
+           image{
+            asset->{
+              _id,
+              url
+            }
           }
-        }`
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setVisitHeader(data))
       .catch(console.error);
 
     sanityClient
       .fetch(
-        `*[_type == "frequentlyasked"]{
+        `*[_type == "frequentlyasked" && language == $language]{
           text,
-        }`
+          _translations[] {
+            value->{
+              text
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setFrequentData(data[0]))
       .catch(console.error);
 
     sanityClient
       .fetch(
-        `*[_type == "visit"]{
+        `*[_type == "visit" && language == $language]{
            title,
            description,
            icon{
@@ -91,12 +112,58 @@ export default function Visit() {
               _id,
               url
             }
+          },
+          _translations[] {
+            value->{
+              title,
+           description,
+           icon{
+            asset->{
+              _id,
+              url
+            }
+          },
+          opening,
+          date,
+          image{
+            asset->{
+              _id,
+              url
+            }
+          },
+          address,
+          list1,
+          list2,
+          list3,
+          list4,
+          image2{
+            asset->{
+              _id,
+              url
+            }
+          },
+          safe,
+          safetext,
+          safeimg{
+            asset->{
+              _id,
+              url
+            }
+          },
+          image3{
+            asset->{
+              _id,
+              url
+            }
           }
-        }`
+            }
+         }
+        }`,
+        { language: ctx.languageData }
       )
       .then((data) => setVisitData(data[0]))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
   };
@@ -271,9 +338,7 @@ export default function Visit() {
             </div>
             {/* end col-12 */}
             <div className="col-lg-8">
-              <dl className="accordion">
-                {frequentData && <PortableText value={frequentData.text} />}
-              </dl>
+              {frequentData && <PortableText value={frequentData.text} />}
             </div>
           </div>
         </div>
