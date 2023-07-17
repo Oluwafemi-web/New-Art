@@ -20,6 +20,14 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'mobilelogo',
+      title: 'Mobile Logo',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'link1',
       title: 'Link 1',
       type: 'string',

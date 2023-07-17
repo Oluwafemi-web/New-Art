@@ -713,7 +713,7 @@ button[type="submit"] i {
   animation-fill-mode: forwards;
 }
 .side-widget .logo {
-  width: 100%;
+  width: 80%;
   display: block;
   margin-bottom: 20px;
   position: relative;
