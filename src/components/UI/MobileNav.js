@@ -11,9 +11,9 @@ export default function MobileNav(props) {
         <path d="M540,1080H0V0h540c0,179.85,0,359.7,0,539.54C540,719.7,540,899.85,540,1080z" />
       </svg>
       <figure className="logo">
-          <Link to="/">
-            <img src={logo} alt="logo" />
-          </Link>
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
       </figure>
       {/* end logo */}
       <div className="inner">
@@ -44,10 +44,10 @@ export default function MobileNav(props) {
         <div className="custom-menu">
           <ul>
             <li>
-              <Link to="#">Eng</Link>
+              <Link to="#">En</Link>
             </li>
             <li>
-              <Link to="#">Rus</Link>
+              <Link to="#">It</Link>
             </li>
           </ul>
         </div>
@@ -60,8 +60,19 @@ export default function MobileNav(props) {
             <li>
               <Link to="/exhibition">Exhibitions</Link>
             </li>
-            <li>
-              <Link to="/collection">Collections</Link>
+            <li className="collection-parent">
+              <Link to="#">Collections</Link>
+              <ul className="collection-sub">
+                <li>
+                  <Link to="/collection2023">2023 - 2019</Link>
+                </li>
+                <li>
+                  <Link to="/collection2018">2018 - 2014</Link>
+                </li>
+                <li>
+                  <Link to="/collection2013">2013 - 2009</Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link to="/about">About</Link>
