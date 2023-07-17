@@ -15,7 +15,6 @@ import Header from "../UI/Header";
 //import images
 import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
-import FrequentlyAsked from "./FrequentlyAsked";
 
 export default function Visit() {
   const [visitHeader, setVisitHeader] = useState(null);
@@ -43,11 +42,10 @@ export default function Visit() {
     sanityClient
       .fetch(
         `*[_type == "frequentlyasked"]{
-           question,
-           answer
+          text,
         }`
       )
-      .then((data) => setFrequentData(data))
+      .then((data) => setFrequentData(data[0]))
       .catch(console.error);
 
     sanityClient
@@ -274,24 +272,12 @@ export default function Visit() {
             {/* end col-12 */}
             <div className="col-lg-8">
               <dl className="accordion">
-                {frequentData &&
-                  frequentData.map((item, index) => (
-                    <FrequentlyAsked
-                      key={index}
-                      question={item.question}
-                      answer={item.answer}
-                    />
-                  ))}
+                {frequentData && <PortableText value={frequentData.text} />}
               </dl>
-              {/* end accordion */}
             </div>
-            {/* end col-8 */}
           </div>
-          {/* end row */}
         </div>
-        {/* end container */}
       </section>
-      {/* end content-section */}
     </>
   );
 }
