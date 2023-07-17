@@ -4171,6 +4171,7 @@ button[type="submit"] i {
   display: flex;
   gap: 20px;
   align-items: center;
+  transition: all 2s;
 }
 
 .aheto-timeline__timeline {
@@ -4279,9 +4280,8 @@ button[type="submit"] i {
   display: none;
   flex-direction: column;
 }
-.navbar .site-menu ul li.collection-parent:hover .collection-sub,
-.collection-sub {
-  display: flex;
+.element-hovered {
+  display: flex !important;
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;

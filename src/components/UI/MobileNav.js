@@ -87,7 +87,7 @@ export default function MobileNav(props) {
                 <Link to="#" className="collection-drop">
                   {navData.link3}
                 </Link>
-                <ul className="collection-sub">
+                <ul className={`collection-sub ${props.hovered}`}>
                   <li>
                     <Link to="/collection2023">2023 - 2019</Link>
                   </li>

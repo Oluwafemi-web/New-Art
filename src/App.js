@@ -33,6 +33,8 @@ import Collections2013 from "./components/Pages/Collection2013";
 function Body() {
   const [navOpen, setNavOpen] = useState(false);
   const [preloader, setPreloader] = useState(true);
+  const [hover, setHover] = useState(false);
+
   const location = useLocation();
   const languageCtx = useContext(LanguageContext);
 
@@ -62,6 +64,12 @@ function Body() {
   const clickeventHandler = () => {
     setNavOpen(!navOpen);
   };
+  const hoverventHandler = () => {
+    setHover(true);
+  };
+  const hoverleaveHandler = () => {
+    setHover(false);
+  };
   const linkEventHandler = () => {
     setPreloader(true);
   };
@@ -84,6 +92,9 @@ function Body() {
               enClicked={enClicked}
               itClicked={itClicked}
               active={active}
+              hovered={hover ? "element-hovered" : ""}
+              showDropDown={hoverventHandler}
+              hideDropDown={hoverleaveHandler}
               setPreloader={linkEventHandler}
             />
             <Routes>

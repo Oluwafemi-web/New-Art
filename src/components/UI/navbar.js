@@ -76,11 +76,15 @@ export default function NavBar(props) {
             <li>
               <Link to="/exhibition">{navData.link2}</Link>
             </li>
-            <li className="collection-parent">
+            <li
+              className="collection-parent"
+              onMouseEnter={props.showDropDown}
+              onMouseLeave={props.hideDropDown}
+            >
               <Link to="#" className="collection-drop">
                 {navData.link3}
               </Link>
-              <ul className="collection-sub">
+              <ul className={`collection-sub ${props.hovered}`}>
                 <li>
                   <Link to="/collection2023">2023 - 2019</Link>
                 </li>
