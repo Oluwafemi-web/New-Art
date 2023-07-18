@@ -57,10 +57,12 @@ export default function WorldArt(props) {
               <PortableText value={props.heading} />
             </div>
           </div>
-          <div className="col-lg-12 fl-left wd-50">
+          <div className="col-lg-12">
             <figure
               ref={myRef}
-              className={`image-box ${isVisible ? "is-reveal" : ""}`}
+              className={`image-box fl-left wd-50 ${
+                isVisible ? "is-reveal" : ""
+              }`}
               data-scroll=""
               data-scroll-speed={-1}
             >
