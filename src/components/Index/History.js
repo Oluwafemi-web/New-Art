@@ -66,7 +66,7 @@ export default function History(props) {
               <Swiper
                 modules={[Navigation, Pagination, Controller]}
                 spaceBetween={50}
-                slidesPerView={3}
+                slidesPerView={2}
                 autoplay={{
                   delay: 3000,
                   disableOnInteraction: false,
