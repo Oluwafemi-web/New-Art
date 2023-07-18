@@ -43,9 +43,9 @@ export default function IndexUpcoming(props) {
         <div className="row justify-content-center">
           <div className="col-lg-9">
             <div className="section-title">
-              <figure>
+              {/* <figure>
                 <img src={props.logo} alt="Image" />
-              </figure>
+              </figure> */}
               <h6>{props.subheading}</h6>
               <h2>{props.heading}</h2>
             </div>

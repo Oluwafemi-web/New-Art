@@ -67,9 +67,9 @@ export default function WorldArt(props) {
         <div className="row align-items-center">
           <div className="col-12">
             <div className="section-title text-center">
-              <figure>
+              {/* <figure>
                 <img src={props.logo} alt="Image" />
-              </figure>
+              </figure> */}
               <PortableText value={props.heading} />
             </div>
           </div>

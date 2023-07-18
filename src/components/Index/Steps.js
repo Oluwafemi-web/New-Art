@@ -59,9 +59,9 @@ export default function Steps(props) {
         <div className="row justify-content-center">
           <div className="col-12">
             <div className="section-title text-center">
-              <figure>
+              {/* <figure>
                 <img src={props.logo} alt="Image" />
-              </figure>
+              </figure> */}
               <h6>{props.subheading}</h6>
               <h2>{props.heading}</h2>
             </div>

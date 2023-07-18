@@ -67,11 +67,11 @@ export default function Home() {
       <>
         <Carousel />
         <WorldArt
-          logo={headingData.logo.asset.url}
+          // logo={headingData.logo.asset.url}
           heading={headingData.arttitle}
         />
         <IndexUpcoming
-          logo={headingData.logo.asset.url}
+          // logo={headingData.logo.asset.url}
           heading={headingData.uptitle}
           subheading={headingData.updescription}
         />
@@ -80,7 +80,7 @@ export default function Home() {
           heading={headingData.artinspiration}
         /> */}
         <Steps
-          logo={headingData.logo.asset.url}
+          // logo={headingData.logo.asset.url}
           heading={headingData.stepstitle}
           subheading={headingData.stepsdescription}
         />
