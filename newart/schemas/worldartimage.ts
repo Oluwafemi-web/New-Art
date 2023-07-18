@@ -13,6 +13,12 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'sidetext',
+      title: 'Side Text',
+      type: 'array',
+      of: [{type: 'block'}],
+    }),
   ],
   preview: {
     select: {

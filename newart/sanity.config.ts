@@ -46,7 +46,7 @@ export default defineConfig({
         'upcoming',
         'visit',
         'visitheader',
-        'worldart',
+        'worldartimage',
       ],
 
       languageField: 'language', // defaults to "language"

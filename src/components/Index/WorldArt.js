@@ -13,10 +13,9 @@ export default function WorldArt(props) {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "worldart" && language == $language]{
-           heading,
-           description,
-           icon{
+        `*[_type == "worldartimage" && language == $language]{
+          sidetext,
+           image{
              asset->{
                _id,
                url
@@ -24,35 +23,20 @@ export default function WorldArt(props) {
            },
            _translations[] {
             value->{
-              heading,
-              description,
-              icon{
-                asset->{
-                  _id,
-                  url
-                }
-              }
-            }
-         }
-        }`,
-        {
-          language: ctx.languageData,
-        }
-      )
-      .then((data) => setWorldArtData(data))
-      .catch(console.error);
-
-    sanityClient
-      .fetch(
-        `*[_type == "worldartimage"]{
+              sidetext,
            image{
              asset->{
                _id,
                url
              }
-           },
+           }
+            }
+         }
            
-        }`
+        }`,
+        {
+          language: ctx.languageData,
+        }
       )
       .then((data) => setWorldArtImage(data[0]))
       .catch(console.error);
@@ -73,7 +57,7 @@ export default function WorldArt(props) {
               <PortableText value={props.heading} />
             </div>
           </div>
-          <div className="col-lg-7">
+          <div className="col-lg-12 fl-left wd-50">
             <figure
               ref={myRef}
               className={`image-box ${isVisible ? "is-reveal" : ""}`}
@@ -84,20 +68,8 @@ export default function WorldArt(props) {
                 <img src={WorldArtImage.image.asset.url} alt="Image" />
               )}
             </figure>
-          </div>
-          <div className="col-lg-5">
-            <div className="side-icon-list right-side">
-              <ul>
-                {WorldArtData &&
-                  WorldArtData.map((item, index) => (
-                    <WorldArtItem
-                      key={index}
-                      img={item.icon.asset.url}
-                      heading={item.heading}
-                      description={item.description}
-                    />
-                  ))}
-              </ul>
+            <div className="text">
+              {WorldArtImage && <PortableText value={WorldArtImage.sidetext} />}
             </div>
           </div>
         </div>

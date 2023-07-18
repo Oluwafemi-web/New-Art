@@ -28,7 +28,6 @@ import indexheadings from './indexheadings'
 export const schemaTypes = [
   navbar,
   carousel,
-  worldart,
   worldartimage,
   upcoming,
   inspiration,
