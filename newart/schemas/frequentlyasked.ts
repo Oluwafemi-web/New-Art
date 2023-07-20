@@ -12,6 +12,12 @@ export default defineType({
       hidden: true,
     }),
     defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'array',
+      of: [{type: 'block'}],
+    }),
+    defineField({
       name: 'text',
       title: 'Text',
       type: 'array',

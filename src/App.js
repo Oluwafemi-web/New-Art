@@ -45,7 +45,9 @@ function Body() {
     languageCtx.changeLanguage("it");
   }
   useEffect(() => {
-    setPreloader(true); // Show preloader when navigating to a new page
+    setPreloader(true);
+    setNavOpen(false);
+    setHover(false); // Show preloader when navigating to a new page
   }, [location.pathname]);
 
   const sanityCtx = useContext(SanityContext);

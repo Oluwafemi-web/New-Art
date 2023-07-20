@@ -6,9 +6,9 @@ export default function Header(props) {
     <header
       className="page-header"
       data-background={props.background}
-      // style={{ background: `url(${props.background})` }}
+      style={{ background: `url(${props.background})` }}
     >
-      <img src={props.background} />
+      {/* <img src={props.background} /> */}
       <div className="inner">
         <svg width={580} height={400} className="svg-morph">
           <path

@@ -57,9 +57,11 @@ export default function Visit() {
     sanityClient
       .fetch(
         `*[_type == "frequentlyasked" && language == $language]{
+          heading,
           text,
           _translations[] {
             value->{
+              heading,
               text
             }
          }
@@ -72,8 +74,7 @@ export default function Visit() {
     sanityClient
       .fetch(
         `*[_type == "visit" && language == $language]{
-           title,
-           description,
+           text,
            icon{
             asset->{
               _id,
@@ -115,8 +116,7 @@ export default function Visit() {
           },
           _translations[] {
             value->{
-              title,
-           description,
+              text,
            icon{
             asset->{
               _id,
@@ -194,40 +194,15 @@ export default function Visit() {
         <div className="container">
           {visitData && (
             <div className="row align-items-center">
-              <div className="col-lg-6">
-                <div className="side-content left">
-                  <h2>{visitData.title}</h2>
-                  <PortableText value={visitData.description} />
+              <div className="col-lg-12">
+                <img
+                  src={visitData.image.asset.url}
+                  alt="Image"
+                  className="side-image is-reveal fl-right wd-50"
+                />
+                <div>
+                  <PortableText value={visitData.text} />
                 </div>
-                {/* end side-content */}
-                <div className="clearfix spacing-50" />
-                <div className="side-icon-list">
-                  <ul>
-                    <li>
-                      {/* <figure>
-                        {" "}
-                        <img src={visitData.icon.asset.url} alt="Image" />{" "}
-                      </figure> */}
-                      <div className="content">
-                        <h5>{visitData.opening}</h5>
-                        <PortableText value={visitData.date} />
-                      </div>
-                      {/* end content */}
-                    </li>
-                  </ul>
-                </div>
-                {/* end side-icon-list */}
-              </div>
-              {/* end col-6 */}
-              <div className="col-lg-6">
-                <figure
-                  className="side-image is-reveal"
-                  data-scroll
-                  data-scroll-speed={1}
-                >
-                  {" "}
-                  <img src={visitData.image.asset.url} alt="Image" />{" "}
-                </figure>
               </div>
               {/* end col-6 */}
             </div>
@@ -322,25 +297,18 @@ export default function Visit() {
       {/* end content-section */}
       <section className="content-section">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <div className="section-title text-center">
-                <figure>
-                  <img src={icon} alt="Image" />
-                </figure>
-                <h2>
-                  Frequently
-                  <br />
-                  asked questions
-                </h2>
+          {frequentData && (
+            <div className="row justify-content-center">
+              <div className="col-12">
+                <div className="section-title text-center">
+                  <PortableText value={frequentData.heading} />
+                </div>
               </div>
-              {/* end section-title */}
+              <div className="col-lg-8">
+                <PortableText value={frequentData.text} />
+              </div>
             </div>
-            {/* end col-12 */}
-            <div className="col-lg-8">
-              {frequentData && <PortableText value={frequentData.text} />}
-            </div>
-          </div>
+          )}
         </div>
       </section>
     </>
