@@ -4297,3 +4297,15 @@ button[type="submit"] i {
   width: 50%;
   margin-left: 20px;
 }
+.backgroundImg {
+  display: none;
+}
+@media screen and (max-width: 576px) {
+  .backgroundImg {
+    display: block;
+    height: 40%;
+  }
+  .page-header {
+    height: 300px;
+  }
+}
