@@ -51,7 +51,7 @@ export default defineType({
       of: [{type: 'block'}],
     }),
     defineField({
-      name: 'text',
+      name: 'sidetext',
       title: 'Side Text',
       type: 'array',
       of: [{type: 'block'}],

@@ -90,7 +90,7 @@ export default function Visit() {
             }
           },
           address,
-          sidetext
+          sidetext,
           image2{
             asset->{
               _id,
