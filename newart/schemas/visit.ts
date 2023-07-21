@@ -51,24 +51,10 @@ export default defineType({
       of: [{type: 'block'}],
     }),
     defineField({
-      name: 'list1',
-      title: 'Bullet point 1',
-      type: 'string',
-    }),
-    defineField({
-      name: 'list2',
-      title: 'Bullet point 2',
-      type: 'string',
-    }),
-    defineField({
-      name: 'list3',
-      title: 'Bullet point 3',
-      type: 'string',
-    }),
-    defineField({
-      name: 'list4',
-      title: 'Bullet point 4',
-      type: 'string',
+      name: 'text',
+      title: 'Side Text',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'image2',

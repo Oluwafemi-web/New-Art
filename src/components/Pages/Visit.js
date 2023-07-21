@@ -90,10 +90,7 @@ export default function Visit() {
             }
           },
           address,
-          list1,
-          list2,
-          list3,
-          list4,
+          sidetext
           image2{
             asset->{
               _id,
@@ -132,10 +129,7 @@ export default function Visit() {
             }
           },
           address,
-          list1,
-          list2,
-          list3,
-          list4,
+         sidetext,
           image2{
             asset->{
               _id,
@@ -224,12 +218,7 @@ export default function Visit() {
               </div>
               <div className="col-lg-7">
                 <div className="side-list">
-                  <ul>
-                    <li>{visitData.list1}</li>
-                    <li>{visitData.list2}</li>
-                    <li>{visitData.list3}</li>
-                    <li>{visitData.list4}</li>
-                  </ul>
+                  <PortableText value={visitData.sidetext} />
                 </div>
               </div>
             </div>
