@@ -108,9 +108,6 @@ export default function Collections2018() {
           <div className="row">
             <div className="col-12">
               <div className="section-title text-center">
-                <figure>
-                  <img src={icon} alt="" />
-                </figure>
                 <h2>
                   Our collections are <br />
                   most important

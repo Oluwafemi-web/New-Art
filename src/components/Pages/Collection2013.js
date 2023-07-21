@@ -109,9 +109,6 @@ export default function Collections2013() {
           <div className="row">
             <div className="col-12">
               <div className="section-title text-center">
-                <figure>
-                  <img src={icon} alt="" />
-                </figure>
                 <h2>
                   Our collections are <br />
                   most important
@@ -129,8 +126,6 @@ export default function Collections2013() {
                 } else {
                   currentDataScroll -= 0.5;
                 }
-
-                // Update the previousDataScroll for the next iteration
                 previousDataScroll = currentDataScroll;
 
                 return (
