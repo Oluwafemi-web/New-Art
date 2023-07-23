@@ -26,9 +26,10 @@ export default function Exhibitions() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "exhibition" && language == $language]{
+        `*[_type == "exhibition" && language == $language] | order(dateTime(_createdAt)){
            title,
            date,
+           _createdAt,
            image{
             asset->{
               _id,
@@ -92,7 +93,7 @@ export default function Exhibitions() {
   }, [exhibitionData]);
 
   let previousDataScroll = 1; // Initial value for the first component
-
+  console.log(exhibitionData);
   return (
     <>
       {exhibitionHeader &&

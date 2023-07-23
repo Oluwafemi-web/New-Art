@@ -56,9 +56,10 @@ export default function Collections2018() {
 
     sanityClient
       .fetch(
-        `*[_type == "collection18" && language == $language]{
+        `*[_type == "collection18" && language == $language] | order(dateTime(_createdAt)){
            title,
            description,
+           _createdAt,
            image{
             asset->{
               _id,
@@ -68,6 +69,7 @@ export default function Collections2018() {
           _translations[] {
             value->{
               title,
+              _createdAt,
               description,
               image{
                asset->{

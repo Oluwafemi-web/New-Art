@@ -27,7 +27,7 @@ export default function Collections2013() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collectionheader" && language == $language]{
+        `*[_type == "collectionheader" && language == $language] {
            title,
            description,
            image{
@@ -57,9 +57,10 @@ export default function Collections2013() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collection13" && language == $language]{
+        `*[_type == "collection13" && language == $language]| order(dateTime(_createdAt)){
            title,
            description,
+           _createdAt,
            image{
             asset->{
               _id,
@@ -70,6 +71,7 @@ export default function Collections2013() {
             value->{
               title,
               description,
+              _createdAt,
               image{
                asset->{
                  _id,

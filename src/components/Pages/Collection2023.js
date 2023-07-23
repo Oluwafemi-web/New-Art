@@ -57,8 +57,9 @@ export default function Collections2023() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collection23" && language == $language]{
+        `*[_type == "collection23" && language == $language] | order(dateTime(_createdAt)){
            title,
+           _createdAt,
            description,
            image{
             asset->{
@@ -69,6 +70,7 @@ export default function Collections2023() {
           _translations[] {
             value->{
               title,
+              _createdAt,
            description,
            image{
             asset->{
