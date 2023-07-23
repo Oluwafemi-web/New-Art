@@ -93,7 +93,6 @@ export default function Exhibitions() {
   }, [exhibitionData]);
 
   let previousDataScroll = 1; // Initial value for the first component
-  console.log(exhibitionData);
   return (
     <>
       {exhibitionHeader &&
