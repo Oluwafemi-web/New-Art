@@ -15,11 +15,14 @@ export function AboutHover(props) {
                 <div className="about-inner">
                   <div
                     className="about-inner-img"
-                    style={{
-                      backgroundImage: `url(${item.image.asset.url})`,
-                    }}
+                    // style={{
+                    //   backgroundImage: `url(${item.image.asset.url})`,
+                    // }}
                   >
-                    <img src={item.image.asset.url} />
+                    <img
+                      src={item.image.asset.url}
+                      style={{ height: "100%" }}
+                    />
                   </div>
                   <div className="about-inner-content">
                     <a href="#" rel="tag">
