@@ -203,7 +203,7 @@ export default function About() {
 
     sanityClient
       .fetch(
-        `*[_type == "aboutimages" && language == $language]{
+        `*[_type == "aboutimages"]{
              title,
              description,
              image{
@@ -211,19 +211,7 @@ export default function About() {
                 _id,
                 url
               }
-            },
-            _translations[] {
-              value->{
-                title,
-                description,
-                image{
-                 asset->{
-                   _id,
-                   url
-                 }
-               }
-              }
-           }
+            }
           }`,
         { language: ctx.languageData }
       )
