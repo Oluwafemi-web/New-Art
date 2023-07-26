@@ -1,13 +1,9 @@
 import { useState, useEffect, useContext } from "react";
+import { SlideshowLightbox } from "lightbox.js-react";
+import "lightbox.js-react/dist/index.css";
 import SanityContext from "../Context/sanity-context";
 import LanguageContext from "../Context/language-context";
-import "../../css/bootstrap.min.css";
-import "../../css/fancybox.min.css";
-import "../../css/odometer.min.css";
 
-import "../../css/style.css";
-
-import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
 
 // import UI components
@@ -119,26 +115,17 @@ export default function Collections2013() {
             </div>
           </div>
           <div className="row justify-content-center">
-            {collectionData &&
-              collectionData.map((collectionItem, index) => {
-                // Calculate the current data-scroll value
-                let currentDataScroll = previousDataScroll;
-                if (previousDataScroll === 0.5) {
-                  currentDataScroll = 1.5;
-                } else {
-                  currentDataScroll -= 0.5;
-                }
-                previousDataScroll = currentDataScroll;
-
-                return (
-                  <Collection
+            <SlideshowLightbox className="grid-fr">
+              {collectionData &&
+                collectionData.map((collectionItem, index) => (
+                  <img
                     key={index}
-                    img={collectionItem.image.asset.url}
-                    tile={collectionItem.title}
-                    description={collectionItem.description}
+                    src={collectionItem.image.asset.url}
+                    alt=""
+                    data-scroll
                   />
-                );
-              })}
+                ))}
+            </SlideshowLightbox>
           </div>
         </div>
       </section>

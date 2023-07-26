@@ -1,4 +1,7 @@
 import { useState, useEffect, useContext } from "react";
+import { SlideshowLightbox } from "lightbox.js-react";
+
+import "lightbox.js-react/dist/index.css";
 import SanityContext from "../Context/sanity-context";
 import LanguageContext from "../Context/language-context";
 
@@ -91,7 +94,7 @@ export default function Exhibitions() {
       handleSanityLoaded();
     }
   }, [exhibitionData]);
-
+  if (!exhibitionData) return;
   let previousDataScroll = 1; // Initial value for the first component
   return (
     <>
@@ -107,34 +110,17 @@ export default function Exhibitions() {
       <section className="content-section" data-background="#fffbf7">
         <div className="container">
           <div className="row justify-content-center">
-            {exhibitionData &&
-              exhibitionData.map((eventItem, index) => {
-                // Calculate the current data-scroll value
-                let currentDataScroll = previousDataScroll;
-                if (previousDataScroll === 1) {
-                  currentDataScroll = -0.5;
-                } else if (previousDataScroll === -0.5) {
-                  currentDataScroll = -1;
-                } else {
-                  currentDataScroll = 1; // Reset the pattern
-                }
-
-                // Update the previousDataScroll for the next iteration
-                previousDataScroll = currentDataScroll;
-
-                return (
-                  <Event
+            <SlideshowLightbox className="grid-fr">
+              {exhibitionData &&
+                exhibitionData.map((eventItem, index) => (
+                  <img
                     key={index}
-                    index={index}
-                    img={eventItem.image.asset.url}
-                    title={eventItem.title}
-                    date={eventItem.date}
-                    dataScroll={currentDataScroll}
-                  >
-                    {" "}
-                  </Event>
-                );
-              })}
+                    src={eventItem.image.asset.url}
+                    alt=""
+                    data-scroll
+                  />
+                ))}
+            </SlideshowLightbox>
           </div>
           {/* end row */}
         </div>

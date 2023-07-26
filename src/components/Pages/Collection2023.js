@@ -1,4 +1,6 @@
 import { useState, useEffect, useContext } from "react";
+import { SlideshowLightbox } from "lightbox.js-react";
+import "lightbox.js-react/dist/index.css";
 import SanityContext from "../Context/sanity-context";
 import LanguageContext from "../Context/language-context";
 import "../../css/bootstrap.min.css";
@@ -7,12 +9,10 @@ import "../../css/odometer.min.css";
 
 import "../../css/style.css";
 
-import icon from "../../images/title-shape.png";
 import sanityClient from "../../client";
 
 // import UI components
 import Header from "../UI/Header";
-import Collection from "../UI/Collection";
 
 export default function Collections2023() {
   let previousDataScroll = 1.5; // Initial value for the first component
@@ -121,29 +121,17 @@ export default function Collections2023() {
           </div>
           {/* end row */}
           <div className="row justify-content-center">
-            {collectionData &&
-              collectionData.map((collectionItem, index) => {
-                // Calculate the current data-scroll value
-                let currentDataScroll = previousDataScroll;
-                if (previousDataScroll === 0.5) {
-                  currentDataScroll = 1.5;
-                } else {
-                  currentDataScroll -= 0.5;
-                }
-
-                // Update the previousDataScroll for the next iteration
-                previousDataScroll = currentDataScroll;
-
-                return (
-                  <Collection
+            <SlideshowLightbox className="grid-fr">
+              {collectionData &&
+                collectionData.map((collectionItem, index) => (
+                  <img
                     key={index}
-                    img={collectionItem.image.asset.url}
-                    tile={collectionItem.title}
-                    description={collectionItem.description}
-                    dataScroll={currentDataScroll}
+                    src={collectionItem.image.asset.url}
+                    alt=""
+                    data-scroll
                   />
-                );
-              })}
+                ))}
+            </SlideshowLightbox>
           </div>
           {/* end row */}
         </div>
