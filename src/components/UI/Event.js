@@ -12,6 +12,14 @@ export default function Event(props) {
   // const delay = props.index + props.dataScroll * 3;
 
   return (
+    // <img
+    //   ref={myRef}
+    //   src={props.img}
+    //   alt=""
+    //   className={`exhibition-box ${isVisible ? "is-reveal" : ""}`}
+    //   data-scroll
+    // />
+
     <div className="col-lg-4 col-md-6">
       <div
         ref={myRef}
