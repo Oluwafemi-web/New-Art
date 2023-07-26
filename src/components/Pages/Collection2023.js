@@ -93,6 +93,7 @@ export default function Collections2023() {
       handleSanityLoaded();
     }
   }, []);
+  if (!collectionData) return;
 
   return (
     <>

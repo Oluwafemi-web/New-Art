@@ -92,6 +92,7 @@ export default function Collections2018() {
       handleSanityLoaded();
     }
   }, []);
+  if (!collectionData) return;
 
   return (
     <>

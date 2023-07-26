@@ -90,6 +90,7 @@ export default function Collections2013() {
       handleSanityLoaded();
     }
   }, []);
+  if (!collectionData) return;
 
   return (
     <>
