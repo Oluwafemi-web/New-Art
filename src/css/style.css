@@ -1608,10 +1608,10 @@ button[type="submit"] i {
 }
 @keyframes scrollup {
   0% {
-    transform: scale(1.5);
+    transform: translateX(100px);
   }
   100% {
-    transform: scale(1);
+    transform: translateX(0px);
   }
 }
 /* IMAGE BOX */
