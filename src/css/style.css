@@ -2184,7 +2184,7 @@ button[type="submit"] i {
   position: relative;
   overflow: hidden;
 }
-.exhibition-box.is-reveal img {
+.exhibition-box.is-reveal figure img {
   opacity: 1;
 }
 .exhibition-box figure * {
