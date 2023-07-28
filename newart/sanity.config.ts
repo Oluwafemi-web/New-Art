@@ -35,6 +35,7 @@ export default defineConfig({
         'collection23header',
         'collection13header',
         'contactheader',
+        'contacts',
         'exhibition',
         'exhibitionheader',
         'footer',

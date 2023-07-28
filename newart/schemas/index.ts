@@ -27,6 +27,7 @@ import frequentlyasked from './frequentlyasked'
 import footer from './footer'
 import worldartimage from './worldartimage'
 import indexheadings from './indexheadings'
+import contacts from './contacts'
 
 export const schemaTypes = [
   navbar,
@@ -54,6 +55,7 @@ export const schemaTypes = [
   about,
   aboutimages,
   contactheader,
+  contacts,
   footer,
   blockContent,
 ]
