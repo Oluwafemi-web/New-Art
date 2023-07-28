@@ -58,7 +58,7 @@ export default function Collections2018() {
 
     sanityClient
       .fetch(
-        `*[_type == "collection18" && language == $language] | order(dateTime(_createdAt) asc){
+        `*[_type == "collection18" && language == $language] | | order(_createdAt desc){
            title,
            description,
            _createdAt,
