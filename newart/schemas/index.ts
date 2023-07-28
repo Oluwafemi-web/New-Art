@@ -8,7 +8,10 @@ import upcoming from './upcoming'
 import exhibition from './exhibition'
 import exhibitionheader from './exhibitionheader'
 import visitheader from './visitheader'
-import collectionheader from './collectionheader'
+import collection18header from './collection18header'
+import collection13header from './collection13header'
+import collection23header from './collection23header'
+
 import aboutheader from './aboutheader'
 import about from './about'
 import aboutslider from './aboutslider'
@@ -40,9 +43,11 @@ export const schemaTypes = [
   visitheader,
   visit,
   frequentlyasked,
-  collectionheader,
+  collection23header,
   collection2023,
+  collection18header,
   collection2018,
+  collection13header,
   collection2013,
   aboutheader,
   aboutslider,

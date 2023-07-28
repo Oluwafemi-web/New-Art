@@ -26,9 +26,10 @@ export default function Collections2018() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collectionheader" && language == $language]{
+        `*[_type == "collection18header" && language == $language]{
            title,
            description,
+           heading,
            image{
             asset->{
               _id,
@@ -39,6 +40,7 @@ export default function Collections2018() {
             value->{
               title,
               description,
+              heading,
               image{
                asset->{
                  _id,
@@ -98,45 +100,44 @@ export default function Collections2018() {
     <>
       {collectionHeader &&
         collectionHeader.map((item, index) => (
-          <Header
-            title={item.title}
-            description={item.description}
-            background={item.image.asset.url}
-            key={index}
-          />
-        ))}
-      <section className="content-section" data-background="#fffbf7">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="section-title text-center">
-                <h2>
-                  Our collections are <br />
-                  most important
-                </h2>
+          <>
+            <Header
+              title={item.title}
+              description={item.description}
+              background={item.image.asset.url}
+              key={index}
+            />
+            <section className="content-section" data-background="#fffbf7">
+              <div className="container">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="section-title text-center">
+                      <PortableText value={item.heading} />
+                    </div>
+                    {/* end section-title */}
+                  </div>
+                  {/* end col-12 */}
+                </div>
+                {/* end row */}
+                <div className="row justify-content-center">
+                  <SlideshowLightbox className="grid-fr">
+                    {collectionData &&
+                      collectionData.map((collectionItem, index) => (
+                        <img
+                          key={index}
+                          src={collectionItem.image.asset.url}
+                          alt=""
+                          data-scroll
+                        />
+                      ))}
+                  </SlideshowLightbox>
+                </div>
+                {/* end row */}
               </div>
-              {/* end section-title */}
-            </div>
-            {/* end col-12 */}
-          </div>
-          {/* end row */}
-          <div className="row justify-content-center">
-            <SlideshowLightbox className="grid-fr">
-              {collectionData &&
-                collectionData.map((collectionItem, index) => (
-                  <img
-                    key={index}
-                    src={collectionItem.image.asset.url}
-                    alt=""
-                    data-scroll
-                  />
-                ))}
-            </SlideshowLightbox>
-          </div>
-          {/* end row */}
-        </div>
-        {/* end container */}
-      </section>
+              {/* end container */}
+            </section>
+          </>
+        ))}
       {/* end content-section */}
     </>
   );

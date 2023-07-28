@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'collectionheader',
-  title: 'Collection Header',
+  name: 'collection18header',
+  title: 'Collection 2018 Header',
   type: 'document',
   fields: [
     defineField({
@@ -29,6 +29,12 @@ export default defineType({
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'heading',
+      title: 'Page Heading',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
   ],
   preview: {

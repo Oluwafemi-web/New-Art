@@ -9,6 +9,7 @@ import sanityClient from "../../client";
 // import UI components
 import Header from "../UI/Header";
 import Collection from "../UI/Collection";
+import { PortableText } from "@portabletext/react";
 
 export default function Collections2013() {
   let previousDataScroll = 1.5; // Initial value for the first component
@@ -23,9 +24,10 @@ export default function Collections2013() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collectionheader" && language == $language] {
+        `*[_type == "collection13header" && language == $language] {
            title,
            description,
+           heading,
            image{
             asset->{
               _id,
@@ -35,6 +37,7 @@ export default function Collections2013() {
           _translations[] {
             value->{
               title,
+              heading,
               description,
               image{
                asset->{
@@ -96,40 +99,39 @@ export default function Collections2013() {
     <>
       {collectionHeader &&
         collectionHeader.map((item, index) => (
-          <Header
-            title={item.title}
-            description={item.description}
-            background={item.image.asset.url}
-            key={index}
-          />
-        ))}
-      <section className="content-section" data-background="#fffbf7">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="section-title text-center">
-                <h2>
-                  Our collections are <br />
-                  most important
-                </h2>
+          <>
+            <Header
+              title={item.title}
+              description={item.description}
+              background={item.image.asset.url}
+              key={index}
+            />
+            <section className="content-section" data-background="#fffbf7">
+              <div className="container">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="section-title text-center">
+                      <PortableText value={item.heading} />
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-content-center">
+                  <SlideshowLightbox className="grid-fr">
+                    {collectionData &&
+                      collectionData.map((collectionItem, index) => (
+                        <img
+                          key={index}
+                          src={collectionItem.image.asset.url}
+                          alt=""
+                          data-scroll
+                        />
+                      ))}
+                  </SlideshowLightbox>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <SlideshowLightbox className="grid-fr">
-              {collectionData &&
-                collectionData.map((collectionItem, index) => (
-                  <img
-                    key={index}
-                    src={collectionItem.image.asset.url}
-                    alt=""
-                    data-scroll
-                  />
-                ))}
-            </SlideshowLightbox>
-          </div>
-        </div>
-      </section>
+            </section>
+          </>
+        ))}
     </>
   );
 }
