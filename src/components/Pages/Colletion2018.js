@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { SlideshowLightbox } from "lightbox.js-react";
+import { PortableText } from "@portabletext/react";
 import "lightbox.js-react/dist/index.css";
 import SanityContext from "../Context/sanity-context";
 import LanguageContext from "../Context/language-context";
