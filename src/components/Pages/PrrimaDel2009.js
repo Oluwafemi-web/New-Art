@@ -1,21 +1,18 @@
 import { useState, useEffect, useContext } from "react";
 import { SlideshowLightbox } from "lightbox.js-react";
-import { PortableText } from "@portabletext/react";
 import "lightbox.js-react/dist/index.css";
 import SanityContext from "../Context/sanity-context";
 import LanguageContext from "../Context/language-context";
-import "../../css/bootstrap.min.css";
-import "../../css/fancybox.min.css";
-import "../../css/odometer.min.css";
-
-import "../../css/style.css";
 
 import sanityClient from "../../client";
 
 // import UI components
 import Header from "../UI/Header";
+import Collection from "../UI/Collection";
+import { PortableText } from "@portabletext/react";
 
-export default function Collections2018() {
+export default function PrimaDel2009() {
+  let previousDataScroll = 1.5; // Initial value for the first component
   const [collectionHeader, setCollectionHeader] = useState(null);
   const [collectionData, setCollectionData] = useState(null);
   const sanityCtx = useContext(SanityContext);
@@ -27,7 +24,7 @@ export default function Collections2018() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collection18header" && language == $language]{
+        `*[_type == "primadel2009header" && language == $language] {
            title,
            description,
            heading,
@@ -40,8 +37,8 @@ export default function Collections2018() {
           _translations[] {
             value->{
               title,
-              description,
               heading,
+              description,
               image{
                asset->{
                  _id,
@@ -55,10 +52,11 @@ export default function Collections2018() {
       )
       .then((data) => setCollectionHeader(data))
       .catch(console.error);
-
+  }, []);
+  useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collection18" && language == $language] | | order(_createdAt desc){
+        `*[_type == "primadel2009" && language == $language]|  order(_createdAt desc){
            title,
            description,
            _createdAt,
@@ -71,14 +69,14 @@ export default function Collections2018() {
           _translations[] {
             value->{
               title,
-              _createdAt,
               description,
+              _createdAt,
               image{
                asset->{
                  _id,
                  url
                }
-             } 
+             }
             }
          }
         }`,
@@ -115,11 +113,8 @@ export default function Collections2018() {
                     <div className="section-title text-center">
                       <PortableText value={item.heading} />
                     </div>
-                    {/* end section-title */}
                   </div>
-                  {/* end col-12 */}
                 </div>
-                {/* end row */}
                 <div className="row justify-content-center">
                   <SlideshowLightbox className="grid-fr">
                     {collectionData &&
@@ -133,13 +128,10 @@ export default function Collections2018() {
                       ))}
                   </SlideshowLightbox>
                 </div>
-                {/* end row */}
               </div>
-              {/* end container */}
             </section>
           </>
         ))}
-      {/* end content-section */}
     </>
   );
 }

@@ -89,13 +89,13 @@ export default function MobileNav(props) {
                 </Link>
                 <ul className={`collection-sub ${props.hovered}`}>
                   <li>
-                    <Link to="/collection2023">2023 - 2019</Link>
-                  </li>
-                  <li>
-                    <Link to="/collection2018">2018 - 2014</Link>
+                    <Link to="/collection2023">2023 - 2014</Link>
                   </li>
                   <li>
                     <Link to="/collection2013">2013 - 2009</Link>
+                  </li>
+                  <li>
+                    <Link to="/primadel2009">Prima del 2009</Link>
                   </li>
                 </ul>
               </li>

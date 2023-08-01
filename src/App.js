@@ -27,8 +27,8 @@ import LanguageProvider from "./components/Context/languageProvider";
 import LanguageContext from "./components/Context/language-context";
 import SanityContext from "./components/Context/sanity-context";
 import Collections2023 from "./components/Pages/Collection2023";
-import Collections2018 from "./components/Pages/Colletion2018";
-import Collections2013 from "./components/Pages/Collection2013";
+import Collections2014 from "./components/Pages/Colletion2013";
+import PrimaDel2009 from "./components/Pages/PrrimaDel2009";
 
 function Body() {
   const [navOpen, setNavOpen] = useState(false);
@@ -105,8 +105,8 @@ function Body() {
               <Route path="/exhibition" element={<Exihibitions />} />
               <Route path="/collection" element={<Collections />} />
               <Route path="/collection2023" element={<Collections2023 />} />
-              <Route path="/collection2018" element={<Collections2018 />} />
               <Route path="/collection2013" element={<Collections2013 />} />
+              <Route path="/primadel2009" element={<PrimaDel2009 />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/membership" element={<Register />} />
