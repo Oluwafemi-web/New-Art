@@ -88,7 +88,13 @@ function Body() {
       ) : (
         <div className=" smooth-scroll page-loaded">
           <div className="section-wrapper" data-scroll>
-            {navOpen && <MobileNav active={active} />}
+            {navOpen && (
+              <MobileNav
+                active={active}
+                enClicked={enClicked}
+                itClicked={itClicked}
+              />
+            )}
             <NavBar
               clickeventHandler={clickeventHandler}
               enClicked={enClicked}
