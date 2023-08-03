@@ -10,15 +10,10 @@ export function AboutHover(props) {
       <div className="col-12 row g-0">
         {props.aboutImages &&
           props.aboutImages.map((item, index) => (
-            <div className="col-lg-3 col-md-3 col-sm-6" key={index}>
+            <div className="col-lg-3 col-md-6 col-sm-6">
               <article className="about-item">
                 <div className="about-inner">
-                  <div
-                    className="about-inner-img"
-                    // style={{
-                    //   backgroundImage: `url(${item.image.asset.url})`,
-                    // }}
-                  >
+                  <div className="about-inner-img">
                     <img
                       src={item.image.asset.url}
                       style={{ height: "100%" }}
