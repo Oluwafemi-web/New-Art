@@ -52,17 +52,17 @@ export default function Footer() {
             <ul className="social-media">
               <li>
                 <a href="#">
+                  <i className="fab fa-instagram" /> /wandau-tv
+                </a>
+              </li>
+              <li>
+                <a href="#">
                   <i className="fab fa-facebook-f" /> /wandau-uk
                 </a>
               </li>
               <li>
                 <a href="#">
                   <i className="fab fa-twitter" /> /wandau-museum
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab fa-youtube" /> /wandau-tv
                 </a>
               </li>
             </ul>
