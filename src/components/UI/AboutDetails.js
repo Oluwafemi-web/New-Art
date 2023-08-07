@@ -7,17 +7,26 @@ import LanguageContext from "../Context/language-context";
 export function AboutHover(props) {
   return (
     <>
-      <div className="col-12 row g-0">
+      <div className="col-12 row g-0 hover-height">
         {props.aboutImages &&
           props.aboutImages.map((item, index) => (
             <div className="col-lg-3 col-md-6 col-sm-6">
               <article className="about-item">
                 <div className="about-inner">
-                  <div className="about-inner-img">
-                    <img
+                  <div
+                    className="about-inner-img"
+                    style={{
+                      backgroundImage: `url(${item.image.asset.url})`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      height: "0",
+                      paddingTop: "100%",
+                    }}
+                  >
+                    {/* <img
                       src={item.image.asset.url}
                       style={{ height: "100%" }}
-                    />
+                    /> */}
                   </div>
                   <div className="about-inner-content">
                     <a href="#" rel="tag">
@@ -37,7 +46,10 @@ export function AboutHover(props) {
 export function AboutMission(props) {
   return (
     <>
-      <div className="container mission pd-90 flex-reverse">
+      <div
+        className="container mission pd-90 flex-reverse"
+        style={{ marginTop: "10%" }}
+      >
         <div className="col-sm-12">
           <img src={props.image} className="fl-left wd-50" />
           <div className="text">
