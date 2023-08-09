@@ -61,8 +61,6 @@ export default function History(props) {
                 <h6>{props.subheading}</h6>
                 <PortableText value={props.heading} />
               </div>
-              {/* end titles */}
-
               <Swiper
                 modules={[Navigation, Pagination, Controller]}
                 spaceBetween={50}
@@ -84,12 +82,9 @@ export default function History(props) {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              {/* end swiper-wrapper */}
-              {/* end art-slider-content */}
             </div>
-            {/* end art-slider */}
           </div>
-          {/* end col-6 */}
+
           <div className="col-lg-6">
             <div className="art-slider" data-scroll="" data-scroll-speed={1}>
               <Swiper
@@ -110,18 +105,10 @@ export default function History(props) {
                   </SwiperSlide>
                 ))}
               </Swiper>
-
-              {/* end swiper-wrapper */}
             </div>
-            {/* end art-slider-images */}
           </div>
-          {/* end art-slider */}
         </div>
-        {/* end col-6 */}
       </div>
-      {/* end row */}
-
-      {/* end container */}
     </section>
   );
 }
