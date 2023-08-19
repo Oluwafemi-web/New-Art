@@ -62,7 +62,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#">
-                  <i className="fab fa-twitter" /> /wandau-museum
+                  <i className="fa-brands fa-x-twitter" /> /wandau-museum
                 </a>
               </li>
             </ul>
