@@ -30,7 +30,6 @@ export default defineConfig({
         'carousel',
         'primadel2009',
         'collection13',
-        'collection23',
         'collection13header',
         'collection23header',
         'primadel2009header',

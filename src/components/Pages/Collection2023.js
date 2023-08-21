@@ -60,7 +60,7 @@ export default function Collections2023() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "collection23" && language == $language] | order(_createdAt desc){
+        `*[_type == "collection23"] | order(_createdAt desc){
            title,
            _createdAt,
            description,
@@ -69,22 +69,7 @@ export default function Collections2023() {
               _id,
               url
             }
-          },
-          _translations[] {
-            value->{
-              title,
-              _createdAt,
-           description,
-           image{
-            asset->{
-              _id,
-              url
-            }
-          }
-            }
-         }
-        }`,
-        { language: ctx.languageData }
+          }`
       )
       .then((data) => setCollectionData(data))
       .catch(console.error);
