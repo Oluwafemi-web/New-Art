@@ -69,6 +69,7 @@ export default function Collections2023() {
               _id,
               url
             }
+          }
           }`
       )
       .then((data) => setCollectionData(data))
