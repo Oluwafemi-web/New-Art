@@ -21,7 +21,7 @@ export default function History(props) {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "history" && language == $language]{
+        `*[_type == "history"]{
            index,
            title,
            image{
@@ -29,21 +29,8 @@ export default function History(props) {
                _id,
                url
              }
-           },
-           _translations[] {
-            value->{
-              index,
-           title,
-           image{
-             asset->{
-               _id,
-               url
-             }
            }
-            }
-         }
-        }`,
-        { language: ctx.languageData }
+        }`
       )
       .then((data) => setHistoryData(data))
       .catch(console.error);

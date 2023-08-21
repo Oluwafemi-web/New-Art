@@ -39,7 +39,6 @@ export default defineConfig({
         'exhibitionheader',
         'footer',
         'frequentlyasked',
-        'history',
         'indexheading',
         'indexnewsitems',
         'inspirationitems',
