@@ -12,31 +12,6 @@ export default defineType({
       hidden: true,
     }),
     defineField({
-      name: 'about',
-      title: 'About',
-      type: 'string',
-    }),
-    defineField({
-      name: 'link1',
-      title: 'Quick link 1',
-      type: 'string',
-    }),
-    defineField({
-      name: 'link2',
-      title: 'Quick link 2',
-      type: 'string',
-    }),
-    defineField({
-      name: 'link3',
-      title: 'Quick link 3',
-      type: 'string',
-    }),
-    defineField({
-      name: 'link4',
-      title: 'Quick link 4',
-      type: 'string',
-    }),
-    defineField({
       name: 'connect',
       title: 'Connect',
       type: 'string',
@@ -52,8 +27,8 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'youtube',
-      title: 'Youtube',
+      name: 'instagram',
+      title: 'Instagram',
       type: 'string',
     }),
     defineField({

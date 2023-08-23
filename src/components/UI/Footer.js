@@ -1,96 +1,77 @@
+import { useState, useEffect } from "react";
+import sanityClient from "../../client";
 export default function Footer() {
-  // const [footerData, setFooterData] = useState(null);
+  const [footerData, setFooterData] = useState(null);
 
-  // useEffect(() => {
-  //   sanityClient
-  //     .fetch(
-  //       `*[_type == "footer"]{
-  //          about,
-  //          link1,
-  //          link2,
-  //          link3,
-  //          link4,
-  //          connect,
-  //          facebook,
-  //          twitter,
-  //          youtube,
-  //          visit,
-  //          address,
-  //          number,
-  //       }`
-  //     )
-  //     .then((data) => setFooterData(data))
-  //     .catch(console.error);
-  // }, []);
-  // if (!footerData) {
-  //   return <div>...Loading</div>;
-  // }
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "footer"]{
+           about,
+           connect,
+           facebook,
+           instagram,
+           twitter,
+           visit,
+           address,
+           number,
+        }`
+      )
+      .then((data) => setFooterData(data[0]))
+      .catch(console.error);
+  }, []);
+  if (!footerData) {
+    return <div>...Loading</div>;
+  }
   return (
-    <footer className="footer">
-      <div className="container" style={{ textAlign: "center" }}>
-        <div className="row">
-          {/* <div className="col-lg-4 col-md-6">
-            <h6 className="widget-title">About Museum</h6>
-            <ul className="footer-menu">
-              <li>
-                <a href="#">About us </a>
-              </li>
-              <li>
-                <a href="#">Contact us</a>
-              </li>
-              <li>
-                <a href="#">National work</a>
-              </li>
-              <li>
-                <a href="#">International work</a>
-              </li>
-            </ul>
-          </div> */}
-          {/* end col-4 */}
-          <div className="col-lg-6 col-md-6">
-            <h6 className="widget-title">Connect Us</h6>
-            <ul className="social-media">
-              <li>
-                <a href="#">
-                  <i className="fab fa-instagram" /> /wandau-tv
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab fa-facebook-f" /> /wandau-uk
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa-brands fa-x-twitter" /> /wandau-museum
-                </a>
-              </li>
-            </ul>
+    footerData && (
+      <footer className="footer">
+        <div className="container" style={{ textAlign: "center" }}>
+          <div className="row">
+            <div className="col-lg-6 col-md-6">
+              <h6 className="widget-title">{footerData.connect}</h6>
+              <ul className="social-media">
+                <li>
+                  <a href="#">
+                    <i className="fab fa-instagram" /> /{footerData.instagram}
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i className="fab fa-facebook-f" /> /{footerData.facebook}
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i className="fa-brands fa-x-twitter" /> /
+                    {footerData.twitter}
+                  </a>
+                </li>
+              </ul>
+            </div>
+            {/* end col-4 */}
+            <div className="col-lg-6 col-md-6">
+              <h6 className="widget-title">{footerData.visit}</h6>
+              <address className="address">
+                {footerData.address}
+                <br />
+                <i className="fas fa-info-circle" /> {footerData.number}
+              </address>
+            </div>
           </div>
-          {/* end col-4 */}
-          <div className="col-lg-6 col-md-6">
-            <h6 className="widget-title">Visit Us Now</h6>
-            <address className="address">
-              Cromwell Road New Town SW7 <strong>London - England</strong>
-              <i className="fas fa-info-circle" /> +44 (0)20 7942 2000
-            </address>
+        </div>
+        <div className="footer-bottom">
+          <div className="container">
+            <span className="copyright">© 2023 graziazuccolotto</span>
+            <span className="creation">
+              Website by <a href="#">iGerald</a>
+            </span>
           </div>
-          {/* end col-4 */}
+          {/* end container */}
         </div>
-        {/* end row */}
-      </div>
-      {/* end container */}
-      <div className="footer-bottom">
-        <div className="container">
-          <span className="copyright">© 2023 graziazuccolotto</span>
-          <span className="creation">
-            Website by <a href="#">iGerald</a>
-          </span>
-        </div>
-        {/* end container */}
-      </div>
 
-      {/* end footer-bottom */}
-    </footer>
+        {/* end footer-bottom */}
+      </footer>
+    )
   );
 }
