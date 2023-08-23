@@ -99,6 +99,9 @@ export default function Carousel() {
         touchMoveStopPropagation={true}
         touchStartForcePreventDefault={true}
         touchReleaseOnEdges={true}
+        onTouchMove={(e) => {
+          e.preventDefault();
+        }}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
@@ -120,10 +123,6 @@ export default function Carousel() {
         slidesPerView={1}
         onSwiper={setControlledSwiper}
         loop
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
         className="slider-texts swiper-container"
       >
         {carouselData.map((item, index) => (
