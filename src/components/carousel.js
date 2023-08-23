@@ -96,11 +96,9 @@ export default function Carousel() {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        touchMoveStopPropagation={true}
-        touchStartForcePreventDefault={true}
-        touchReleaseOnEdges={true}
         onTouchMove={(e) => {
-          e.preventDefault();
+          console.log(e);
+          e.allowTouchMove = false;
         }}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
