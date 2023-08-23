@@ -21,11 +21,6 @@ export default function Carousel() {
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
 
-  const handleCarouselTouchStart = (e) => {
-    // Prevent Swiper from capturing the touchstart event
-    e.stopPropagation();
-  };
-
   useEffect(() => {
     sanityClient
       .fetch(
@@ -101,7 +96,9 @@ export default function Carousel() {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        onTouchStart={handleCarouselTouchStart}
+        touchMoveStopPropagation={true}
+        touchStartForcePreventDefault={true}
+        touchReleaseOnEdges={true}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
