@@ -18,7 +18,7 @@ export default function History(props) {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "history"]{
+        `*[_type == "history"] | order(_createdAt desc){
            index,
            title,
            image{
@@ -48,11 +48,11 @@ export default function History(props) {
               <Swiper
                 modules={[Navigation, Pagination, Controller]}
                 spaceBetween={50}
-                slidesPerView={2}
+                slidesPerView={1}
                 onSwiper={setControlledSwiper}
                 autoplaydirection="vertical"
                 direction="vertical"
-                loop
+                rewind
                 className="art-slider-content swiper-container"
               >
                 {historyData.map((item, index) => (
@@ -76,7 +76,7 @@ export default function History(props) {
                 }}
                 slidesPerView={1}
                 controller={{ control: controlledSwiper }}
-                loop
+                rewind
                 className="art-slider-image swiper-container"
               >
                 {historyData.map((item, index) => (
