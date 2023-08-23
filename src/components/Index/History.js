@@ -49,10 +49,6 @@ export default function History(props) {
                 modules={[Navigation, Pagination, Controller]}
                 spaceBetween={50}
                 slidesPerView={2}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
                 onSwiper={setControlledSwiper}
                 autoplaydirection="vertical"
                 direction="vertical"
