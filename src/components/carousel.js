@@ -6,7 +6,6 @@ import SanityContext from "./Context/sanity-context";
 import LanguageContext from "./Context/language-context";
 import "swiper/css";
 
-// import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { Navigation, Pagination, Controller } from "swiper/modules";
@@ -100,6 +99,8 @@ export default function Carousel() {
           console.log(e);
           e.allowTouchMove = false;
         }}
+        onNavigationNext={(swiper) => swiper.slideNext()}
+        onNavigationPrev={(swiper) => swiper.slidePrev()}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
