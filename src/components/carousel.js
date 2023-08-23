@@ -96,6 +96,7 @@ export default function Carousel() {
           delay: 3000,
           disableOnInteraction: false,
         }}
+        allowTouchMove={false}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
