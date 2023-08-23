@@ -64,7 +64,7 @@ export default function Footer() {
           <div className="container">
             <span className="copyright">© 2023 graziazuccolotto</span>
             <span className="creation">
-              Website by <a href="#">iGerald</a>
+              Website by <a href="https://i-gerald.com/">iGerald</a>
             </span>
           </div>
           {/* end container */}
