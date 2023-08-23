@@ -1,6 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import SanityContext from "../Context/sanity-context";
 import LanguageContext from "../Context/language-context";
+import useInput from "../../hooks/use-input";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
@@ -12,13 +15,111 @@ import sanityClient from "../../client";
 // import UI components
 import Header from "../UI/Header";
 import { PortableText } from "@portabletext/react";
+const MySwal = withReactContent(Swal);
 
+const isNotEmpty = (value) => value.trim() !== "";
+const isEmail = (value) => {
+  return value.trim().length > 5 && value.includes("@");
+};
 export default function Contact() {
   const [contactHeader, setContactHeader] = useState(null);
   const [contactData, setContactData] = useState(null);
 
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
+
+  const {
+    value: nameValue,
+    isValid: nameIsValid,
+    hasError: nameError,
+    valueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetname,
+  } = useInput(isNotEmpty);
+  const {
+    value: messageValue,
+    isValid: messageIsValid,
+    hasError: messageError,
+    valueChangeHandler: messageChangeHandler,
+    inputBlurHandler: messageBlurHandler,
+    reset: resetmessage,
+  } = useInput(isNotEmpty);
+  const {
+    value: numberValue,
+    isValid: numberIsValid,
+    hasError: numberError,
+    valueChangeHandler: numberChangeHandler,
+    inputBlurHandler: numberBlurHandler,
+    reset: resetnumber,
+  } = useInput(isNotEmpty);
+  const {
+    value: emailValue,
+    isValid: emailIsValid,
+    hasError: emailError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetemail,
+  } = useInput(isEmail);
+
+  let formIsValid = false;
+  if (nameIsValid && messageIsValid && emailIsValid && numberIsValid) {
+    formIsValid = true;
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (nameIsValid && messageIsValid && emailIsValid && numberIsValid) {
+      const formData = new FormData();
+      formData.append("name", nameValue);
+      formData.append("email", emailValue);
+      formData.append("number", numberValue);
+      formData.append("message", messageValue);
+
+      // Send form data to the server
+      try {
+        const response = await fetch("contact.php", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.status === "success") {
+            MySwal.fire({
+              icon: "success",
+              title: "Success",
+              text: data.message,
+              timer: 1500,
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: data.message,
+            });
+          }
+        } else {
+          // Show error message to the user
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Form submission failed",
+          });
+        }
+        resetemail();
+        resetnumber();
+        resetname();
+        resetmessage();
+      } catch (error) {
+        console.error("Form submission failed", error);
+      }
+    } else {
+      return;
+    }
+    // Perform form validation if needed
+
+    // Send form data to the server
+  };
 
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
@@ -96,62 +197,87 @@ export default function Contact() {
                 <div className="row justify-content-center">
                   <div className="col-12">
                     <div className="section-title text-center">
-                      {/* <figure>
-                  <img src={icon} alt="Image" />
-                </figure> */}
                       <PortableText value={contactData.heading} />
                     </div>
-                    {/* end section-title */}
                   </div>
-                  {/* end col-12 */}
                   <div className="col-lg-5">
                     <div className="contact-box">
                       <PortableText value={contactData.number} />
                     </div>
-                    {/* end contact-box */}
                     <div className="contact-box">
                       <PortableText value={contactData.enquiry} />
                     </div>
-                    {/* end contact-box */}
                     <div className="contact-box">
                       <PortableText value={contactData.enquiry2} />
                     </div>
-                    {/* end contact-box */}
                   </div>
-                  {/* end col-5 */}
                   <div className="col-lg-5">
-                    <div className="contact-form">
+                    <form
+                      className="contact-form"
+                      method="post"
+                      onSubmit={handleSubmit}
+                    >
                       <div className="mb-3">
-                        <input type="text" placeholder="Complete Name" />
+                        <input
+                          type="text"
+                          placeholder="Complete Name"
+                          onChange={nameChangeHandler}
+                          defaultValue={nameValue}
+                          onBlur={nameBlurHandler}
+                        />
+                        {nameError && (
+                          <p className="error-text">Name cannot be empty</p>
+                        )}
                       </div>
-                      {/* end mb-3 */}
                       <div className="mb-3">
-                        <input type="text" placeholder="E-mail Address" />
+                        <input
+                          type="text"
+                          placeholder="E-mail Address"
+                          onChange={emailChangeHandler}
+                          defaultValue={emailValue}
+                          onBlur={emailBlurHandler}
+                        />
+                        {emailError && (
+                          <p className="error-text">Enter a valid email!</p>
+                        )}
                       </div>
-                      {/* end mb-3 */}
                       <div className="mb-3">
-                        <input type="text" placeholder="Phone Number" />
+                        <input
+                          type="text"
+                          placeholder="Phone Number"
+                          onChange={numberChangeHandler}
+                          onBlur={numberBlurHandler}
+                          defaultValue={numberValue}
+                        />
+                        {numberError && (
+                          <p className="error-text">Enter a valid number</p>
+                        )}
                       </div>
-                      {/* end mb-3 */}
                       <div className="mb-3">
                         <textarea
                           placeholder="Your Message"
-                          defaultValue={""}
+                          defaultValue={messageValue}
+                          onChange={messageChangeHandler}
+                          onBlur={messageBlurHandler}
                         />
+                        {messageError && (
+                          <p className="error-text">Message cannot be empty</p>
+                        )}
                       </div>
-                      {/* end mb-3 */}
+
                       <div className="mb-3">
-                        <input type="submit" defaultValue="Send Us" />
+                        <button
+                          type="submit"
+                          className="default-btn"
+                          disabled={!formIsValid}
+                        >
+                          SUBMIT
+                        </button>
                       </div>
-                      {/* end mb-3 */}
-                    </div>
-                    {/* end contact-form */}
+                    </form>
                   </div>
-                  {/* end col-5 */}
                 </div>
-                {/* end row */}
               </div>
-              {/* end container */}
             </section>
           </>
         ))}
