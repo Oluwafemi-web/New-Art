@@ -97,7 +97,7 @@ export default function Carousel() {
         }}
         onTouchMove={(e) => {
           console.log(e);
-          e.allowTouchMove = false;
+          // e.allowTouchMove = false;
         }}
         onNavigationNext={(swiper) => swiper.slideNext()}
         onNavigationPrev={(swiper) => swiper.slidePrev()}
