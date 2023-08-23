@@ -95,12 +95,6 @@ export default function Carousel() {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        onTouchMove={(e) => {
-          console.log(e);
-          // e.allowTouchMove = false;
-        }}
-        onNavigationNext={(swiper) => swiper.slideNext()}
-        onNavigationPrev={(swiper) => swiper.slidePrev()}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
@@ -116,6 +110,7 @@ export default function Carousel() {
           </SwiperSlide>
         ))}
       </Swiper>
+
       <Swiper
         modules={[Navigation, Controller]}
         spaceBetween={50}
