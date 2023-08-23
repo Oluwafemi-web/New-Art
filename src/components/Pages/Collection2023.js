@@ -56,7 +56,7 @@ export default function Collections2023() {
       )
       .then((data) => setCollectionHeader(data))
       .catch(console.error);
-  }, []);
+  }, [ctx.languageData]);
   useEffect(() => {
     sanityClient
       .fetch(

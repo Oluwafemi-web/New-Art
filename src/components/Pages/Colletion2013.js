@@ -18,6 +18,7 @@ import Header from "../UI/Header";
 export default function Collections2013() {
   const [collectionHeader, setCollectionHeader] = useState(null);
   const [collectionData, setCollectionData] = useState(null);
+
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
 

@@ -2,9 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PortableText } from "@portabletext/react";
 import SanityContext from "./Context/sanity-context";
+
 import LanguageContext from "./Context/language-context";
 import "swiper/css";
-// import "swiper/css/navigation";
+
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SwiperCore, { Navigation, Pagination, Controller } from "swiper";
 
@@ -93,7 +95,6 @@ export default function Carousel() {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        allowTouchMove={false}
         pagination={{ clickable: true, type: "progressbar" }}
         className="slider-images swiper-container"
       >
@@ -109,7 +110,6 @@ export default function Carousel() {
           </SwiperSlide>
         ))}
       </Swiper>
-
       <Swiper
         modules={[Navigation, Controller]}
         spaceBetween={50}
@@ -120,7 +120,6 @@ export default function Carousel() {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        allowTouchMove={false}
         className="slider-texts swiper-container"
       >
         {carouselData.map((item, index) => (
