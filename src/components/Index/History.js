@@ -4,12 +4,9 @@ import { PortableText } from "@portabletext/react";
 import LanguageContext from "../Context/language-context";
 import "swiper/css";
 import "swiper/css/pagination";
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Controller,
-  Autoplay,
-} from "swiper";
+import SwiperCore from "swiper";
+import { Navigation, Pagination, Controller, Autoplay } from "swiper/modules";
+
 import sanityClient from "../../client";
 
 SwiperCore.use([Navigation, Pagination, Controller, Autoplay]);

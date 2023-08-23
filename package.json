@@ -24,7 +24,7 @@
     "react-slick": "^0.29.0",
     "sanity": "^3.14.2",
     "sass": "^1.63.6",
-    "swiper": "^9.4.0",
+    "swiper": "^10",
     "vite": "^4.4.4",
     "web-vitals": "^2.1.4"
   },

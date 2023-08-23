@@ -6,9 +6,10 @@ import SanityContext from "./Context/sanity-context";
 import LanguageContext from "./Context/language-context";
 import "swiper/css";
 
-import "swiper/css/navigation";
+// import "swiper/css/navigation";
 import "swiper/css/pagination";
-import SwiperCore, { Navigation, Pagination, Controller } from "swiper";
+import SwiperCore from "swiper";
+import { Navigation, Pagination, Controller } from "swiper/modules";
 
 import sanityClient from "../client";
 
