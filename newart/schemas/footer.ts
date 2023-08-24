@@ -22,8 +22,13 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'twitter',
-      title: 'Twitter',
+      name: 'facebooklink',
+      title: 'Facebook Link',
+      type: 'string',
+    }),
+    defineField({
+      name: 'instagramlink',
+      title: 'Instagram Link',
       type: 'string',
     }),
     defineField({

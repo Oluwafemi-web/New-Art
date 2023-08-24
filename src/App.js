@@ -21,7 +21,6 @@ import Exihibitions from "./components/Pages/Exihibitions";
 import Collections from "./components/Pages/Collections";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
-import Register from "./components/Pages/Register";
 import SanityProvider from "./components/Context/SanityProvider";
 import LanguageProvider from "./components/Context/languageProvider";
 import LanguageContext from "./components/Context/language-context";
@@ -115,7 +114,6 @@ function Body() {
               <Route path="/primadel2009" element={<PrimaDel2009 />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/membership" element={<Register />} />
             </Routes>
             <Footer />
           </div>

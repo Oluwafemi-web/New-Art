@@ -29,7 +29,6 @@ export default defineConfig({
         'aboutslider',
         'carousel',
         'primadel2009',
-        'collection13',
         'collection13header',
         'collection23header',
         'primadel2009header',

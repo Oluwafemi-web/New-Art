@@ -10,8 +10,9 @@ export default function Footer() {
            about,
            connect,
            facebook,
+           facebooklink,
            instagram,
-           twitter,
+           instagramlink,
            visit,
            address,
            number,
@@ -32,24 +33,23 @@ export default function Footer() {
               <h6 className="widget-title">{footerData.connect}</h6>
               <ul className="social-media">
                 <li>
-                  <a href="#">
+                  <a href={footerData.instagramlink} target="_blank">
                     <i className="fab fa-instagram" /> /{footerData.instagram}
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href={footerData.facebooklink} target="_blank">
                     <i className="fab fa-facebook-f" /> /{footerData.facebook}
                   </a>
                 </li>
-                <li>
-                  <a href="#">
+                {/* <li>
+                  <a href={footerData.twitterlink}>
                     <i className="fa-brands fa-x-twitter" /> /
                     {footerData.twitter}
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
-            {/* end col-4 */}
             <div className="col-lg-6 col-md-6">
               <h6 className="widget-title">{footerData.visit}</h6>
               <address className="address">
