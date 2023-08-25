@@ -63,39 +63,39 @@ export default function Collections2013() {
       )
       .then((data) => setCollectionHeader(data))
       .catch(console.error);
+  }, [ctx.languageData]);
 
+  useEffect(() => {
     sanityClient
       .fetch(
         `*[_type == "collection13"] | order(_createdAt desc){
-           title,
-           description,
-           _createdAt,
-           image{
-            asset->{
-              _id,
-              url
-            }
-          },
-          _translations[] {
-            value->{
-              title,
-              _createdAt,
-              description,
-              image{
-               asset->{
-                 _id,
-                 url
-               }
-             } 
-            }
-         }
-        }`,
-        { language: ctx.languageData }
+         title,
+         description,
+         _createdAt,
+         image{
+          asset->{
+            _id,
+            url
+          }
+        },
+        _translations[] {
+          value->{
+            title,
+            _createdAt,
+            description,
+            image{
+             asset->{
+               _id,
+               url
+             }
+           } 
+          }
+       }
+      }`
       )
       .then((data) => setCollectionData(data))
       .catch(console.error);
-  }, [ctx.languageData]);
-
+  }, []);
   useEffect(() => {
     if (!collectionHeader || !collectionData) {
       return sanityCtx.changeState(false);

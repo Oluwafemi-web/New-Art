@@ -10,7 +10,6 @@ import "../../css/odometer.min.css";
 
 import "../../css/style.css";
 
-import icon from "../../images/icon-info.png";
 import sanityClient from "../../client";
 // import UI components
 import Header from "../UI/Header";
@@ -282,7 +281,10 @@ export default function Contact() {
           </>
         ))}
       <div className="google-maps">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10202.81803653302!2d30.552083977692742!3d50.4247130103151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf73cbd2db91%3A0x8141e376ee29dd50!2sZvirynetske%20Cemetery!5e0!3m2!1str!2str!4v1614660000205!5m2!1str!2str" />
+        <iframe
+          title="map"
+          src="https://www.google.com/maps/embed/v1/place?q=Via+Aldo+Moro,+98,+Meolo,+Metropolitan+City+of+Venice,+Italy&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+        />
       </div>
     </>
   );
