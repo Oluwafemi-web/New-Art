@@ -101,9 +101,15 @@ export default function History(props) {
             <h2>Partners</h2>
           </div>
           <div className="grid-fr">
-            <img src={partner} />
-            <img src={partner2} />
-            <img src={partner3} />
+            <a href="http://www.kunst-am-klimtplatz.at/Museum/" target="_blank">
+              <img src={partner} />
+            </a>
+            <a href="https://galleriapalmaarte.it/en" target="_blank">
+              <img src={partner2} />
+            </a>
+            <a href="https://www.merighi.it/" target="_blank">
+              <img src={partner3} />
+            </a>
           </div>
         </div>
       </section>

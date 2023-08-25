@@ -21,7 +21,13 @@ export default function Collections2023() {
   const [collectionData, setCollectionData] = useState(null);
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
-
+  const description = {
+    types: {
+      block: ({ value }) => {
+        return <h2>{value.children[0].text}</h2>;
+      },
+    },
+  };
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
   };
@@ -100,7 +106,10 @@ export default function Collections2023() {
                 <div className="row">
                   <div className="col-12">
                     <div className="section-title text-center">
-                      <PortableText value={item.heading} />
+                      <PortableText
+                        components={description}
+                        value={item.heading}
+                      />
                     </div>
                     {/* end section-title */}
                   </div>

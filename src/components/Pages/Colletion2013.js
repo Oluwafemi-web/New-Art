@@ -21,6 +21,13 @@ export default function Collections2013() {
 
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
+  const description = {
+    types: {
+      block: ({ value }) => {
+        return <h2>{value.children[0].text}</h2>;
+      },
+    },
+  };
 
   const handleSanityLoaded = () => {
     sanityCtx.changeState(true);
@@ -59,7 +66,7 @@ export default function Collections2013() {
 
     sanityClient
       .fetch(
-        `*[_type == "collection13" && language == $language] | order(_createdAt desc){
+        `*[_type == "collection13"] | order(_createdAt desc){
            title,
            description,
            _createdAt,
@@ -114,11 +121,12 @@ export default function Collections2013() {
                 <div className="row">
                   <div className="col-12">
                     <div className="section-title text-center">
-                      <PortableText value={item.heading} />
+                      <PortableText
+                        value={item.heading}
+                        components={description}
+                      />
                     </div>
-                    {/* end section-title */}
                   </div>
-                  {/* end col-12 */}
                 </div>
                 {/* end row */}
                 <div className="row justify-content-center">
