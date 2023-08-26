@@ -12,6 +12,7 @@ import Inspiration from "../Index/Inspiration";
 import Steps from "../Index/Steps";
 import News from "../Index/News";
 import History from "../Index/History";
+import Partners from "../Index/Partners";
 
 export default function Home() {
   const [headingData, setHeadingData] = useState();
@@ -88,6 +89,7 @@ export default function Home() {
           heading={headingData.historytitle}
           subheading={headingData.historydescription}
         />
+        <Partners />
         {/* <News
           logo={headingData.logo.asset.url}
           heading={headingData.newstitle}

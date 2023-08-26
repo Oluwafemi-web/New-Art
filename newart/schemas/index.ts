@@ -28,6 +28,7 @@ import frequentlyasked from './frequentlyasked'
 import footer from './footer'
 import worldartimage from './worldartimage'
 import indexheadings from './indexheadings'
+import partners from './partners'
 import contacts from './contacts'
 
 export const schemaTypes = [
@@ -38,6 +39,7 @@ export const schemaTypes = [
   inspiration,
   steps,
   history,
+  partners,
   indexheadings,
   indexnews,
   exhibitionheader,

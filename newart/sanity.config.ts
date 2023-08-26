@@ -34,6 +34,7 @@ export default defineConfig({
         'primadel2009header',
         'contactheader',
         'contacts',
+        'partners',
         'exhibition',
         'exhibitionheader',
         'footer',
