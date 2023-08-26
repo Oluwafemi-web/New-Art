@@ -48,7 +48,10 @@ export default function Partners() {
           <div className="section-title text-center">
             <h2>{title}</h2>
           </div>
-          <div className="grid-fr">
+          <div
+            className="grid-fr"
+            style={{ justifyContent: "center", alignItems: "center" }}
+          >
             {partner.map((item, index) => (
               <a href={item.link} target="_blank" key={index}>
                 <img src={item.image.asset.url} />

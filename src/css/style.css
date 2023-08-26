@@ -4327,6 +4327,8 @@ button[type="submit"] i {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
+  justify-content: center;
+  align-items: center;
 }
 ._wTR3b {
   background-color: rgba(0, 0, 0, 0.8) !important;
