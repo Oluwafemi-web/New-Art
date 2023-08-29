@@ -4350,5 +4350,10 @@ button[type="submit"] i {
   }
 } */
 .partners img {
-  width: 80%;
+  width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  .partners img {
+    width: 80%;
+  }
 }
