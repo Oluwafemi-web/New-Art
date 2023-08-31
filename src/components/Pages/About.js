@@ -26,89 +26,89 @@ export default function About() {
     sanityCtx.changeState(true);
   };
 
-  async function filterGalleryOnLoad() {
-    // Wait for DOM to load completely
-    await new Promise((resolve) => {
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", resolve);
-      } else {
-        resolve();
-      }
-    });
+  // async function filterGalleryOnLoad() {
+  //   // Wait for DOM to load completely
+  //   await new Promise((resolve) => {
+  //     if (document.readyState === "loading") {
+  //       document.addEventListener("DOMContentLoaded", resolve);
+  //     } else {
+  //       resolve();
+  //     }
+  //   });
 
-    // Get all the filter buttons
-    const galleryFilter = document.querySelector(".aheto-timeline__events");
-    const filterButtons = galleryFilter.querySelectorAll("a");
+  //   // Get all the filter buttons
+  //   const galleryFilter = document.querySelector(".aheto-timeline__events");
+  //   const filterButtons = galleryFilter.querySelectorAll("a");
 
-    // Get all the gallery items
-    const galleryItems = document.querySelectorAll(
-      ".aheto-timeline__events-content li"
-    );
+  //   // Get all the gallery items
+  //   const galleryItems = document.querySelectorAll(
+  //     ".aheto-timeline__events-content li"
+  //   );
 
-    // Add click event listener to each filter button
-    filterButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        // Remove "selected" class from all buttons
-        filterButtons.forEach(function (btn) {
-          btn.classList.remove("selected");
-        });
+  //   // Add click event listener to each filter button
+  //   filterButtons.forEach(function (button) {
+  //     button.addEventListener("click", function () {
+  //       // Remove "selected" class from all buttons
+  //       filterButtons.forEach(function (btn) {
+  //         btn.classList.remove("selected");
+  //       });
 
-        // Add "selected" class to clicked button
-        this.classList.add("selected");
+  //       // Add "selected" class to clicked button
+  //       this.classList.add("selected");
 
-        // Get the filter value from the button
-        const filterValue = this.getAttribute("data-date");
+  //       // Get the filter value from the button
+  //       const filterValue = this.getAttribute("data-date");
 
-        // Loop through all gallery items
-        galleryItems.forEach((item) => {
-          // Check if the item has the same attribute value as the filter value or if the filter value is "*"
-          if (
-            item.getAttribute("data-date") === filterValue ||
-            filterValue === "*"
-          ) {
-            // Show the item
-            item.classList.add("selected");
-          } else {
-            // Hide the item
-            item.classList.remove("selected");
-          }
-        });
-      });
-    });
-  }
-  var div = document.getElementById("year");
-  var scrollLeftButton = document.getElementById("scrollLeftButton");
-  var scrollRightButton = document.getElementById("scrollRightButton");
+  //       // Loop through all gallery items
+  //       galleryItems.forEach((item) => {
+  //         // Check if the item has the same attribute value as the filter value or if the filter value is "*"
+  //         if (
+  //           item.getAttribute("data-date") === filterValue ||
+  //           filterValue === "*"
+  //         ) {
+  //           // Show the item
+  //           item.classList.add("selected");
+  //         } else {
+  //           // Hide the item
+  //           item.classList.remove("selected");
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
+  // var div = document.getElementById("year");
+  // var scrollLeftButton = document.getElementById("scrollLeftButton");
+  // var scrollRightButton = document.getElementById("scrollRightButton");
 
-  function scrollLeft() {
-    div.scrollTo({
-      left: div.scrollLeft - 200,
-      behavior: "smooth",
-    });
-    updateButtonState();
-  }
+  // function scrollLeft() {
+  //   div.scrollTo({
+  //     left: div.scrollLeft - 200,
+  //     behavior: "smooth",
+  //   });
+  //   updateButtonState();
+  // }
 
-  function scrollRight() {
-    div.scrollTo({
-      left: div.scrollLeft + 200,
-      behavior: "smooth",
-    });
-    updateButtonState();
-  }
-  function updateButtonState() {
-    if (div.scrollLeft === 0) {
-      scrollLeftButton.classList.add("inactive");
-    } else {
-      scrollLeftButton.classList.remove("inactive");
-    }
+  // function scrollRight() {
+  //   div.scrollTo({
+  //     left: div.scrollLeft + 200,
+  //     behavior: "smooth",
+  //   });
+  //   updateButtonState();
+  // }
+  // function updateButtonState() {
+  //   if (div.scrollLeft === 0) {
+  //     scrollLeftButton.classList.add("inactive");
+  //   } else {
+  //     scrollLeftButton.classList.remove("inactive");
+  //   }
 
-    if (div.scrollLeft + div.clientWidth >= div.scrollWidth) {
-      scrollRightButton.classList.add("inactive");
-    } else {
-      scrollRightButton.classList.remove("inactive");
-    }
-  }
-  setTimeout(filterGalleryOnLoad, 5000);
+  //   if (div.scrollLeft + div.clientWidth >= div.scrollWidth) {
+  //     scrollRightButton.classList.add("inactive");
+  //   } else {
+  //     scrollRightButton.classList.remove("inactive");
+  //   }
+  // }
+  // setTimeout(filterGalleryOnLoad, 5000);
 
   useEffect(() => {
     sanityClient
@@ -238,8 +238,9 @@ export default function About() {
         ))}
       <>
         <div className="container-fluid pd-top-90">
-          <AboutSlider scrollLeft={scrollLeft} scrollRight={scrollRight} />
-          <AboutHover aboutImages={aboutImages} />
+          {/* <AboutSlider scrollLeft={scrollLeft} scrollRight={scrollRight} /> */}
+          {/* <AboutHover aboutImages={aboutImages} /> */}
+
           {aboutData && (
             <AboutMission
               image={aboutData.image.asset.url}
@@ -248,6 +249,7 @@ export default function About() {
               mission={aboutData.mission}
               vision={aboutData.vision}
               goals={aboutData.goals}
+              aboutImages={aboutImages}
               description={aboutData.description}
               description2={aboutData.description2}
               description3={aboutData.description3}

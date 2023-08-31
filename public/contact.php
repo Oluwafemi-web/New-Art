@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $message = $_POST['message'];
-  $number = $_POST['number']
+  $number = $_POST['number']; // <-- Missing semicolon here
 
   $subject = "New Contact Details from GraciaArt";
   $mailheader = "From: " . $name . "<" . $email . ">\r\n";

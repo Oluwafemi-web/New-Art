@@ -22,12 +22,7 @@ export function AboutHover(props) {
                       height: "0",
                       paddingTop: "100%",
                     }}
-                  >
-                    {/* <img
-                      src={item.image.asset.url}
-                      style={{ height: "100%" }}
-                    /> */}
-                  </div>
+                  ></div>
                   <div className="about-inner-content">
                     <a href="#" rel="tag">
                       {item.title}
@@ -57,10 +52,8 @@ export function AboutMission(props) {
             <PortableText value={props.description} />
           </div>
         </div>
-        {/* <div className="col-sm-12 col-md-6 pd-90"> */}
-
-        {/* </div> */}
       </div>
+      <AboutHover aboutImages={props.aboutImages} />
       <div className="container mission pd-90 flex-column-min">
         <div className="col-sm-12">
           <img src={props.image2} className="fl-right wd-50" />

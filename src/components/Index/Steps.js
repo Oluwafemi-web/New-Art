@@ -85,10 +85,6 @@ export default function Steps(props) {
                   <h4>{item.title}</h4>
                   <div className="expand">
                     <PortableText value={item.description} />
-
-                    <a href="#" className="custom-link">
-                      Learn More
-                    </a>
                   </div>
                 </div>
               </div>
