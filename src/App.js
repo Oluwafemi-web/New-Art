@@ -24,10 +24,10 @@ import Contact from "./components/Pages/Contact";
 import SanityProvider from "./components/Context/SanityProvider";
 import LanguageProvider from "./components/Context/languageProvider";
 import LanguageContext from "./components/Context/language-context";
-import SanityContext from "./components/Context/sanity-context";
 import Collections2023 from "./components/Pages/Collection2023";
 import Collections2013 from "./components/Pages/Colletion2013";
 import PrimaDel2009 from "./components/Pages/PrrimaDel2009";
+import ScrollToTop from "./components/UI/ScrollToTop";
 
 function Body() {
   const [navOpen, setNavOpen] = useState(false);
@@ -49,7 +49,7 @@ function Body() {
     setHover(false); // Show preloader when navigating to a new page
   }, [location.pathname]);
 
-  const sanityCtx = useContext(SanityContext);
+  // const sanityCtx = useContext(SanityContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -115,6 +115,7 @@ function Body() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
+            <ScrollToTop />
             <Footer />
           </div>
         </div>
