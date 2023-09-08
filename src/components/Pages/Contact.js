@@ -219,48 +219,80 @@ export default function Contact() {
                       <div className="mb-3">
                         <input
                           type="text"
-                          placeholder="Complete Name"
+                          placeholder={`${
+                            ctx.languageData === "it"
+                              ? "Nome e cognome"
+                              : "Full Name"
+                          }`}
                           onChange={nameChangeHandler}
                           defaultValue={nameValue}
                           onBlur={nameBlurHandler}
                         />
                         {nameError && (
-                          <p className="error-text">Name cannot be empty</p>
+                          <p className="error-text">{`${
+                            ctx.languageData === "it"
+                              ? "Il nome non può essere vuoto!"
+                              : "Name cannot be empty!"
+                          }`}</p>
                         )}
                       </div>
                       <div className="mb-3">
                         <input
                           type="text"
-                          placeholder="E-mail Address"
+                          placeholder={`${
+                            ctx.languageData === "it"
+                              ? "Indirizzo e-mail"
+                              : "Email Address"
+                          }`}
                           onChange={emailChangeHandler}
                           defaultValue={emailValue}
                           onBlur={emailBlurHandler}
                         />
                         {emailError && (
-                          <p className="error-text">Enter a valid email!</p>
+                          <p className="error-text">{`${
+                            ctx.languageData === "it"
+                              ? "Inserisci un'e-mail valida!"
+                              : "Enter a valid email!"
+                          }`}</p>
                         )}
                       </div>
                       <div className="mb-3">
                         <input
                           type="text"
-                          placeholder="Phone Number"
+                          placeholder={`${
+                            ctx.languageData === "it"
+                              ? "Numero di telefono"
+                              : "Phone Number"
+                          }`}
                           onChange={numberChangeHandler}
                           onBlur={numberBlurHandler}
                           defaultValue={numberValue}
                         />
                         {numberError && (
-                          <p className="error-text">Enter a valid number</p>
+                          <p className="error-text">{`${
+                            ctx.languageData === "it"
+                              ? "Inserisci un numero valido"
+                              : "Enter a valid number!"
+                          }`}</p>
                         )}
                       </div>
                       <div className="mb-3">
                         <textarea
-                          placeholder="Your Message"
+                          placeholder={`${
+                            ctx.languageData === "it"
+                              ? "Il tuo messaggio"
+                              : "Your Message"
+                          }`}
                           defaultValue={messageValue}
                           onChange={messageChangeHandler}
                           onBlur={messageBlurHandler}
                         />
                         {messageError && (
-                          <p className="error-text">Message cannot be empty</p>
+                          <p className="error-text">{`${
+                            ctx.languageData === "it"
+                              ? "Il messaggio non può essere vuoto!"
+                              : "Message cannot be empty!"
+                          }`}</p>
                         )}
                       </div>
 
@@ -270,7 +302,7 @@ export default function Contact() {
                           className="default-btn"
                           disabled={!formIsValid}
                         >
-                          SUBMIT
+                          {`${ctx.languageData === "it" ? "INVIA" : "SUBMIT"}`}
                         </button>
                       </div>
                     </form>

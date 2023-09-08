@@ -92,7 +92,9 @@ export default function NavBar(props) {
                   <Link to="/collection2013">2013 - 2009</Link>
                 </li>
                 <li>
-                  <Link to="/primadel2009">Prima del 2009</Link>
+                  <Link to="/primadel2009">{`${
+                    ctx.languageData === "it" ? "Prima Del 2009" : "Before 2009"
+                  }`}</Link>
                 </li>
               </ul>
             </li>
