@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import "lightbox.js-react/dist/index.css";
 import SanityContext from "../Context/sanity-context";
 import LanguageContext from "../Context/language-context";
+import Collection from "../UI/Collection";
 import "../../css/bootstrap.min.css";
 import "../../css/fancybox.min.css";
 import "../../css/odometer.min.css";
@@ -18,6 +19,35 @@ import Header from "../UI/Header";
 export default function Collections2013() {
   const [collectionHeader, setCollectionHeader] = useState(null);
   const [collectionData, setCollectionData] = useState(null);
+
+  const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openLightbox = (e, index) => {
+    e.preventDefault();
+    setCurrentImageIndex(index);
+    setLightboxIsOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIsOpen(false);
+  };
+
+  const gotoPrevious = () => {
+    if (currentImageIndex === 0) {
+      setCurrentImageIndex(collectionData.length - 1);
+    } else {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
+  const gotoNext = () => {
+    if (currentImageIndex === collectionData.length - 1) {
+      setCurrentImageIndex(0);
+    } else {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
 
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
@@ -130,25 +160,39 @@ export default function Collections2013() {
                 </div>
                 {/* end row */}
                 <div className="row justify-content-center">
-                  <SlideshowLightbox className="grid-fr">
-                    {collectionData &&
-                      collectionData.map((collectionItem, index) => (
-                        <img
-                          key={index}
-                          src={collectionItem.image.asset.url}
-                          alt=""
-                          data-scroll
-                        />
-                      ))}
-                  </SlideshowLightbox>
+                  {collectionData &&
+                    collectionData.map((collectionItem, index) => (
+                      <Collection
+                        img={collectionItem.image.asset.url}
+                        title={collectionItem.title}
+                        description={collectionItem.description}
+                        key={index * 100}
+                        clicked={(e) => openLightbox(e, index)}
+                      />
+                    ))}
                 </div>
-                {/* end row */}
               </div>
-              {/* end container */}
+              {lightboxIsOpen && (
+                <div className="image-popup">
+                  <button onClick={closeLightbox} className="close-button">
+                    <i className=" fa-solid fa-xmark" />
+                  </button>
+                  <button onClick={gotoPrevious} className="prev-button">
+                    <i className=" fa-solid fa-angle-left" />
+                  </button>
+                  <img
+                    src={collectionData[currentImageIndex].image.asset.url}
+                    alt="Selected"
+                  />
+
+                  <button onClick={gotoNext} className="next-button">
+                    <i className=" fa-solid fa-angle-right" />
+                  </button>
+                </div>
+              )}
             </section>
           </>
         ))}
-      {/* end content-section */}
     </>
   );
 }

@@ -15,6 +15,34 @@ export default function PrimaDel2009() {
   let previousDataScroll = 1.5; // Initial value for the first component
   const [collectionHeader, setCollectionHeader] = useState(null);
   const [collectionData, setCollectionData] = useState(null);
+  const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openLightbox = (e, index) => {
+    e.preventDefault();
+    setCurrentImageIndex(index);
+    setLightboxIsOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIsOpen(false);
+  };
+
+  const gotoPrevious = () => {
+    if (currentImageIndex === 0) {
+      setCurrentImageIndex(collectionData.length);
+    } else {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
+  const gotoNext = () => {
+    if (currentImageIndex === collectionData.length) {
+      setCurrentImageIndex(0);
+    } else {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
 
@@ -116,19 +144,36 @@ export default function PrimaDel2009() {
                   </div>
                 </div>
                 <div className="row justify-content-center">
-                  <SlideshowLightbox className="grid-fr">
-                    {collectionData &&
-                      collectionData.map((collectionItem, index) => (
-                        <img
-                          key={index}
-                          src={collectionItem.image.asset.url}
-                          alt=""
-                          data-scroll
-                        />
-                      ))}
-                  </SlideshowLightbox>
+                  {collectionData &&
+                    collectionData.map((collectionItem, index) => (
+                      <Collection
+                        img={collectionItem.image.asset.url}
+                        title={collectionItem.title}
+                        description={collectionItem.description}
+                        key={index * 100}
+                        clicked={(e) => openLightbox(e, index)}
+                      />
+                    ))}
                 </div>
               </div>
+              {lightboxIsOpen && (
+                <div className="image-popup">
+                  <button onClick={closeLightbox} className="close-button">
+                    <i className=" fa-solid fa-xmark" />
+                  </button>
+                  <button onClick={gotoPrevious} className="prev-button">
+                    <i className=" fa-solid fa-angle-left" />
+                  </button>
+                  <img
+                    src={collectionData[currentImageIndex].image.asset.url}
+                    alt="Selected"
+                  />
+
+                  <button onClick={gotoNext} className="next-button">
+                    <i className=" fa-solid fa-angle-right" />
+                  </button>
+                </div>
+              )}
             </section>
           </>
         ))}

@@ -16,6 +16,7 @@ SwiperCore.use([Navigation, Pagination, Controller]);
 
 export default function Carousel() {
   const [carouselData, setCarouselData] = useState([]);
+  const [videoData, setVideoData] = useState([]);
   const [controlledSwiper, setControlledSwiper] = useState(null);
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
@@ -68,6 +69,16 @@ export default function Carousel() {
         { language: ctx.languageData }
       )
       .then((data) => setCarouselData(data))
+      .catch(console.error);
+
+    sanityClient
+      .fetch(
+        `*[_type == "video"]{
+           'video': video.asset->url
+              
+        }`
+      )
+      .then((data) => setVideoData(data[0]))
       .catch(console.error);
   }, [ctx.languageData]);
   const handleSanityLoaded = () => {
@@ -131,11 +142,12 @@ export default function Carousel() {
 
       <div className="play-now">
         <a
-          href="videos/video.mp4"
+          href={videoData.video}
           data-fancybox
           data-width="640"
           data-height="360"
           className="play-btn"
+          target="_blank"
         ></a>
         <svg
           version="1.1"

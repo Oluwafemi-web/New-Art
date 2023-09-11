@@ -30,10 +30,12 @@ import worldartimage from './worldartimage'
 import indexheadings from './indexheadings'
 import partners from './partners'
 import contacts from './contacts'
+import indexvideo from './indexvideo'
 
 export const schemaTypes = [
   navbar,
   carousel,
+  indexvideo,
   worldartimage,
   upcoming,
   inspiration,

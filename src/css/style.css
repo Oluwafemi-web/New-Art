@@ -4374,3 +4374,41 @@ button[type="submit"] i {
 .scrollup:hover {
   cursor: pointer;
 }
+.image-popup {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+}
+.close-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 40px;
+  color: #ccc;
+  border: none;
+  background-color: transparent;
+}
+.prev-button,
+.next-button {
+  font-size: 40px;
+  color: #ccc;
+  border: none;
+  background-color: transparent;
+  position: fixed;
+}
+.next-button {
+  right: 50px;
+}
+.prev-button {
+  left: 50px;
+}
+.image-popup img {
+  transition: opacity 0.5s ease-in-out;
+  width: 30%;
+}

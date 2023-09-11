@@ -14,6 +14,7 @@ import sanityClient from "../../client";
 
 // import UI components
 import Header from "../UI/Header";
+import Collection from "../UI/Collection";
 
 export default function Collections2023() {
   let previousDataScroll = 1.5; // Initial value for the first component
@@ -21,6 +22,36 @@ export default function Collections2023() {
   const [collectionData, setCollectionData] = useState(null);
   const sanityCtx = useContext(SanityContext);
   const ctx = useContext(LanguageContext);
+
+  const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openLightbox = (e, index) => {
+    e.preventDefault();
+    setCurrentImageIndex(index);
+    setLightboxIsOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIsOpen(false);
+  };
+
+  const gotoPrevious = () => {
+    if (currentImageIndex === 0) {
+      setCurrentImageIndex(collectionData.length - 1);
+    } else {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
+  const gotoNext = () => {
+    if (currentImageIndex === collectionData.length - 1) {
+      setCurrentImageIndex(0);
+    } else {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
+
   const description = {
     types: {
       block: ({ value }) => {
@@ -111,12 +142,10 @@ export default function Collections2023() {
                         value={item.heading}
                       />
                     </div>
-                    {/* end section-title */}
                   </div>
-                  {/* end col-12 */}
                 </div>
-                {/* end row */}
-                <div className="row justify-content-center">
+
+                {/* <div className="row justify-content-center">
                   <SlideshowLightbox className="grid-fr">
                     {collectionData &&
                       collectionData.map((collectionItem, index) => (
@@ -128,10 +157,38 @@ export default function Collections2023() {
                         />
                       ))}
                   </SlideshowLightbox>
+                </div> */}
+                <div className="row justify-content-center">
+                  {collectionData &&
+                    collectionData.map((collectionItem, index) => (
+                      <Collection
+                        img={collectionItem.image.asset.url}
+                        title={collectionItem.title}
+                        description={collectionItem.description}
+                        key={index * 100}
+                        clicked={(e) => openLightbox(e, index)}
+                      />
+                    ))}
                 </div>
-                {/* end row */}
               </div>
-              {/* end container */}
+              {lightboxIsOpen && (
+                <div className="image-popup">
+                  <button onClick={closeLightbox} className="close-button">
+                    <i className=" fa-solid fa-xmark" />
+                  </button>
+                  <button onClick={gotoPrevious} className="prev-button">
+                    <i className=" fa-solid fa-angle-left" />
+                  </button>
+                  <img
+                    src={collectionData[currentImageIndex].image.asset.url}
+                    alt="Selected"
+                  />
+
+                  <button onClick={gotoNext} className="next-button">
+                    <i className=" fa-solid fa-angle-right" />
+                  </button>
+                </div>
+              )}
             </section>
           </>
         ))}

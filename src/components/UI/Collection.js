@@ -13,7 +13,9 @@ export default function Collection(props) {
         data-scroll-speed={props.dataScroll}
       >
         <figure>
-          <img src={props.img} alt="Image" />
+          <a href="#" onClick={props.clicked}>
+            <img src={props.img} alt="Image" />
+          </a>
         </figure>
         <h4>
           <a href="collection-detail.html">{props.title}</a>
