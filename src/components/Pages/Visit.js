@@ -177,6 +177,7 @@ export default function Visit() {
             description={item.description}
             background={item.image.asset.url}
             key={index}
+            color={"#EFC3CD"}
           />
         ))}
       <section

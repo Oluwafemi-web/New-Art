@@ -190,6 +190,7 @@ export default function Contact() {
               description={item.description}
               background={item.image.asset.url}
               key={index}
+              color={"#E5F9AF"}
             />
             <section className="content-section" data-background="#fffbf7">
               <div className="container">

@@ -234,6 +234,7 @@ export default function About() {
             description={item.description}
             background={item.image.asset.url}
             key={index}
+            color={"#E3F9FF"}
           />
         ))}
       <>

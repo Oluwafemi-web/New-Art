@@ -145,6 +145,7 @@ export default function Collections2013() {
               description={item.description}
               background={item.image.asset.url}
               key={index}
+              color={"#E3F9FF"}
             />
             <section className="content-section" data-background="#fffbf7">
               <div className="container">

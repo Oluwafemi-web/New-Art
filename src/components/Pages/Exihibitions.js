@@ -105,6 +105,7 @@ export default function Exhibitions() {
             description={item.description}
             background={item.image.asset.url}
             key={index}
+            color={"#FFC7CD"}
           />
         ))}
       <section className="content-section" data-background="#fffbf7">

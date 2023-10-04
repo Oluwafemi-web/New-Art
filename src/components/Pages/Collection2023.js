@@ -131,6 +131,7 @@ export default function Collections2023() {
               description={item.description}
               background={item.image.asset.url}
               key={index}
+              color={"#E4D8F9"}
             />
             <section className="content-section" data-background="#fffbf7">
               <div className="container">
