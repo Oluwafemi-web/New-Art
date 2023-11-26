@@ -84,7 +84,7 @@ export default function PrimaDel2009() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "primadel2009" && language == $language]|  order(_createdAt desc){
+        `*[_type == "primadel2009"]|  order(_createdAt desc){
            title,
            description,
            _createdAt,
@@ -107,12 +107,11 @@ export default function PrimaDel2009() {
              }
             }
          }
-        }`,
-        { language: ctx.languageData }
+        }`
       )
       .then((data) => setCollectionData(data))
       .catch(console.error);
-  }, [ctx.languageData]);
+  });
 
   useEffect(() => {
     if (!collectionHeader || !collectionData) {
